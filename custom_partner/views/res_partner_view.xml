@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_res_partner_form_inherits" model="ir.ui.view">
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//page[@name='sales_purchases']" position="after">
+					<page name="other_informations" string="Other Informations">
+						<group>
+							<group>
+								<field name="manunfacturer_code" />
+								<field name="payment_type" />
+								<field name="balance_date" />
+							</group>
+							<group>
+								<field name="credit_limit" />
+								<field name="email2" />
+								<field name="phone2" />
+							</group>
+						</group>
+					</page>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<!-- // Wizard to import the users file -->
+		<record id="view_base_import_users" model="ir.ui.view">
+			<field name="name">Import Users</field>
+			<field name="model">base.users.import</field>
+			<field name="arch" type="xml">
+				<form string="Import Users">
+					<group>
+						<field name="file_import" filename="filename" />
+						<field name="filename" invisible="1" />
+					</group>
+					<footer>
+						<button name="import_users" string="_Import" type="object"
+							class="btn-primary" />
+						<button string="Cancel" class="btn-secondary"
+							special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+
+		<!-- // Wizard to import the sales reward file -->
+		<!-- <record id="view_base_import_reward" model="ir.ui.view">
+			<field name="name">Import Sales Rewards</field>
+			<field name="model">base.reward.import</field>
+			<field name="arch" type="xml">
+				<form string="Import Sales Reward">
+					<group>
+						<field name="file_import" filename="filename" />
+						<field name="filename" invisible="1" />
+					</group>
+					<footer>
+						<button name="import_rewards" string="_Import"
+							type="object" class="btn-primary" />
+						<button string="Cancel" class="btn-secondary"
+							special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+ -->
+
+		<!-- // Action to import the users file -->
+		<record id="action_view_base_import_users"
+			model="ir.actions.act_window">
+			<field name="name">Import Users</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">base.users.import</field>
+			<field name="view_id" ref="view_base_import_users"/>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+		<!-- // Action to import the sales reward file -->
+		<!-- <record id="action_view_base_import_reward"
+			model="ir.actions.act_window">
+			<field name="name">Import Sales Rewards</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">base.reward.import</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record> -->
+
+		<!--// Menuitem -->
+		<menuitem action="action_view_base_import_users"
+			id="menu_view_base_import_users" parent="base.menu_users" />
+
+<!-- 		<menuitem action="action_view_base_import_reward"
+			id="menu_view_base_import_rewards" parent="base.menu_users" /> -->
+
+
+	</data>
+</odoo>

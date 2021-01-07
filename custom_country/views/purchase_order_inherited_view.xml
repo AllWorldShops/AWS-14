@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!--purchase order country fields -->
+		<record id="purchase_order_country" model="ir.ui.view">
+			<field name="name">purchase.order_form</field>
+			<field name="model">purchase.order</field>
+			<field name="inherit_id" ref="purchase.purchase_order_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='company_id']" position="before">
+					<field name="country_id" readonly='1' />
+				</xpath>
+			</field>
+		</record>
+		
+		<!-- purchase order country fields tree view -->
+		<record model="ir.ui.view" id="purchase_order_country_tree">
+			<field name="name">purchase.order_tree</field>
+			<field name="model">purchase.order</field>
+			<field name="inherit_id" ref="purchase.purchase_order_tree" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='partner_id']" position="after">
+					<field name="country_id"/>
+				</xpath>
+			</field>
+		</record>
+		
+		<!-- filter view -->
+		<record id="purchase_order_inherit_search" model="ir.ui.view">
+			<field name="name">purchase.order.search.expand.filter</field>
+			<field name="model">purchase.order</field>
+			<field name="inherit_id" ref="purchase.view_purchase_order_filter" />
+			<field name="arch" type="xml">
+				<group expand="0">
+					<filter name="country_id" string="Country"
+						icon="terp-partner" context="{'group_by':'country_id'}" />
+				</group>
+			</field>
+		</record>
+		
+	</data>
+</odoo>

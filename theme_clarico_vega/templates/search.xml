@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  Header search bar  -->
+   <template id="header_search_ept" inherit_id="website_sale.website_sale_products_search_box">
+        <xpath expr="//div[@role='search']//input[hasclass('search-query')]" position="before">
+            <!-- add get_parent_category() and  ept-parent-category selection for cateogry wise search. @Author : Angel Patel (24/09/2020) -->
+            <t t-set="ept_cat" t-value="request.env['website'].sudo().get_parent_category()"/>
+            <select class="ept-parent-category form-control" id="ept-parent-category" name="category">
+                <t t-foreach="ept_cat" t-as="cat">
+                    <option t-att-value="cat.get('id')" t-esc="cat.get('name')" />
+                </t>
+            </select>
+        </xpath>
+    </template>
+
+</odoo>

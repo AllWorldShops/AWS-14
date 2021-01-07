@@ -1,0 +1,331 @@
+<t name="Homepage" t-name="website.homepage1">
+  <t t-call="website.layout">
+    <div class="container">
+      <t t-set="pageName" t-value="'homepage'"/>
+      <div id="wrap" class="oe_structure oe_empty">
+        <div id="myCarousel1556951501027" class="s_carousel carousel t_arrow_small row aos-init slide s_carousel_default" data-interval="3000" style="margin-bottom:15px !important;" data-aos="s_carousel_default">
+          <div class="col-md-6 pt0" style="padding: 0;">
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel1556951501027" data-slide-to="0" class="active"/>
+              <li data-target="#myCarousel1556951501027" data-slide-to="1"/>
+              <li data-target="#myCarousel1556951501027" data-slide-to="2"/>
+              <li data-target="#myCarousel1556951501027" data-slide-to="3"/>
+            </ol>
+            <div class="carousel-inner t_arrow_small ts_style_7_inner">
+              <div class="carousel-item oe_img_bg pt152 pb152 oe_custom_bg active" style="background-image: url(&quot;custom_website/static/src/img/snippets/slider_styles/style_1/1.jpg&quot;); background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%; width: 100%; max-height: 420px !important;" data-name="Slide">
+                <div class="container">
+                  <div class="row content">
+                    <div class="carousel-content t_slider_sm_content" style="animation: animatezoom 0.8s ease-in both;animation-delay: 1s;">
+                      <div class="s_title pb8" data-name="Title">
+                        <h2 class="carousel_heading t_slider_7_title"> </h2>
+                      </div>
+                    </div>
+                    <div class="s_btn text-center col-lg-12 pt0 pb0" data-name="Buttons">
+                      <a href="#" class="btn btn-danger" data-original-title="" title="" aria-describedby="tooltip742384">shop now</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item oe_img_bg pt152 pb152 oe_custom_bg" style="background-image: url(&quot;custom_website/static/src/img/snippets/slider_styles/style_1/3.jpg&quot;); background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%; width: 100%; max-height: 420px !important;" data-name="Slide">
+                <div class="container">
+                  <div class="row content">
+                    <div class="s_btn text-center col-lg-12 pb0 pt8" data-name="Buttons">
+                      <a href="#" class="btn btn-beta" data-original-title="" title="">SHOP NOW</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item oe_img_bg pt152 pb152 oe_custom_bg" style="background-image: url(&quot;custom_website/static/src/img/snippets/slider_styles/style_1/4.jpg&quot;); background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%; width: 100%; max-height: 420px !important;" data-name="Slide">
+                <div class="container">
+                  <div class="row content">
+                    <div class="s_btn text-center col-lg-12 pb0 pt0" data-name="Buttons">
+                      <a href="#" class="btn btn-primary" data-original-title="" title="">BUY NOW</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item oe_img_bg pt152 pb152 oe_custom_bg" style="background-image: url(&quot;custom_website/static/src/img/snippets/slider_styles/style_1/2.jpg&quot;); background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%; width: 100%; max-height: 420px !important;" data-name="Slide">
+                <div class="container">
+                  <div class="row content">
+                    <div class="s_btn text-center col-lg-12 pb0 pt8" data-name="Buttons">
+                      <a href="#" class="btn btn-warning" data-original-title="" title="">SHOP NOW</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-control-prev" data-target="#myCarousel1556951501027" data-slide="prev" role="img" aria-label="Previous" title="Previous">
+                <span class="carousel-control-prev-icon t_left_to_right_arrow"/>
+                <span class="sr-only o_default_snippet_text">Previous</span>
+              </div>
+              <div class="carousel-control-next" data-target="#myCarousel1556951501027" data-slide="next" role="img" aria-label="Next" title="Next">
+                <span class="carousel-control-next-icon t_left_to_right_arrow"/>
+                <span class="sr-only o_default_snippet_text">Next</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6" style="padding: 0;">
+            <div class="col-md-12" style="padding: 0;">
+              <img src="/custom_website/static/src/img/snippets/slider_styles/style_1/685x200px-crystal-ashley-v2.gif" style="width: 100%;height: 210px;" data-original-title="" title="" aria-describedby="tooltip835863"/>
+            </div>
+            <div class="col-md-12" style="padding: 0;">
+              <img src="/custom_website/static/src/img/snippets/slider_styles/style_1/685x200px-kiri-skincare.png" style="width: 100%;height: 210px;" data-original-title="" title="" aria-describedby="tooltip252632"/>
+            </div>
+          </div>
+        </div>
+        <div class="input-group js_slider_snippet" data-isemipro="true" data-date-time="Sat May 04 2019 12:11:39 GMT+0530 (India Standard Time)"/>
+        <div class="input-group js_slider_snippet" data-isemipro="true" data-slider-id="3" data-date-time="Sat May 04 2019 12:24:12 GMT+0530 (India Standard Time)"/>
+        <div class="oe_structure"/>
+        <div class="input-group js_slider_snippet hidden" data-isemipro="true" data-slider-id="7" data-date-time="Fri Sep 27 2019 12:38:17 GMT+0530 (India Standard Time)"/>
+        <div class="input-group js_slider_snippet hidden" data-isemipro="true" data-slider-id="5" data-date-time="Fri Sep 27 2019 12:46:46 GMT+0530 (India Standard Time)"/>
+        <div class="oe_structure"/>
+        <section class="pt8 aos-init">
+          <div class="container" style="margin:0 !important;width:100%;">
+            <div class="row s_nb_column_fixed">
+              <div class="header-style none aos-init" style="padding-left: 0px;padding-right: 0px;" data-aos="none">
+                <h1> FEATURED BRANDS </h1>
+              </div>
+              <div class="s_title pt0 pb0 col-lg-12 none aos-init" style="text-align: center;" data-aos="none">
+                <h4 class="s_title_default t_title_default">
+                  <div class="oe_structure" style="color: rgb(85, 85, 85); font-family: Rubik, sans-serif; font-size: 14px; font-weight: 400; text-align: left; text-transform: none;"/>
+                </h4>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="oe_structure"/>
+        <section class="s_three_columns pb40">
+          <div class="row d-flex align-items-start aos-init row-eq-height" data-aos="align-items-start" style="&#10;    display: flex;&#10;    -webkit-flex-wrap: wrap;&#10;    -ms-flex-wrap: wrap;&#10;    display: flex;&#10;    flex-wrap: wrap;&#10;    display: flex;&#10;">
+            <div class="col-lg-3 col-md-3 s_col_no_bgcolor t_col_ind">
+              <section>
+                <div>
+                  <div class="t_image_overflow">
+                    <a href="/brand/wittakers-757">
+                      <img class="card-img-top img img-responsive feature_image" src="custom_website/static/src/img/snippets/slider_styles/style_1/whittakers.png" alt="Odoo - Sample 3 for three columns" data-original-title="" title="" aria-describedby="tooltip34363"/>
+                    </a>
+                  </div>
+                  <div class="card-body t_center_position">
+                    <div class="text-center pb8 pt16 t_button_position">
+                      <h6 class="mb0">
+                        <a href="#" class="t_fix_content_h3 text-uppercase" data-original-title="" title="" aria-describedby="tooltip685230">Whittaker's</a>
+                      </h6>
+                      <p style="line-height:160%;color:#CCC;font-size:12px;">Divine chocolate with the most delicious ingredients sourced directly from New Zealand.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="col-lg-3 col-md-3 s_col_no_bgcolor t_col_ind">
+              <section>
+                <div>
+                  <div class="t_image_overflow">
+                    <a href="/brand/lemon-and-paeroa-615">
+                      <img class="card-img-top img img-responsive feature_image padding-small" src="custom_website/static/src/img/snippets/slider_styles/style_1/lnp-odoo-2.jpg" alt="L&amp;P | Lemon &amp; Paeroa" data-original-title="" title="L &amp; P | Lemon &amp; Paeroa" aria-describedby="tooltip811408"/>
+                    </a>
+                  </div>
+                  <div class="card-body t_center_position">
+                    <div class="text-center pb8 pt16 t_button_position">
+                      <h6 class="mb0">
+                        <a href="http://allworldstage.pptssolutions.com/#" class="t_fix_content_h3 text-uppercase" data-original-title="" title="" aria-describedby="tooltip685230" style="background-color: rgba(0, 47, 94, 0.9);">Nature's beauty</a>
+                        <br/>
+                      </h6>
+                      <p style="line-height:160%;color:#CCC;font-size:12px;">Traditionally made by combining lemon juice with carbonated mineral water from the town of Paeroa.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="col-lg-3 col-md-3 s_col_no_bgcolor t_col_ind">
+              <section>
+                <div>
+                  <div class="t_image_overflow">
+                    <a href="/brand/manuka-doctor-630" data-original-title="" title="" aria-describedby="tooltip398633">
+                      <img class="card-img-top img img-responsive feature_image" src="custom_website/static/src/img/snippets/slider_styles/style_1/logo.png" alt="Genuine Manuka Doctor with cheaper price" data-original-title="" title="Genuine Manuka Doctor with cheaper price" aria-describedby="tooltip981802"/>
+                    </a>
+                  </div>
+                  <div class="card-body t_center_position">
+                    <div class="text-center pb8 pt16 t_button_position">
+                      <h6 class="mb0">
+                        <a href="#" class="t_fix_content_h3 text-uppercase" data-original-title="" title="" aria-describedby="tooltip672349"/>
+                        <a href="http://allworldstage.pptssolutions.com/#" class="t_fix_content_h3 text-uppercase" data-original-title="" title="" aria-describedby="tooltip685230" style="background-color: rgba(0, 47, 94, 0.9);">HAPPY VALLEY</a>
+                      </h6>
+                      <p style="line-height:160%;color:#CCC;font-size:12px;">Manuka Doctor honey and skincare products are as pure and distinctive as the land they come from.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="col-lg-3 col-md-3 s_col_no_bgcolor t_col_ind pb0">
+              <section class="pb0">
+                <div>
+                  <div class="t_image_overflow">
+                    <a href="/brand/good-health-581">
+                      <img class="card-img-top img img-responsive feature_image" src="custom_website/static/src/img/snippets/slider_styles/style_1/good-health.jpg" alt="Odoo - Sample 3 for three columns" data-original-title="" title="" aria-describedby="tooltip56393"/>
+                    </a>
+                  </div>
+                  <div class="card-body t_center_position">
+                    <div class="text-center pb8 pt16 t_button_position">
+                      <h6 class="mb0">
+                        <a href="#" class="t_fix_content_h3 text-uppercase" data-original-title="" title="" aria-describedby="tooltip440400"/>
+                        <a href="http://allworldstage.pptssolutions.com/#" class="t_fix_content_h3 text-uppercase" data-original-title="" title="" aria-describedby="tooltip685230" style="background-color: rgba(0, 47, 94, 0.9);">Good HEALTH</a>
+                      </h6>
+                      <p style="line-height:160%;color:#CCC;font-size:12px;">Comes from sustainable resources and are GE free. Sourced from New Zealand farms and growers.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+        <section style="background-color: #f7f7f7;">
+          <section class="container aos-init none" data-aos="none" style="margin: 0;width: 100%;">
+            <div class="row py-5" style="padding-top: 0px;padding-bottom:10%;PADDING: 0 !IMPORTANT;">
+              <div class="header-style none aos-init" style="padding-left: 0px;padding-right: 0px;" data-aos="none">
+                <h1> DEAL OF THE WEEK </h1>
+              </div>
+              <div class="col-lg-4 align-self-center">
+                <section>
+                  <h1 class="t_offer_title t_offer_title_b text-left">20% OFF ON SELECTED APPAREL<br/></h1>
+                </section>
+                <section>
+                  <p class="py-3 text-left">Celebrate New Zealand's greatest with our range of All Blacks jerseys and collection supporter gear.</p>
+                </section>
+                <section>
+                  <div class="js_timer_div"/>
+                </section>
+                <section class="text-left pt0">
+                  <div class="s_btn pt16 pb16 mt16 t_inline_but" data-name="Buttons">
+                    <a href="#" class="te_theme_button btn btn-primary" data-original-title="" title="" aria-describedby="tooltip332416">Shop Now</a>
+                  </div>
+                </section>
+              </div>
+              <div class="col-lg-8 align-self-center aos-init none" data-aos="none">
+                <div class="t_img_hover_1">
+                  <img class="img img-responsive img-fluid d-block mx-auto" src="/website_demo_data/static/src/img/homepage/deal-of-the-day.png" data-original-title="" title="" aria-describedby="tooltip35909"/>
+                  <img class="img-fluid o_we_custom_image" src="/custom_website/static/src/img/snippets/slider_styles/style_1/all-black-banner.jpg"/>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+        <div class="oe_structure"/>
+        <div class="oe_structure"/>
+        <div class="oe_structure">
+          <section>
+            <div class="container" style="margin:0; width:100%;">
+              <div class="row s_nb_column_fixed">
+                <div class="header-style none aos-init" style="padding-left: 0px;padding-right: 0px;" data-aos="none">
+                  <h1> HANDPICKED BRANDS JUST FOR YOU </h1>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <section class="pt0">
+          <div class="row t_zoom_img_effect">
+            <div class="col-lg-2 col-md-4 col-6 col-sm-6 s_col_no_bgcolor text-center pt16 pb16 ts_img_hvr" data-name="Box">
+              <section>
+                <div class="d-inline-block t_img_hover_overflow">
+                  <a href="/brand/cervidor-553">
+                    <img class="card-img-top img img-responsive feature_image zoom_image" src="custom_website/static/src/img/snippets/slider_styles/style_1/cervidor-odoo.png" alt="Odoo - Sample 6 for three columns" data-original-title="" title="" aria-describedby="tooltip254517"/>
+                  </a>
+                </div>
+              </section>
+            </div>
+            <div class="col-lg-2 col-md-4 col-6 col-sm-6 s_col_no_bgcolor text-center pt16 pb16 ts_img_hvr" data-name="Box">
+              <section>
+                <div class="d-inline-block t_img_hover_overflow">
+                  <a href="/brand/manuka-health-631">
+                    <img class="card-img-top img img-responsive feature_image zoom_image" src="custom_website/static/src/img/snippets/slider_styles/style_1/manuka_health_logo.jpg" alt="Odoo - Sample 6 for three columns" data-original-title="" title="" aria-describedby="tooltip486837"/>
+                  </a>
+                </div>
+              </section>
+            </div>
+            <div class="col-lg-2 col-md-4 col-6 col-sm-6 s_col_no_bgcolor text-center pt16 pb16 ts_img_hvr" data-name="Box">
+              <section>
+                <div class="d-inline-block t_img_hover_overflow">
+                  <a href="/brand/wild-ferns-758">
+                    <img class="card-img-top img img-responsive feature_image zoom_image" src="custom_website/static/src/img/snippets/slider_styles/style_1/wild-ferns-odoo.png" alt="Odoo - Sample 6 for three columns" data-original-title="" title="" aria-describedby="tooltip443881"/>
+                  </a>
+                </div>
+              </section>
+            </div>
+            <div class="col-lg-2 col-md-4 col-6 col-sm-6 s_col_no_bgcolor text-center pt16 pb16 ts_img_hvr" data-name="Box">
+              <section>
+                <div class="d-inline-block t_img_hover_overflow">
+                  <a href="/brand/canterbury-leather-550">
+                    <img class="card-img-top img img-responsive feature_image zoom_image" src="custom_website/static/src/img/snippets/slider_styles/style_1/cantebury-odoo.png" alt="Odoo - Sample 6 for three columns" data-original-title="" title="" aria-describedby="tooltip898829"/>
+                  </a>
+                </div>
+              </section>
+            </div>
+            <div class="col-lg-2 col-md-4 col-6 col-sm-6 s_col_no_bgcolor text-center pt16 pb16 ts_img_hvr" data-name="Box">
+              <section>
+                <div class="d-inline-block t_img_hover_overflow">
+                  <a href="/brand/good-health-581">
+                    <img class="card-img-top img img-responsive feature_image zoom_image" src="custom_website/static/src/img/snippets/slider_styles/style_1/goodhealth_logo.jpg" alt="Odoo - Sample 6 for three columns" data-original-title="" title="" aria-describedby="tooltip756195"/>
+                  </a>
+                </div>
+              </section>
+            </div>
+            <div class="col-md-4 col-6 col-sm-6 s_col_no_bgcolor text-center pt16 pb16 ts_img_hvr col-lg-1" data-name="Box">
+              <section>
+                <div class="d-inline-block t_img_hover_overflow">
+                  <a href="/brand/comvita-560">
+                    <img class="card-img-top img img-responsive feature_image zoom_image" src="custom_website/static/src/img/snippets/slider_styles/style_1/comvita-odoo-2.png" alt="Odoo - Sample 6 for three columns" data-original-title="" title="" aria-describedby="tooltip107224"/>
+                  </a>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="container" style="margin:0; width:100%;">
+            <div class="row s_nb_column_fixed">
+              <div class="header-style none aos-init pt0" style="padding-left: 0px;padding-right: 0px;" data-aos="none">
+                <h1> LATEST POSTS </h1>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="s_latest_posts_big_picture">
+          <div class="none">
+            <div class="row js_get_posts active" data-loading="true" data-template="website_blog.s_latest_posts_big_picture_template" data-filter-by-blog-id="0" data-posts-limit="4"/>
+          </div>
+        </section>
+        <section class="s_features none aos-init" data-aos="none">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4 col-lg-4 text-center menu_flip_box none aos-init" data-aos="none">
+                <div class="menu_flip_box_inner">
+                  <img class="img-fluid o_we_custom_image padding-small" src="custom_website/static/src/img/snippets/slider_styles/style_1/original.png" data-original-title="" title="" aria-describedby="tooltip100185"/>
+                </div>
+                <div>
+                  <a href="#" class="features_link" data-original-title="" title="">100% ORIGINAL AND GENUINE</a>
+                  <p class="features_discreption mt8">Guarantee for all products listed on the website</p>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-4 text-center menu_flip_box aos-init none" data-aos="none">
+                <div class="menu_flip_box_inner">
+                  <img class="img-fluid o_we_custom_image" src="custom_website/static/src/img/snippets/slider_styles/style_1/worldwide-shipping.png" data-original-title="" title="" aria-describedby="tooltip267814"/>
+                </div>
+                <div>
+                  <a href="#" class="features_link" data-original-title="" title="" aria-describedby="tooltip661739">ships worldwide</a>
+                  <p class="features_discreption mt8">We ship across the world and with on-time delivery</p>
+                </div>
+              </div>
+              <div class="col-md-4 col-lg-4 text-center menu_flip_box none aos-init" data-aos="none">
+                <div class="menu_flip_box_inner">
+                  <img class="img-fluid o_we_custom_image" src="custom_website/static/src/img/snippets/slider_styles/style_1/free-returns.png"/>
+                </div>
+                <div>
+                  <a href="#" class="features_link" data-original-title="" title="" aria-describedby="tooltip689583">free returns</a>
+                  <p class="features_discreption mt8">Return within 15 days of receiving your order</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </t>
+</t>

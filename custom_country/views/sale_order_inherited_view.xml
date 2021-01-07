@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<!-- sale order country fields form view -->
+		<record id="sale_order_country" model="ir.ui.view">
+			<field name="name">sale.order_form</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='payment_term_id']"
+					position="before">
+					<field name="country_id" readonly='1' />
+				</xpath>
+			</field>
+		</record>
+
+		<!-- sale order country fields tree view -->
+		<record model="ir.ui.view" id="sale_order_country_tree">
+			<field name="name">sale.order_tree</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_tree" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='partner_id']" position="after">
+					<field name="country_id" />
+				</xpath>
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="sale_order_country_tree1">
+			<field name="name">sale.order_tree</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='partner_id']" position="after">
+					<field name="country_id" />
+				</xpath>
+			</field>
+		</record>
+
+
+		<!-- sale order country fields filter view -->
+		<record id="view_sale_order_inherit_search" model="ir.ui.view">
+			<field name="name">sale.order.search.expand.filter</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id"
+				ref="sale.sale_order_view_search_inherit_sale" />
+			<field name="arch" type="xml">
+				<group expand="0">
+					<filter name="country_id" string="Country"
+						icon="terp-partner" context="{'group_by':'country_id'}" />
+				</group>
+			</field>
+		</record>
+	</data>
+</odoo>

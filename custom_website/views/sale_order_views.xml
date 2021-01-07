@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+		<record id="view_order_form_inherit_custom_website"
+			model="ir.ui.view">
+			<field name="name">sale.order.form.custome_website</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='expected_date']" position="before">
+					<field name="website_state" />
+				</xpath>
+			</field>
+		</record>
+
+		<record id="res_config_settings_view_payments"
+			model="ir.ui.view">
+			<field name="name">res.config.settings.payments</field>
+			<field name="model">res.config.settings</field>
+			<field name="priority" eval="40" />
+			<field name="inherit_id"
+				ref="website.res_config_settings_view_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//div[@id='webmaster_settings']" position="after">
+					<h2>Online Payment Confirmation</h2>
+					<div class="row mt24 o_settings_container">
+						<div class="col-12 col-lg-12 o_setting_box">
+							<label for="acquirer_order_confirmation"
+								string="Automatic Confirmation on Online payment" />
+							<field name="acquirer_order_confirmation" widget="radio" />
+						</div>
+					</div>
+				</xpath>
+			</field>
+		</record>
+
+
+	</data>
+</odoo>

@@ -1,0 +1,16 @@
+#wrapwrap {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+
+    @if ($o-theme-layout == 'boxed') {
+        @include media-breakpoint-up(md) {
+            padding: 0 0%;
+        }
+
+        #wrap {
+            background-color: $white;
+        }
+    }
+}

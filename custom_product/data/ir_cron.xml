@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record model="ir.cron" id="product_issues_cron">
+			<field name="name">Product Description Updates</field>
+			<field name="model_id"
+				ref="custom_product.model_product_product" />
+			<field name="state">code</field>
+			<field name="code">model.cron_product_updates()</field>
+			<field name="interval_number">1</field>
+			<field name="interval_type">weeks</field>
+			<field name="numbercall">-1</field>
+			<field name="doall" eval="False" />
+		</record>
+
+
+		<record model="ir.cron" id="product_website_issues_cron">
+			<field name="name">Product Website Description Updates</field>
+			<field name="model_id"
+				ref="custom_product.model_product_template" />
+			<field name="state">code</field>
+			<field name="code">model.cron_product_website_updates()</field>
+			<field name="interval_number">1</field>
+			<field name="interval_type">weeks</field>
+			<field name="numbercall">-1</field>
+			<field name="doall" eval="False" />
+		</record>
+
+
+		<record model="ir.cron" id="product_status_cron">
+			<field name="name">Product Status Updates</field>
+			<field name="model_id"
+				ref="custom_product.model_product_product" />
+			<field name="state">code</field>
+			<field name="code">model.cron_product_state_updates()</field>
+			<field name="interval_number">1</field>
+			<field name="interval_type">weeks</field>
+			<field name="numbercall">-1</field>
+			<field name="doall" eval="False" />
+		</record>
+
+
+
+
+
+		<record model="ir.cron" id="product_status_cron">
+			<field name="name">Product Status Updates</field>
+			<field name="model_id"
+				ref="custom_product.model_product_product" />
+			<field name="state">code</field>
+			<field name="code">model.cron_product_state_updates()</field>
+			<field name="interval_number">1</field>
+			<field name="interval_type">weeks</field>
+			<field name="numbercall">-1</field>
+			<field name="doall" eval="False" />
+		</record>
+
+
+		<record model="ir.cron" id="cron_update_website_categories">
+			<field name="name">Product update website categories</field>
+			<field name="model_id"
+				ref="custom_product.model_product_product" />
+			<field name="state">code</field>
+			<field name="code">model.cron_update_website_categories()</field>
+			<field name="interval_number">1</field>
+			<field name="interval_type">weeks</field>
+			<field name="numbercall">-1</field>
+			<field name="doall" eval="False" />
+		</record>
+
+		<!-- // Cron to update weight of the product -->
+		<record model="ir.cron" id="cron_update_product_weight">
+			<field name="name">Product update weight</field>
+			<field name="model_id"
+				ref="custom_product.model_product_product" />
+			<field name="state">code</field>
+			<field name="code">model.cron_update_product_weight()</field>
+			<field name="interval_number">1</field>
+			<field name="interval_type">weeks</field>
+			<field name="numbercall">-1</field>
+			<field name="doall" eval="False" />
+		</record>
+
+
+	</data>
+</odoo>

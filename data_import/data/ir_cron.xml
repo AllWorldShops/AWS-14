@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<!-- // Cron to send the invitation mail to the created users -->
+
+		<record id="cron_send_invitation_mail_new" model="ir.cron">
+			<field name="name">Send Invitation email for New Users</field>
+			<field name="model_id" ref="data_import.model_res_users" />
+			<field name="state">code</field>
+			<field name="code">model.cron_send_invitation_mail()</field>
+			<field name="interval_number">1</field>
+			<field name="interval_type">weeks</field>
+			<field name="numbercall">-1</field>
+			<field name="doall" eval="False" />
+			<field name="active" eval="False" />
+		</record>
+
+	</data>
+</odoo>

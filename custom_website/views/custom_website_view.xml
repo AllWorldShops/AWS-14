@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+	<template id="assets_frontend_spinners"
+		inherit_id="website.assets_frontend" name="Spin circle">
+		<xpath expr="." position="inside">
+			<script type="text/javascript"
+				src="/custom_website/static/src/js/spin.js" />
+			<link rel="stylesheet" type="text/css"
+				href="/custom_website/static/src/scss/spin.css" />
+		</xpath>
+	</template>
+
+
+
+	<!-- *** Home page three block sliders *** -->
+	<template id="customize_home_page_three_sliders"
+		name="Home Page Slider Style 1">
+
+		<style>
+			.no-padding{padding:0 !important;}
+		</style>
+		
+	<section>
+            <div id="wrap" class="oe_structure oe_empty">
+
+		<div id="myCarousel"
+			class="s_carousel s_carousel_default carousel slide t_arrow_small row"
+			data-interval="10000" style="margin:auto;">
+			<div class="col-sm-12 col-md-6 col-lg-6 no-padding">
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active" />
+					<li data-target="#myCarousel" data-slide-to="1" />
+				</ol>
+				<div class="carousel-inner t_arrow_small ts_style_7_inner">
+					<div class="carousel-item oe_img_bg  active pt152 pb152"
+						style="background-image: url('/custom_website/static/src/img/snippets/slider_styles/style_1/flowers.png'); background-repeat: no-repeat; 
+    background-position: center;    background-size: cover;   height:100%;   width:100%; "
+						data-name="Slide">
+						<div class="container">
+							<div class="row content">
+								<div class="carousel-content t_slider_sm_content"
+									style="animation: animatezoom 0.8s ease-in both;animation-delay: 1s;">
+									<div class="s_title pb8" data-name="Title">
+										<h2 class="carousel_heading t_slider_7_title">
+											<b>WELCOME TO ALL WORLD SHOPS</b>
+										</h2>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="carousel-item oe_custom_bg oe_img_bg pt152 pb152"
+						style="background-image: url('/custom_website/static/src/img/snippets/slider_styles/style_1/1920_800_1.png'); background-repeat: no-repeat; 
+    background-position: center;    background-size: cover;   height:100%;   width:100%;"
+						data-name="Slide">
+						<div class="container">
+							<div class="row content">
+								<div class="carousel-content t_slider_sm_content"
+									style="animation: animatezoom 0.8s ease-in both;animation-delay: 1s;">
+									<div class="s_title pb8" data-name="Title">
+										<h2 class="carousel_heading t_slider_7_title">
+											<b>WELCOME TO ALL WORLD SHOPS</b>
+										</h2>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="carousel-control-prev" data-target="#myCarousel"
+						data-slide="prev" role="img" aria-label="Previous"
+						title="Previous">
+						<span
+							class="carousel-control-prev-icon t_left_to_right_arrow" />
+						<span class="sr-only">Previous</span>
+					</div>
+					<div class="carousel-control-next" data-target="#myCarousel"
+						data-slide="next" role="img" aria-label="Next" title="Next">
+						<span
+							class="carousel-control-next-icon t_left_to_right_arrow" />
+						<span class="sr-only">Next</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-6 col-lg-6 no-padding">
+				<div>
+					<img
+						src="/custom_website/static/src/img/snippets/slider_styles/style_1/1920_800_1.png"
+						style="width: 100%;height: 210px;" />
+				</div>
+				<div>
+					<img
+						src="/custom_website/static/src/img/snippets/slider_styles/style_1/1920_800_1.png"
+						style="width: 100%;height: 210px;" />
+				</div>
+			</div>
+		</div>
+		
+		</div>
+		
+		</section>
+	</template>
+	<template id="custom_theme_clarico"
+		inherit_id="website.snippets">
+		<!-- <xpath
+			expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]"
+			position="after"> -->
+			
+		<xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_header')]" position="before">
+			<div class="container">
+				<div class="o_panel_header">
+					Home Page slider
+				</div>
+				<div class="o_panel_body">
+					<t t-snippet="custom_website.customize_home_page_three_sliders"
+						t-thumbnail="/theme_clarico_vega/static/src/img/snippets/snippets_icon/6_blocks.jpg" />
+				</div>
+			</div>
+		</xpath>
+	</template>
+
+	<template id="portal_my_home_invoice"
+		name="Portal My Home : invoice entries"
+		inherit_id="portal.portal_my_home" priority="30">
+		<!-- <xpath expr="//t[@t-if='invoice_count']" position="replace" /> -->
+		<xpath expr="//t[@t-call='portal.portal_docs_entry']" position="replace" />
+	</template>
+
+	<template id="portal_my_home_sale"
+		name="Portal My Home : sales entries"
+		inherit_id="portal.portal_my_home" priority="20">
+
+		<!-- <xpath expr="//t[@t-if='order_count']" position="replace" />
+		<xpath expr="//t[@t-if='quotation_count']" position="replace" /> -->
+		
+		<xpath expr="//t[@t-call='portal.portal_docs_entry']" position="replace" />
+		<xpath expr="//t[@t-call='portal.portal_docs_entry']" position="replace" />
+
+	</template>
+
+<!-- inherited for alignment website my orders -->
+
+	<template id="sidebar_menus" name="Side Bar">
+		<style>
+			.button12 {
+			text-decoration: none;
+			color: #333333;
+			border: 1px solid #CCCCCC;
+			display: block;
+			width: 100%;
+			font-size: 15px;
+			height: 41px;
+			padding: 12px 12px;
+			}
+		</style>
+		<!-- <div class="mt-4 col-sm-1" style="float:left;margin-left: -32px;"> -->
+		<div class="col-md-3 col-lg-2 mt-4">
+			<a href="/my/home" class="button12">My<![CDATA[&nbsp;]]>Account
+			</a>
+			<a href="/my/orders" class="button12">My<![CDATA[&nbsp;]]>orders
+			</a>
+			<a href="/shop/wishlist" class="button12">Wishlist</a>
+			<a href="/my/reward" class="button12">WebitPoints</a>
+		</div>
+	</template>
+
+
+	<template id="sale.portal_my_orders" name="My Sales Orders">
+		<t t-call="portal.portal_layout">
+			<t t-set="breadcrumbs_searchbar" t-value="True" />
+		     <div class="row">
+			     <t t-call="custom_website.sidebar_menus"/>
+				<div class="col-lg-10 col-md-9 mt-4">
+					<t t-call="portal.portal_searchbar">
+						<t t-set="title">Sales Orders</t>
+					</t>
+					<t t-if="not orders">
+						<p style="padding-left:40%!important">There are currently no orders for your account.</p>
+					</t>
+					<t t-if="orders" t-call="portal.portal_table">
+						<thead>
+							<tr class="active">
+								<th>
+									<span class='d-none d-md-inline'>Sales Order #</span>
+									<span class='d-block d-md-none'>Ref.</span>
+								</th>
+								<th class="text-right">Order Date</th>
+								<th class="text-center" />
+								<th class="text-right">Total</th>
+							</tr>
+						</thead>
+						<t t-foreach="orders" t-as="order">
+							<tr>
+								<td>
+									<a t-att-href="order.get_portal_url()" style="text-decoration: underline;">
+										<t t-esc="order.name" />
+									</a>
+								</td>
+								<td class="text-right">
+									<span t-field="order.date_order"
+										t-options="{'widget': 'date'}" />
+									&amp;nbsp;
+									<span class='d-none d-md-inline' t-field="order.date_order"
+										t-options="{'time_only': True}" />
+								</td>
+								<td class="text-center">
+									<span t-if="order.state == 'done'"
+										class="badge badge-pill badge-success">
+										<i class="fa fa-fw fa-check" role="img" aria-label="Done"
+											title="Done" />
+										Done
+									</span>
+								</td>
+								<td class="text-right">
+									<span t-field="order.amount_total" />
+								</td>
+							</tr>
+						</t>
+					</t>
+				</div>
+			</div>
+			
+		</t>
+			
+	</template>
+
+
+	<!-- To add Sale order actual status based on deliver and invoice. -->
+	<template id="custom_website_portal_my_orders"
+		inherit_id="sale.portal_my_orders">
+
+		<xpath expr="//t[@t-set='title']" position="replace">
+			<t t-set="title"></t>
+		</xpath>
+
+		<xpath expr="//t[@t-if='orders']/thead/tr/th[3]"
+			position="replace" />
+		<xpath expr="//t[@t-foreach='orders']/tr/td[3]"
+			position="replace" />
+
+		<xpath expr="//t[@t-if='orders']/thead/tr/th[1]"
+			position="replace">
+			<th>
+				<span class='d-none d-md-inline'>My Orders</span>
+				<span class='d-block d-md-none'>Ref.</span>
+			</th>
+		</xpath>
+		<xpath expr="//t[@t-if='orders']/thead/tr/th[2]"
+			position="after">
+			<th class="text-left">Status</th>
+		</xpath>
+		<xpath expr="//t[@t-foreach='orders']/tr/td[2]" position="after">
+			<td class="text-left">
+				<span t-field="order.website_state" />
+			</td>
+		</xpath>
+
+		<xpath expr="//t[@t-if='orders']/thead/tr/th[4]"
+			position="after">
+			<th class="text-left"></th>
+		</xpath>
+		<xpath expr="//t[@t-foreach='orders']/tr/td[4]" position="after">
+			<td class="text-right">
+				<t t-set="backend_url"
+					t-value="'/web#return_label=Website&amp;model=%s&amp;id=%s&amp;action=%s&amp;view_type=form' % (order._name, order.id, order.env.ref('sale.action_quotations').id)" />
+				<a t-att-href="backend_url"  groups="base.group_user">
+					<i class="fa fa-arrow-right" />
+					View
+				</a>
+			</td>
+		</xpath>
+	</template>
+
+
+
+	<!-- // Inherits to remove the cart menu -->
+	<!-- <template id="header" inherit_id="website.layout" name="Header Shop 
+		My Cart Link"> <xpath expr="//li[@class='nav-item']" position="replace"> 
+		</xpath> <xpath expr="//li[@id='my_cart']" position="replace"> </xpath> </template> -->
+
+
+	<!-- // Inherits to display all the card logos -->
+	<template id="payment_tokens_list_inherited"
+		inherit_id="payment.payment_tokens_list"
+		name="Payment Tokens list Inherits">
+		<xpath expr="//div[@class='card']" position="replace">
+			<div class="card">
+				<t t-set="acquirers_count"
+					t-value="len(acquirers) if acquirers else 0" />
+				<t t-set="pms_count" t-value="len(pms) if pms else 0" />
+				<t t-set="MAX_BRAND_LINE" t-value="3" />
+				<t t-foreach="acquirers" t-as="acq">
+					<div class="card-body">
+						<label>
+							<t t-if="acq.payment_flow == 'form'">
+								<input style="-moz-appearance: radio;" type="radio"
+									t-att-data-acquirer-id="acq.id" t-att-data-form-payment="true"
+									t-att-data-provider="acq.provider"
+									t-att-class="'d-none' if (acquirers_count==1 and pms_count==0) else ''"
+									name="pm_id" t-attf-value="form_{{acq.id}}"
+									t-att-checked="acquirers_count==1 and pms_count==0 or acquirers[0] == acq" />
+							</t>
+							<t t-else="acq.payment_flow == 's2s'">
+								<input style="-moz-appearance: radio;" type="radio"
+									t-att-data-acquirer-id="acq.id" t-att-data-s2s-payment="true"
+									t-att-data-provider="acq.provider" name="pm_id"
+									t-attf-value="new_{{acq.id}}"
+									t-att-class="'d-none' if (acquirers_count==1 and pms_count==0) else ''"
+									t-att-checked="acquirers_count==1 and pms_count==0 or acquirers[0] == acq" />
+							</t>
+							<span class="payment_option_name" t-esc="acq.name" />
+						</label>
+						<ul class="float-right list-inline payment_icon_list">
+							<!-- <t t-set="i" t-value="0" /> -->
+							<t t-foreach="acq.payment_icon_ids" t-as="pm_icon">
+								<li class="list-inline-item">
+									<span t-field="pm_icon.image_payment_form"
+										t-options='{"widget": "image", "alt-field": "name"}'
+										t-att-title="', '.join([opt.name for opt in acq.payment_icon_ids[MAX_BRAND_LINE:]])" />
+								</li>
+								<!-- <li t-if="i==MAX_BRAND_LINE" style="display:block;" class="list-inline-item"> 
+									<span class="float-right more_option text-info"> <a href="#" class="o_payment_form_pay_icon_more" 
+									data-toggle="tooltip" t-att-title="', '.join([opt.name for opt in acq.payment_icon_ids[MAX_BRAND_LINE:]])">and 
+									more</a> </span> </li> <t t-set="i" t-value="i+1" /> -->
+							</t>
+						</ul>
+					</div>
+					<t t-if="acq.payment_flow == 'form'">
+						<div t-attf-id="o_payment_form_acq_{{acq.id}}"
+							t-attf-class="d-none {{'card-footer' if acq.save_token == 'ask' else ''}}">
+							<label t-if="acq.save_token == 'ask'">
+								<input type="checkbox" name="o_payment_form_save_token"
+									data-remove-me="" />
+								Save my payment data
+							</label>
+						</div>
+					</t>
+					<t t-else="acq.payment_flow == 's2s'">
+						<div t-attf-id="o_payment_add_token_acq_{{acq.id}}"
+							t-attf-class="card-footer {{'d-none' if(acquirers_count &gt; 1 and pms_count==0 and acquirers[0]!=acq) else 'd-none' if pms_count &gt;0 else ''}}">
+							<div class="clearfix">
+								<t t-call="{{acq.sudo().get_s2s_form_xml_id()}}">
+									<t t-set="id" t-value="acq.id" />
+									<t t-set="partner_id" t-value="partner_id" />
+									<t t-if="not return_url" t-set="return_url" t-value="''" />
+								</t>
+							</div>
+						</div>
+					</t>
+				</t>
+				<t t-foreach="pms" t-as="pm">
+					<div class="card-body">
+						<label>
+							<input t-if="mode == 'payment'" type="radio" name="pm_id"
+								t-att-value="pm.id" t-att-checked="checked_pm_id == pm.id" />
+							<span class="payment_option_name" t-esc="pm.name" />
+							<t t-if="pm.verified">
+								<i class="fa fa-check text-success"
+									title="This payment method is verified by our system."
+									role="img" aria-label="Ok"></i>
+							</t>
+							<t t-else="">
+								<i class="fa fa-close text-danger"
+									title="This payment method has not been verified by our system."
+									role="img" aria-label="Not verified"></i>
+							</t>
+						</label>
+						<button t-if="mode == 'manage'" name="delete_pm"
+							t-att-value="pm.id" class="btn btn-primary btn-sm float-right">
+							<i class="fa fa-trash"></i>
+							Delete
+						</button>
+					</div>
+				</t>
+			</div>
+
+		</xpath>
+
+	</template>
+
+	<!-- // Inherits payment_delivery_methods -->
+	<template id="header"
+		inherit_id="website_sale_delivery.payment_delivery_methods"
+		name="Payment Delivery Methods Inherited">
+		<xpath expr="//input" position="replace">
+			<input style="-moz-appearance: radio;"
+				t-att-value="delivery.id" t-att-id="'delivery_%i' % delivery.id"
+				type="radio" name="delivery_type"
+				t-att-checked="order.carrier_id and order.carrier_id.id == delivery.id and 'checked' or False"
+				t-att-class="'d-none' if delivery_nb == 1 else ''" />
+		</xpath>
+
+		<xpath expr="//t[@t-else='']" position="replace">
+			<t t-else="">
+				<span t-attf-class="#{badge_class} d-none"
+					t-field="delivery.fixed_price"
+					t-options='{"widget": "monetary", "from_currency": delivery.product_id.company_id.currency_id, "display_currency": website_sale_order.currency_id}' />
+				<span t-attf-class="o_delivery_compute" class="spin_compute">
+					<i class="fa fa-spinner fa-spin spinner_hide"
+						style="font-size:18px"></i>
+				</span>
+			</t>
+		</xpath>
+	</template>
+
+	<!-- // Inherits to add the sale lable in website -->
+<!-- 	<template id="product_epted" inherit_id="website_sale.product"
+		name="product inherited">
+		<xpath expr="//div[@class='o_not_editable']" position="after">
+		<xpath expr="//div[@id='product_attributes_simple']" position="after">
+		<xpath expr="//t[@t-call='website_sale.product_price']" position="after">
+			<t
+				t-if="not product.sudo().inventory_availability in 'never,custom'">
+				<t t-if="product.label_line_ids">
+                    <t t-foreach="product.label_line_ids" t-as="labels">
+                        <t t-if="labels.website_id.id == website.id">
+						<div class="row"
+							t-attf-style="margin-top: -31px;background-color:#{labels.label.html_color};width: 73px;padding-left: 20px;margin: initial;height:18px;">
+							<i class="fa fa-tag mr4" style="margin: 2px -18px;color: white;"></i>
+							<h5 t-field="labels.label.name"
+								t-attf-style="font-size:12px;color:#{labels.label.font_html_color}" />
+						</div>
+						<div class="te_prod_label" t-attf-style="background-color:#{labels.label.html_color};color:#{labels.label.font_html_color}">
+	                         <div class="te_label_tag" t-field="labels.label.name" />
+	                    </div>
+					</t>
+				</t>
+				</t>
+			</t>
+
+			<t t-if="product.sudo().inventory_availability in 'never,custom'">
+				<t t-if="product.sudo().inventory_availability == 'never'">
+					<t t-if="product.label_line_ids">
+                    <t t-foreach="product.label_line_ids" t-as="labels">
+                        <t t-if="labels.website_id.id == website.id">
+						
+						<div class="row"
+							t-attf-style="margin: 17px 0px;background-color:#{labels.label.html_color};width: 73px;padding-left: 20px;margin: inherit;height:18px;">
+							<i class="fa fa-tag mr4" style="margin: 2px -18px;color: white;"></i>
+							<h5 t-field="labels.label.name"
+								t-attf-style="font-size:12px;color:#{labels.label.font_html_color}" />
+						</div>
+						
+						<div class="te_prod_label" t-attf-style="background-color:#{labels.label.html_color};color:#{labels.label.font_html_color}">
+	                         <div class="te_label_tag" t-field="labels.label.name" />
+	                    </div>
+					</t>
+				</t>
+				<t t-if="product.sudo().inventory_availability == 'custom'">
+					<t t-if="product.label_line_ids">
+                    <t t-foreach="product.label_line_ids" t-as="labels">
+                        <t t-if="labels.website_id.id == website.id">
+						<p>&amp;nbsp;&amp;nbsp;</p>
+						<div class="row"
+							t-attf-style="margin: 17px 0px;background-color:#{labels.label.html_color};width: 73px;padding-left: 20px;margin: inherit;height:18px;margin-top: -84px;">
+							<i class="fa fa-tag mr4" style="margin: 2px -18px;color: white;"></i>
+							<h5 t-field="labels.label.name"
+								t-attf-style="font-size:12px;color:#{labels.label.font_html_color}" />
+						</div>
+						<div class="te_prod_label" t-attf-style="background-color:#{labels.label.html_color};color:#{labels.label.font_html_color}">
+	                         <div class="te_label_tag" t-field="labels.label.name" />
+	                    </div>
+					</t>
+					</t>
+					</t>
+					</t>
+					</t>
+				</t>
+			</t>
+
+		</xpath>
+	</template> -->
+
+	<!-- // Inherits to add the colour to the price when striked is there -->
+	<template id="product_product_price_inherits"
+		inherit_id="website_sale.product_price" name="product price inherited">
+		<xpath expr="//div[@class='product_price mt16']"
+			position="replace">
+
+			<div itemprop="offers" itemscope="itemscope"
+				itemtype="http://schema.org/Offer" class="product_price mt16">
+				<h4 class="oe_price_h4 css_editable_mode_hidden">
+					<span
+						t-attf-class="text-danger oe_default_price {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+						style="text-decoration: line-through; white-space: nowrap;"
+						t-esc="combination_info['list_price']"
+						t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
+					<b class="oe_price" style="white-space: nowrap;color:red;"
+						t-esc="combination_info['price']"
+						t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
+					<span itemprop="price" style="display:none;"
+						t-esc="combination_info['price']" />
+					<span itemprop="priceCurrency" style="display:none;"
+						t-esc="website.currency_id.name" />
+				</h4>
+				<h4 class="css_non_editable_mode_hidden decimal_precision"
+					t-att-data-precision="str(website.currency_id.decimal_places)">
+					<span t-field="product.list_price"
+						t-options='{
+	                  "widget": "monetary",
+	                  "display_currency": product.currency_id,
+	              }' />
+				</h4>
+				<h4 class="d-none oe_not_available bg-warning">Option not available</h4>
+			</div>
+		</xpath>
+	</template>
+
+	<!-- // -->
+	<template id="payment_process_page_inherited"
+		inherit_id="payment.payment_process_page"
+		name="Payment processing page Inherited">
+		<xpath
+			expr="//div[@class='o_payment_processing_content col-sm-6 col-sm-offset-3']"
+			position="replace">
+			<div
+				class="o_payment_processing_content col-sm-6 col-sm-offset-3"
+				style="margin-left: 313px;margin-bottom: 32px;margin-top: 32px;">
+				<!-- here should be the content generated by payment_processing.js -->
+			</div>
+		</xpath>
+	</template>
+
+	<template id="custom_sale_order_portal_template"
+		inherit_id="sale.sale_order_portal_template"
+		name="sale order portal template inherited">
+		<xpath
+			expr="//div[@class='row mt16 o_portal_sale_sidebar']//t/t[@t-set='classes']"
+			position="replace">
+			<t t-set="classes" t-value="'col-12 col-lg flex-lg-grow-0 d-print-none'"/>
+		</xpath>
+		<xpath
+			expr="//div[@class='row mt16 o_portal_sale_sidebar']//t/t[@t-set='classes']"
+			position="replace">
+			
+			<t t-set="classes" t-value="'col-lg-4 col-md-12'"/>
+			
+		</xpath>
+		
+		<xpath
+			expr="//div[@class='col-12 col-lg justify-content-end']"
+			position="attributes">
+			<attribute name="class">col-lg-8 col-md-12</attribute>
+		</xpath>
+		
+		<xpath
+			expr="//div[@class='col flex-grow-0 pr-2']"
+			position="attributes">
+			<attribute name="class">col-lg-2 col-md-1</attribute>
+		</xpath>
+		
+		<xpath
+			expr="//div[@class='col pl-0']"
+			position="attributes">
+			<attribute name="class">col-lg-10 col-md-11</attribute>
+		</xpath>
+		
+	</template>
+
+</odoo>

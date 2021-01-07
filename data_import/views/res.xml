@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<!-- // Inherits res users -->
+		<record id="view_users_form_inherits" model="ir.ui.view">
+			<field name="name">res.users.form.inherit</field>
+			<field name="model">res.users</field>
+			<field name="inherit_id" ref="base.view_users_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='lang']" position="after">
+					<field name="user_aid" invisible="1" />
+					<field name="user_uid" invisible="1" />
+				</xpath>
+			</field>
+		</record>
+
+		<!-- // Inherits res partners -->
+		<record id="view_partner_form_inherits" model="ir.ui.view">
+			<field name="name">res.partner.form.inherit</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='lang']" position="after">
+					<field name="partner_aid" invisible="1" />
+					<field name="partner_uid" invisible="1" />
+					<field name="exported_country_code" invisible="0" />
+					<field name="gender" />
+					<field name="subscribed_login" />
+				</xpath>
+				<!-- <xpath expr="//page[@name='sale_reward']" position="replace">
+					<page string="Sale Reward" name="sale_reward">
+						<field name="reward_expire_ids"
+							widget="section_and_note_one2many" mode="tree,kanban"
+							attrs="{'readonly': 0}">
+							<tree string="Sale Reward">
+								<field name="reward_option" />
+								<field name="reward_date" />
+								<field name="reward_point" sum="Total" />
+								<field name="used_reward_point" sum="Total" />
+								<field name="remaining_reward_point" sum="Total"
+									invisible="1" />
+								<field name="remaining_reward_point1" sum="Total" />
+								<field name="sale_id" />
+								<field name="invoice_id" />
+								<field name="pos_id" />
+								<field name="partner_id" invisible="1" />
+								<field name="reward_id" invisible="1" />
+								<field name="reward_uid" invisible="1" />
+							</tree>
+						</field>
+					</page>
+				</xpath> -->
+			</field>
+		</record>
+
+		<!-- // Inherits sales rewards to add form view -->
+		<!-- <record id="sales_rewards_form_view_new" model="ir.ui.view">
+			<field name="name">reward.expire.form</field>
+			<field name="model">reward.expire</field>
+			<field name="arch" type="xml">
+				<form string="Sale Reward">
+					<sheet>
+						<group>
+							<group>
+								<field name="reward_option" />
+								<field name="reward_expire_date" />
+								<field name="used_reward_point" />
+								<field name="remaining_reward_point" invisible="1" />
+								<field name="remaining_reward_point1" />
+								<field name="sale_id" />
+								<field name="pos_id" />
+								<field name="reference" />
+							</group>
+							<group>
+								<field name="reward_date" />
+								<field name="reward_point" />
+								<field name="remaining_reward_point" />
+								<field name="amount_per_point" />
+								<field name="invoice_id" />
+								<field name="partner_id" invisible="1" />
+								<field name="reward_id" invisible="1" />
+								<field name="reward_uid" invisible="1" />
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record> -->
+
+		<!-- // Inherits product template -->
+		<record id="view_product_template_form_inherits"
+			model="ir.ui.view">
+			<field name="name">product.template.form.inherit</field>
+			<field name="model">product.template</field>
+			<field name="inherit_id"
+				ref="product.product_template_only_form_view" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='company_id']" position="after">
+					<field name="product_nid" invisible="0" />
+					<field name="manufacturers" invisible="0" />
+					<field name="desc_text" invisible="0" />
+				</xpath>
+			</field>
+		</record>
+
+
+
+
+	</data>
+</odoo>

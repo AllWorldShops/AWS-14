@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="view_data_integration_form"	model="ir.ui.view">
+			<field name="name">data.integration.form</field>
+			<field name="model">data.integration</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+					
+						<button string="Create Product Attributes" type="object" name="create_pro_attribute" class="oe_highlight" />
+						<button string="Create Product Brands" type="object" name="import_brand_to_odoo14" class="oe_highlight" />
+						<button string="Create eCommerce Categories" type="object" name="create_pub_catg" class="oe_highlight" />
+						<button string="Create eCommerce Parent Categories" type="object" name="create_par_catg" class="oe_highlight" />
+						<button string="Create eCommerce Categories Translation" type="object" name="Impporttranslationpubliccateg" class="oe_highlight" />
+						<button string="Create Product" type="object" name="create_product" class="oe_highlight" />
+						<button string="Update Alternative Products" type="object" name="update_alternative_accessory_ids" class="oe_highlight" />
+						<button string="Create Taxs" type="object" name="create_tax" class="oe_highlight" />
+						<button string="Create Chart of Accounts" type="object" name="account_creation" class="oe_highlight" />
+						<button string="Create Vendors" type="object" name="create_partner" class="oe_highlight" />
+						<button string="Product Translation" type="object" name="import_product_translation" class="oe_highlight" />
+					
+						
+					</header>
+					<sheet>
+						<group string="Integration Instance" name="data">
+							<group>
+							
+								<field name="url" />
+								<field name="db" />
+								<field name="username" />
+								<field name="password" password="True" />
+								<field name="product_category_offset" />
+								<field name="product_attribute_offset" />
+								<field name="product_brand_offset" />
+								<field name="public_category_offset" />
+								<field name="public_par_category_offset" />
+								<field name="product_offset" />
+								<field name="tax_offset" />
+								<field name="account_offset" />
+								<field name="partner_offset" />
+								<field name="parent_partner" />
+								
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<record id="view_data_integration_tree" model="ir.ui.view">
+			<field name="name">data.integration.tree</field>
+			<field name="model">data.integration</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="url" />
+					<field name="db" />
+				</tree>
+			</field>
+		</record>
+		
+		<record id="action_data_integration" model="ir.actions.act_window">
+			<field name="name">Data Integration</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">data.integration</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+	
+		<menuitem id="action_data_integration_menu" name="Data Integration"
+			action="action_data_integration" sequence="11" groups="base.group_no_one,base.group_erp_manager"/>
+
+	</data>
+</odoo>

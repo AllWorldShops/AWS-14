@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<template id="assets_frontend"
+		inherit_id="web.assets_frontend" name="Website Assets">
+		<xpath expr="//link[last()]" position="after">
+			<link rel="stylesheet" type="text/scss"
+				href="/custom_login_page/static/src/scss/website.ui1.scss" />
+		</xpath>
+	</template>
+	
+	
+        <template id="auth_oauth.providers" name="OAuth Providers">
+        	<t t-if="providers">
+            <t t-if="len(providers) &gt; 0">
+                <em t-attf-class="d-block text-center text-muted small my-#{len(providers) if len(providers) &lt; 3 else 3}">- or -</em>
+                <div class="o_auth_oauth_providers list-group mt-1 mb-1 text-left">
+                    <a t-foreach="providers" t-as="p" class="list-group-item list-group-item-action py-2" t-att-href="p['auth_link']">
+                        <i t-att-class="p['css_class']"/>
+                        <t t-esc="p['body']"/>
+                    </a>
+                </div>
+            </t>
+            </t>
+        </template>
+
+        <template id="auth_oauth.login" inherit_id="web.login" name="OAuth Login buttons">
+            <xpath expr="//form" position="before">
+            	<t t-if="providers">
+                	<t t-set="form_small" t-value="True" t-if="len(providers) &gt; 2"/>
+                </t>
+            </xpath>
+            <xpath expr="//div[hasclass('o_login_auth')]" position="inside">
+                <t t-call="auth_oauth.providers"/>
+            </xpath>
+        </template>
+
+
+
+	<!-- Features template -->
+	<template id="custom_login" inherit_id="web.login"
+		name="Website Login Layout" priority="20">
+		
+		
+		<xpath expr="//form[1]" position="replace">
+			<div class="container">
+				<div class="row mt32 mb32">
+					<div class="col-md-6">
+
+
+						<form class="oe_login_form" role="form"
+							t-attf-action="/web/login{{ '?debug' if debug else '' }}"
+							method="post"
+							onsubmit="this.action = this.action + location.hash">
+							<input type="hidden" name="csrf_token"
+								t-att-value="request.csrf_token()" />
+
+							<h1 class="text-center">Sign In</h1>
+
+							<div class="form-group field-db"
+								t-if="databases and len(databases) &gt; 1">
+								<label for="db" class="col-form-label">Database</label>
+								<div
+									t-attf-class="input-group {{'input-group-sm' if form_small else ''}}">
+									<input type="text" name="db" t-att-value="request.db"
+										id="db"
+										t-attf-class="form-control #{'form-control-sm' if form_small else ''}"
+										required="required" readonly="readonly" />
+									<span class="input-group-append">
+										<a role="button" href="/web/database/selector"
+											class="btn btn-secondary">
+											Select
+											<i class="fa fa-database" role="img" aria-label="Database"
+												title="Database" />
+										</a>
+									</span>
+								</div>
+							</div>
+
+							<div class="form-group field-login">
+								<label for="login">Email</label>
+								<input type="text" placeholder="Email" name="login"
+									t-att-value="login" id="login"
+									t-attf-class="form-control #{'form-control-sm' if form_small else ''}"
+									required="required" autofocus="autofocus" autocapitalize="off" />
+							</div>
+
+							<div class="form-group field-password">
+								<label for="password">Password</label>
+								<input type="password" placeholder="Password"
+									name="password" id="password"
+									t-attf-class="form-control #{'form-control-sm' if form_small else ''}"
+									required="required" autocomplete="current-password"
+									t-att-autofocus="'autofocus' if login else None"
+									maxlength="4096" />
+							</div>
+
+							<p class="alert alert-danger" t-if="error" role="alert">
+								<t t-esc="error" />
+							</p>
+							<p class="alert alert-success" t-if="message" role="status">
+								<t t-esc="message" />
+							</p>
+
+							<div
+								t-attf-class="clearfix oe_login_buttons text-center mb-1 {{'pt-2' if form_small else 'pt-3'}}">
+								<button type="submit" class="btn btn-primary btn-block">Log in</button>
+								<t t-if="debug">
+									<button type="submit" name="redirect"
+										value="/web/become" class="btn btn-link btn-sm btn-block">Log in as superuser</button>
+								</t>
+								<div class="o_login_auth" />
+							</div>
+							<div
+								class="justify-content-between mt-2 d-flex te_login_links">
+
+								<a href="/web/reset_password">Reset Password</a>
+							</div>
+
+ 
+							<div class="o_login_auth">
+
+							<t t-if="providers">
+
+								<t t-if="len(providers) &gt; 0">
+									<em
+										t-attf-class="d-block text-center text-muted small my-#{len(providers) if len(providers) &lt; 3 else 3}">- or -</em>
+									<div
+										class="o_auth_oauth_providers list-group mt-1 mb-1 text-left">
+										<a t-foreach="providers" t-as="p"
+											class="list-group-item list-group-item-action py-2"
+											t-att-href="p['auth_link']">
+											<i t-att-class="p['css_class']" />
+											<t t-esc="p['body']" />
+										</a>
+									</div>
+								</t>
+								
+							</t>
+								<input type="hidden" name="redirect"
+									t-att-value="redirect" />
+							</div>
+						</form>
+					</div>
+
+					<div class="col-md-6">
+
+						<h1>New customer</h1>
+
+						<p>
+							<b>Creating an account is easy and you can enjoy your account
+								privileges instantly.
+							</b>
+						</p>
+						<br />
+						<div>
+							<p>
+								<img src="/custom_login_page/static/src/img/prize.png"
+									alt=""
+									style="float:left;width:76px;height:62px;margin-right:46px;" />
+								<b>Earn bonus points and earn points rewards</b>
+								,
+								<br />
+								every time you make a purchase.
+							</p>
+						</div>
+						<br />
+						<div>
+							<p>
+								<img src="/custom_login_page/static/src/img/1770333.png"
+									alt=""
+									style="float:left;width:76px;height:62px;margin-right:46px;" />
+								<b>Express billing</b>
+								,
+								<br />
+								With our security settings, you can quickly view billing and
+								shipping information every time.
+							</p>
+						</div>
+						<br />
+						<div>
+							<p>
+								<img src="/custom_login_page/static/src/img/computer.png"
+									alt=""
+									style="float:left;width:76px;height:62px;margin-right:46px;" />
+								<b>Beautiful rewards</b>
+								,
+								<br />
+								Register now and enjoy the official website premium shopping
+								gift.
+							</p>
+						</div>
+						<br />
+						<br />
+						<br />
+						<br />
+						<!-- <button style="width:297px;height:54px;" class="btn btn-primary" 
+							t-attf-href="/web/signup?{{ keep_query() }}"> <a style="color:white;" t-if="signup_enabled" 
+							t-attf-href="/web/signup?{{ keep_query() }}">CREATE AN ACCOUNT</a> </button> -->
+						<div class="login_align">
+							<a style="width:297px;height:45px;"
+								t-attf-href="/web/signup?{{ keep_query() }}"
+								t-if="signup_enabled" class="btn btn-primary">
+								CREATE AN ACCOUNT
+							</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</xpath>
+	</template>
+
+
+	<!-- // Features template -->
+	<template id="website.login_layout" inherit_id="web.login_layout"
+		name="Website Login Layout Inherits" priority="20">
+		<xpath expr="t" position="replace">
+			<t t-call="website.layout">
+				<div class="oe_website_login_container container" t-raw="0" />
+			</t>
+		</xpath>
+	</template>
+
+
+</odoo>

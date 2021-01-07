@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="email_template_edi_sale_custom"
+			model="mail.template">
+			<field name="name">Order Confirmed</field>
+			<field name="model_id" ref="custom_website.model_sale_order" />
+			<field name="email_from">${object.user_id.email_formatted |safe}</field>
+			<field name="partner_to">${object.partner_id.id}</field>
+			<field name="subject">Order Confirmed</field>
+			<field name="body_html" type="html">
+				<table border="0" cellpadding="0" cellspacing="0"
+					style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
+					<tr>
+						<td align="center">
+							<table border="0" cellpadding="0" cellspacing="0"
+								width="590"
+								style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;">
+								<tbody>
+									<!-- HEADER -->
+									<tr>
+										<td align="center" style="min-width: 590px;">
+											<table border="0" cellpadding="0" cellspacing="0"
+												width="590"
+												style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+												<tr>
+													<img style="display: block;margin: 0 auto;width:200px;"
+														alt="order confirmed"
+														src="/custom_website/static/src/img/mail/order-confirmed-gif.gif" />
+													<div style="text-align:left;">
+														<p>Hi ${object.partner_id.name}!</p>
+														<p>We are preparing your bag of joy,containing the
+															products you
+															picked.Once we've shipped your order,you'll
+															get an email with
+															shipping and tracking information.
+														</p>
+														<p>We know you can't wait to get your hands on it,so we've
+															begun
+															preparing for it right away.
+														</p>
+														<p>In the meantime,you can track your order below.</p>
+														<p>Regards!</p>
+														<p>All World Shop</p>
+														<br />
+													</div>
+													<hr style="width: 100%;border: 1px solid #f78219b3;" />
+													<br />
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<!-- CONTENT -->
+									<tr>
+										<td align="center" style="min-width: 590px;">
+											<table border="0" cellpadding="0" cellspacing="0"
+												width="590"
+												style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+												<tr>
+													<td valign="top" style="font-size: 13px;">
+														<h3>Your Order Details</h3>
+														<h4>Order No: ${object.name or 'n/a' }</h4>
+														<br />
+														<br />
+														% if object.order_line:
+														% for line in object.order_line:
+														% if not line.is_delivery:
+														% if not line.is_reward_line:
+														<hr />
+														<table width="100%">
+															<tr>
+																<td style="padding: 10px; width:150px;">
+																	<img
+																		src="/web/image/product.product/${line.product_id.id}/image"
+																		height="100px" width="100px" alt="Product image"></img>
+																</td>
+																<td>
+																	<strong>${line.product_id.display_name}</strong>
+																	<br />
+																	<br />
+																	<span>Price</span>
+																	<br />
+																	<br />
+																	<span>
+																		<strong>Total</strong>
+																	</span>
+																</td>
+																<td align="right">
+																	<strong> ${(line.product_uom_qty) |
+																		int}
+																		${(line.product_uom.name)}
+																	</strong>
+																	<br />
+																	<br />
+																	<span>
+																		${(line.price_unit) |
+																		int}
+																		${(object.pricelist_id.currency_id.symbol)}
+																	</span>
+																	<br />
+																	<br />
+																	<strong> ${(line.price_total) |
+																		int}
+																		${(object.pricelist_id.currency_id.symbol)}
+																	</strong>
+																</td>
+															</tr>
+														</table>
+														% endif
+														% endif
+														% endfor
+														% endif
+														<hr style="width: 100%;border: 1px solid #f78219b3;" />
+														
+														<table width="590">
+															<tr>
+																<td>
+																<div style="width:100%;">
+																	<div style="width:100%;">
+																		<h3>Delivery Address</h3>
+																		% if object.partner_shipping_id.street:
+																		<p>${object.partner_shipping_id.street}</p>
+																		% endif
+																		% if object.partner_shipping_id.street2:
+																		<p>${object.partner_shipping_id.street2}</p>
+																		% endif
+																		% if object.partner_shipping_id.city:
+																		<p>${object.partner_shipping_id.city}</p>
+																		% endif
+																		% if object.partner_shipping_id.state_id:
+																		<p>${object.partner_shipping_id.state_id.name}</p>
+																		% endif
+																		% if object.partner_shipping_id.zip:
+																		<p>${object.partner_shipping_id.zip}</p>
+																		% endif
+																	</div>
+																	</div>
+																</td>
+																<td valign="top">
+																<div style="width:100%;">
+																<h3>Billing Details</h3>
+																<table style="height: 75px; width:100%">
+																	<tbody>
+																		<tr style="height: 23px;">
+																			<td style="height: 23px;">Tax</td>
+																			<td style="height: 23px;">${format_amount(object.amount_tax,
+																				object.pricelist_id.currency_id)}
+																			</td>
+																		</tr>
+																		<tr style="height: 23px;">
+																			<td style="height: 23px;">Shipping Charge</td>
+																			<td style="height: 23px;">${format_amount(object.delivery_price,
+																				object.pricelist_id.currency_id)}
+																			</td>
+																		</tr>
+																		% for line in object.order_line:
+																		% if line.is_reward_line:
+																		<tr style="height: 23px;">
+																			<td style="height: 23px;">Discount</td>
+																			<td style="height: 23px;">${format_amount(line.price_total|abs,
+																				object.pricelist_id.currency_id)}</td>
+																		</tr>
+																		% endif
+																		% endfor
+																		<tr>
+																			<td colspan="2">
+																			<hr
+																	style="border-top: 1px solid #e6e0e0;width: 100%;" />
+																</td>
+																		</tr>
+																		<tr style="height: 23px;">
+																			<td style="height: 23px;">
+																				<strong>Total</strong>
+																			</td>
+																			<td style="height: 23px;">
+																				<strong>${format_amount(object.amount_total,
+																					object.pricelist_id.currency_id)}
+																				</strong>
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+																</td>
+															</tr>
+														</table>
+															
+													</td>
+												</tr>
+											</table>
+											<hr width="100%"
+												style="border: 1px solid #f78219b3;" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</field>
+			<!-- <field name="report_template" ref="action_report_saleorder"/> -->
+			<field name="report_name">${(object.name or '').replace('/','_')}</field>
+			<field name="lang">${object.partner_id.lang}</field>
+			<!-- <field name="user_signature" eval="False" />
+			<field name="auto_delete" eval="False" /> -->
+		</record>
+
+
+		<!-- // Shipping -->
+		<record id="email_template_shipping_stock_custom"
+			model="mail.template">
+			<field name="name">Shipping-confirmation</field>
+			<field name="model_id" ref="custom_website.model_stock_picking" />
+			<field name="email_from">${object.sale_id.user_id.email_formatted |safe}</field>
+			<field name="partner_to">${object.partner_id.id}</field>
+			<field name="subject">Shipping-confirmation</field>
+			<field name="body_html" type="html">
+				<table border="0" cellpadding="0" cellspacing="0"
+					style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
+					<tr>
+						<td align="center">
+							<table border="0" cellpadding="0" cellspacing="0"
+								width="590"
+								style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;">
+								<tbody>
+									<!-- HEADER -->
+									<tr>
+										<td align="center" style="min-width: 590px;">
+											<table border="0" cellpadding="0" cellspacing="0"
+												width="590"
+												style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+												<tr>
+													<img style="display: block;margin: 0 auto;width:200px;"
+														alt="Shipping confirmed"
+														src="/custom_website/static/src/img/mail/email-shipping-truck.png" />
+													<center>
+														<strong>
+															<h3>Order Shipped</h3>
+														</strong>
+													</center>
+													<div style="text-align:left;">
+														<p>Hi ${object.partner_id.name}!</p>
+														<p>We are preparing your bag of joy,containing the
+															products you
+															picked.Once we've shipped your order,you'll
+															get an email with
+															shipping and tracking information.
+														</p>
+														<p>We know you can't wait to get your hands on it,so we've
+															begun
+															preparing for it right away.
+														</p>
+														<p>In the meantime,you can track your order below.</p>
+														<p>Regards!</p>
+														<p>All World Shop</p>
+														<br />
+													</div>
+													<hr style="width: 100%;border: 1px solid #f78219b3;" />
+													<br />
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<!-- CONTENT -->
+									<tr>
+										<td align="center" style="min-width: 590px;">
+											<table border="0" cellpadding="0" cellspacing="0"
+												width="590"
+												style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+												<tr>
+													<td valign="top" style="font-size: 13px;">
+														<h3>Your Order Details</h3>
+														<h4>Order No: ${object.sale_id.name or 'n/a' }</h4>
+														<br />
+														<br />
+														% if object.sale_id.order_line:
+														% for line in object.sale_id.order_line:
+														% if not line.is_delivery:
+														% if not line.is_reward_line:
+														<hr />
+														<table width="100%">
+															<tr>
+																<td style="padding: 10px; width:150px;">
+																	<img
+																		src="/web/image/product.product/${line.product_id.id}/image"
+																		height="100px" width="100px" alt="Product image"></img>
+																</td>
+																<td>
+																	<strong>${line.product_id.display_name}</strong>
+																	<br />
+																	<br />
+																	<span>Price</span>
+																	<br />
+																	<br />
+																	<span>
+																		<strong>Total</strong>
+																	</span>
+																</td>
+																<td width="100px" align="right">
+																	<strong> ${(line.product_uom_qty) |
+																		int}
+																		${(line.product_uom.name)}
+																	</strong>
+																	<br />
+																	<br />
+																	<span>
+																		${(line.price_unit) |
+																		int}
+																		${(object.sale_id.pricelist_id.currency_id.symbol)}
+																	</span>
+																	<br />
+																	<br />
+																	<strong> ${(line.price_total) |
+																		int}
+																		${(object.sale_id.pricelist_id.currency_id.symbol)}
+																	</strong>
+																</td>
+															</tr>
+														</table>
+														% endif
+														% endif
+														% endfor
+														% endif
+														<hr style="width: 100%;border: 1px solid #f78219b3;" />
+														<div style="width:100%;margin-left: 0px;" class="row">
+															<div style="width:50%;">
+																<h3>Delivery Address</h3>
+																% if object.sale_id.partner_shipping_id.street:
+																<p>${object.sale_id.partner_shipping_id.street}</p>
+																% endif
+																% if object.sale_id.partner_shipping_id.street2:
+																<p>${object.sale_id.partner_shipping_id.street2}</p>
+																% endif
+																% if object.sale_id.partner_shipping_id.city:
+																<p>${object.sale_id.partner_shipping_id.city}</p>
+																% endif
+																% if object.sale_id.partner_shipping_id.state_id:
+																<p>${object.sale_id.partner_shipping_id.state_id.name}</p>
+																% endif
+																% if object.sale_id.partner_shipping_id.zip:
+																<p>${object.sale_id.partner_shipping_id.zip}</p>
+																% endif
+															</div>
+															<div style="width:50%;">
+																<h3>Billing Details</h3>
+																<table style="height: 75px; width: 384px;">
+																	<tbody>
+																		<tr style="height: 23px;">
+																			<td style="width: 331px; height: 23px;">Tax</td>
+																			<td style="width: 177px; height: 23px;">${format_amount(object.sale_id.amount_tax,
+																				object.sale_id.pricelist_id.currency_id)}
+																			</td>
+																		</tr>
+																		<tr style="height: 23px;">
+																			<td style="width: 331px; height: 23px;">Shipping Charge</td>
+																			<td style="width: 177px; height: 23px;">${format_amount(object.sale_id.delivery_price,
+																				object.sale_id.pricelist_id.currency_id)}
+																			</td>
+																		</tr>
+																		% for line in object.sale_id.order_line:
+																		% if line.is_reward_line:
+																		<tr style="height: 23px;">
+																			<td style="width: 331px; height: 23px;">Discount</td>
+																			<td style="width: 177px; height: 23px;">${format_amount(line.price_total|abs,
+																				object.sale_id.pricelist_id.currency_id)}</td>
+																		</tr>
+																		% endif
+																		% endfor
+																		
+																	</tbody>
+																</table>
+																<hr
+																	style="border-top: 1px solid #e6e0e0;width: 102%;" />
+																<table style="height: 75px; width: 310px;">
+																	<tbody>
+																		<tr style="height: 23px;">
+																			<td style="width: 476px; height: 23px;">
+																				<strong>Total</strong>
+																			</td>
+																			<td style="width: 90px; height: 23px;">
+																				<strong>${format_amount(object.sale_id.amount_total,
+																					object.sale_id.pricelist_id.currency_id)}
+																				</strong>
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+														</div>
+													</td>
+												</tr>
+											</table>
+											<hr width="100%"
+												style="width: 100%;border: 1px solid #f78219b3;" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</field>
+			<!-- <field name="report_template" ref="action_report_saleorder"/> -->
+			<field name="report_name">${(object.sale_id.name or '').replace('/','_')}</field>
+			<field name="lang">${object.partner_id.lang}</field>
+			<!-- <field name="user_signature" eval="False" />
+			<field name="auto_delete" eval="False" /> -->
+		</record>
+
+	</data>
+</odoo>
