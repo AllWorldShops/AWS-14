@@ -255,8 +255,8 @@
 		<div name="inf" class="col-12">
 					<t t-set="weight"
 						t-value="website_sale_order.get_sale_weight() if website_sale_order else 0" />
-					<t t-if="website_sale_order"> 
-						<div id="product_info" name="product_info"
+					<!-- <t t-if="weight &lt; 1 and website_sale_order">  -->
+						<div id="product_info" name="product_info" t-att-style="'display:block;' if weight &lt; 1 and website_sale_order else 'display:none;'"
 							class="modal-content"
 							t-if="website_sale_order.website_order_line">
 							<div class="modal-header">
@@ -272,7 +272,7 @@
 										<t t-raw="weight" />
 										grams.
 										 -->
-										  <span>The Total Weight of the product(s)</span> <!-- <t t-raw="', '.join(website_sale_order.website_order_line.mapped('product_id').mapped('name'))" t-if="website_sale_order.website_order_line"/> --> you have added in your cart is <span id="cart_weight"> <t t-esc="weight*1000" /></span> grams (<span id="cart_weight1"> <t t-esc="round(weight, 4)" /></span> kg/<span id="cart_lbs"> <t t-esc="round(weight*2.2, 4)" /></span> lbs).
+										  <span>The Total Weight of the product(s)</span> <!-- <t t-raw="', '.join(website_sale_order.website_order_line.mapped('product_id').mapped('name'))" t-if="website_sale_order.website_order_line"/> --> you have added in your cart is <span id="cart_weight"> <t t-esc="round(weight*1000, 4)" /></span> grams (<span id="cart_weight1"> <t t-esc="round(weight, 4)" /></span> kg/<span id="cart_lbs"> <t t-esc="round(weight*2.2, 4)" /></span> lbs).
 										 <br/>
 										 We would like to remind you that the shipping price from 1000 grams (1.0 kg/2.2 lbs) until 2000 grams(2.0 kg/4.40 lbs) is the same.
 										 <br/>
@@ -284,7 +284,7 @@
 								</div>
 							</form>
 						</div>
-					</t>
+					<!-- </t> -->
 				</div>
 			</template>
 		
