@@ -212,9 +212,21 @@ publicWidget.registry.WebsiteSale = publicWidget.Widget.extend(VariantMixin, {
 				console.log(result);
 				var result = JSON.parse(result);
 				console.log(result);
-				document.getElementById("cart_weight").innerHTML = result['gram'];
-				document.getElementById("cart_weight1").innerHTML = result['weight'];
-				document.getElementById("cart_lbs").innerHTML = result['lbs'];
+				
+				if (parseInt(result['weight'], 0) < 1) {
+				
+					document.getElementById("product_info").style.display = "block";
+				
+					}
+				
+				if (document.getElementById("cart_weight")) {
+            		
+            		document.getElementById("cart_weight").innerHTML = result['gram'];
+					document.getElementById("cart_weight1").innerHTML = result['weight'];
+					document.getElementById("cart_lbs").innerHTML = result['lbs'];
+            		
+        			}
+				
 			},
 			}); 
       
