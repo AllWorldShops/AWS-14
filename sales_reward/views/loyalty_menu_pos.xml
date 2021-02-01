@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record model="ir.ui.view" id="pos_reward_tree_view">
+            <field name="name">sales.reward.tree.view1</field>
+            <field name="model">pos.order</field>
+            <field name="arch" type="xml">
+                <tree decoration-info="state == 'draft'" decoration-muted="state == 'cancel'" string="Reward Logs">
+                <field name="name"/>
+                <field name="date_order"/>
+                <field name="partner_id" groups="base.group_user" string="Member"/> 
+                <field name="session_id" invisible="1"/>
+                <field name="state" invisible="1"/>
+                <field name="total_pos_points" string="Earned Reward Points" sum="Reward Points" />
+                <field name="amount_total" string="Amount" sum="Total Amount"/>
+                </tree>
+            </field>
+        </record>
+
+         <record model="ir.actions.act_window" id="action_pos_reward">
+            <field name="name">Loyalty Points</field>
+            <field name="res_model">pos.order</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="pos_reward_tree_view"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click here to create new.
+              </p>
+            </field>
+        </record>
+
+
+         <menuitem name ="POS Loyalty" id="reward_menu_loyalty_pos" parent="sales_reward.menu_sale_reward_root"/>
+         <menuitem name ="Earned Points" id="pos_menu_loyalty_earned_points" parent="sales_reward.reward_menu_loyalty_pos" action="action_pos_reward"/>
+
+
+</odoo>

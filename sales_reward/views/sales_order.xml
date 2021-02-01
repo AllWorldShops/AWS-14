@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="sale_order_form_view1">
+            <field name="name">sales</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <field name="partner_shipping_id" position="after">
+                    <field name="customer_type_check" invisible='1'/>
+                    <field name="total_web_points" string="Redeemable Points" readonly="True" attrs="{'invisible': [('customer_type_check','=',False)]}"/>
+                    <field name="point_to_use" string="Points to Reedeem"
+                           attrs="{'readonly':[('state','!=','draft')],'invisible': [('customer_type_check','=',False)]}"/>
+                </field>
+                <field name="amount_untaxed" position="after">
+                    <field name="amount_into_points" string="(-)Redeemed Amount" readonly="True" widget='monetary' options="{'currency_field': 'currency_id'}" attrs="{'invisible': [('customer_type_check','=',False)]}"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

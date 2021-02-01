@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+       <template id="reward_report_invoice_document_custom" inherit_id="account.report_invoice_document">
+            <xpath expr="//div[@class='page']/div[@class='clearfix']/div[@class='row']/div/table/tr[@class='border-black o_subtotal']" position="after">
+                <tr>
+                    <td>
+                        <!-- <span t-field="o.amount_into_points"  t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>  -->
+                        <t t-if="o.point_to_use">
+                        
+                            <b style="font-size: 11px;">
+                            
+                            (-)Redeemed Amount:        
+                            
+                            </b>
+                                <td align="right">
+                                    <span t-field="o.amount_into_points" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" attrs="{'invisible': [('type', 'in', ['in_invoice'])]}"/>
+                                    <!-- <field name="amount_into_points" string="(-)Redeemed Amount" readonly="True" widget='monetary' options="{'currency_field': 'currency_id'}"  attrs="{'invisible':  [('type', 'in', ['in_invoice'])]}"/> -->
+                                </td>
+                        </t>
+                        <!-- <t t-else ="">
+                            <span t-field="o.partner_id" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                        </t> -->
+                    </td>
+                </tr>
+            </xpath>
+        </template> 
+   </data>
+</odoo>
+

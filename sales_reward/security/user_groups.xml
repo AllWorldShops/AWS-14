@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="0">
+
+    <record model="ir.module.category" id="module_management">
+        <field name="name">User Type </field>
+        <field name="description">User access level for this module</field>
+        <field name="sequence">3</field>
+    </record>
+ 
+    <record id="group_manager" model="res.groups">
+      <field name="name">Admin User</field>
+      <field name="users" eval="[(4, ref('base.user_root'))]"/>
+      <field name="category_id" ref="sales_reward.module_management"/>
+    </record>
+
+    <record id="group_user" model="res.groups">
+      <field name="name">Categorise user</field>
+      <field name="implied_ids" eval="[(4, ref('sales_reward.group_manager'))]"/>
+      <field name="category_id" ref="sales_reward.module_management"/>
+    </record>
+   
+    <record id="group_actionC" model="res.groups">
+      <field name="name">Action Creator</field>
+      <field name="implied_ids" eval="[(4, ref('sales_reward.group_user'))]"/>
+      <field name="category_id" ref="sales_reward.module_management"/>
+    </record>
+
+    <record id="group_contentS" model="res.groups">
+      <field name="name">Content SuperviSor</field>
+      <field name="implied_ids" eval="[(4, ref('sales_reward.group_actionC'))]"/>
+      <field name="category_id" ref="sales_reward.module_management"/>
+    </record>
+    
+    <record id="group_contentCE" model="res.groups">
+      <field name="name">Content Creator(External)</field>
+      <field name="implied_ids" eval="[(4, ref('sales_reward.group_contentS'))]"/>
+      <field name="category_id" ref="sales_reward.module_management"/>
+    </record>
+
+    <record id="group_contentCI" model="res.groups">
+      <field name="name">Content Creator(Internal)</field>
+      <field name="implied_ids" eval="[(4, ref('sales_reward.group_contentCE'))]"/>
+      <field name="category_id" ref="sales_reward.module_management"/>
+    </record>
+   
+    <record id="group_end" model="res.groups">
+      <field name="name"> End  User</field>
+      <field name="implied_ids" eval="[(4, ref('sales_reward.group_contentCI'))]"/>
+      <field name="category_id" ref="sales_reward.module_management"/>
+    </record>
+
+    <record id="group_action" model="res.groups">
+      <field name="name">Action   User</field>
+      <field name="implied_ids" eval="[(4, ref('sales_reward.group_end'))]"/>
+      <field name="category_id" ref="sales_reward.module_management"/>
+    </record>
+   
+
+
+  </data>
+</odoo>

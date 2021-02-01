@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="reward_report_saleorder_document_inherit" inherit_id="sale.report_saleorder_document">
+         <xpath expr="//div[@class='clearfix']/div[@class='row']/div/table[@class='table table-sm']/tr[@class='border-black o_subtotal']" position="after">
+                <tr>
+                    <td style="font-size: 11px;">
+                        <b>
+                            (-)Redeemed Amount:
+                        </b>
+                    </td>
+                    <td align="right">
+                        <span t-field="doc.amount_into_points" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>
+                    </td>
+                </tr>
+            </xpath>
+    </template>
+
+</odoo>

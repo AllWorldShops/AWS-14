@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="website_form_view_inherit" model="ir.ui.view">
+            <field name="name">website.form.inherit</field>
+            <field name="model">website</field>
+            <field name="inherit_id" ref="website.view_website_form" />
+            <field name="arch" type="xml">
+               <xpath expr="//field[@name='default_lang_id']" position="after"> 
+                    <field name="reward_access_id"/>
+                </xpath>    
+            </field>
+        </record>
+		
+	</data>
+</odoo>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="partner_reward_form_view">
+            <field name="name">partner.rewards.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                    <xpath expr="//form/sheet/group/group[1]/field[@name='vat']" position="after">
+                            <field name="customer_type"   string="Customer Type" attrs="{'invisible': [('customer_type','=',False)]}" />
+                            <field name="total_points"   string="User Points" attrs="{'invisible': [('customer_type','=','exp')]}"/>
+                            <field name="total_amount" string="User Points Amount" attrs="{'invisible': [('customer_type','=','exp')]}"/>
+                            <field name="validity_redeem_points" string="Validity of Redeem Points" attrs="{'invisible': [('customer_type','=','exp')]}" />
+                            <field name="sale_reward_card" string="Loyalty Card Number" attrs="{'invisible': [('customer_type','=','exp')]}"/>
+                    </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

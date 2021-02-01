@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="sales_reward_tree_view">
+            <field name="name">account.invoice.tree.view</field>
+            <field name="model">account.move</field>
+            <field name="arch" type="xml">
+                <tree decoration-info="state == 'draft'" decoration-muted="state == 'cancel'"
+                      string="Reward Logs">
+                        <field name="name" string="Order"/>
+                        <field name="partner_id" groups="base.group_user" string="Member"/>
+                        <field name="invoice_date" invisible="1"/>
+                        <field name="invoice_date_due" string="Due Date"/>
+                        <field name="total_web_points" string="Points" sum="Reward Points"/>
+                        <field name="invoice_user_id" invisible="1"/>
+                        <field name="amount_total_signed" string="Total Amount" sum="Total"/>
+                        <field name="currency_id" invisible="1"/>
+                        <field name="company_currency_id" invisible="1"/>
+                        <field name="state" invisible="1"/>
+                        <field name="amount_untaxed" string="Untaxed Amount" sum="Untaxed Amount" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_sales_reward">
+            <field name="name">Loyalty Points</field>
+            <field name="res_model">account.move</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="sales_reward_tree_view"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click here to create new.
+              </p>
+            </field>
+        </record>
+        <menuitem name ="Website Loyalty" id="reward_menu_loyalty_website" parent="sales_reward.menu_sale_reward_root"/>
+         <menuitem name ="Earned Points" id="website_menu_loyalty_earned_points" parent="sales_reward.reward_menu_loyalty_website" action="action_sales_reward"/>
+    </data>
+</odoo>
+
+
+
+

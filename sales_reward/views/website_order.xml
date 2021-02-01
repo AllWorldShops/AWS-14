@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="web_site_order" inherit_id="website_sale.total">
+		
+		<xpath expr="//div[@id='cart_total']" position="before">
+			<t t-if='website_sale_order.website_id.reward_access_id=="TRUE"'>
+			<t t-if="website_sale_order.partner_id.name and 'exp' not in website_sale_order.partner_id.customer_type">
+				<table class="table">
+	                  <tr id="Your_total_points">
+	                      <td class="text-right noborder" >Your total points :</td>
+	                      <td class="text-xl-right noborder">
+	                          <span t-field="website_sale_order.partner_id.total_points" style="white-space: nowrap;"/>
+	                      </td>
+
+	                  </tr>
+	                	<tr id="Your_total_amount">
+	                  		<td class="text-right noborder" >Your total amount :</td>
+	                  		<td class="text-xl-right noborder">
+	                          <span t-field="website_sale_order.partner_id[0].total_amount" style="white-space:nowrap;"/>
+	                      </td>
+	             		</tr>
+	                  <tr id="point_to_use">
+	                      <td class="text-right noborder">Points to use/redeem:</td>
+	                  </tr>
+	                    <tr>  
+	                      	<td class="text-xl-right noborder" >
+	                      	<span>
+			                    <t t-if="request.params.get('reward_error_one=1')" name="reward_error1">
+									<p class="bg-warning">Please select redeem percentage and rewards percentage from Rewards Settings</p>
+								</t>
+								<t t-if="request.params.get('reward_error_two')" name="reward_error2">
+									<p class="bg-warning">Entered point should not exceed than total web points!</p>
+								</t>
+								<t t-if="request.params.get('reward_error_three')" name="reward_error3">
+									<p class="bg-warning">Point must be positive!</p>
+								</t>
+								<t t-if="request.params.get('reward_error_four')" name="reward_error4">
+									<p class="bg-warning">Point amount must be less than total amount!</p>
+								</t>
+								<t t-if="request.params.get('reward_error_five')" name="reward_error5">
+									<p class="bg-warning">Enter Valid Points. Discounted product can not reedem loyalty points!</p>
+								</t>
+								<t t-if="request.params.get('reward_error_six')" name="reward_error6">
+									<p class="bg-warning">Validity of Redeem Points is Expired!</p>
+								</t>
+								<t t-if="request.params.get('reward_error_seven')" name="reward_error7">
+									<p class="bg-warning">Enter Integer Value!</p>
+								</t>
+								<t t-if="request.params.get('reward_error_eight')" name="reward_error8">
+									<p class="bg-warning">You can't reedem point per sale order</p>
+								</t>
+								<form t-att-action="'/shop/cart/reward'"
+								method="post" class="mb32" name="redeem_amount">
+									<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+
+									<div class="input-group w-100">
+										<input name="point_to_use" class="form-control" 
+										type="text" placeholder="points....." t-att-value="0"/>
+										<!-- t-att-value="website_sale_order.point_to_use" -->
+										<div class="input-group-append" >
+											<a href="#" role="button" class="btn btn-secondary a-submit">Ok</a>
+										</div>
+									</div>
+								
+								</form>
+							</span>
+	                      	</td>
+	                   </tr>
+	            </table>  
+	            </t>    
+		</t>
+		</xpath>
+		<xpath expr="//tr[@id='order_total_untaxed']" position="before">
+			<t t-if='website_sale_order.website_id.reward_access_id=="TRUE"'>
+			<t t-if="website_sale_order.partner_id.name and 'exp' not in website_sale_order.partner_id.customer_type">
+				<tr id="selected_redeemable_amount">
+                      <td class="text-right noborder">(-)Redeemed Amount:</td>
+                      <td class="text-xl-right noborder" >
+                          <span t-field="website_sale_order.amount_into_points" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                      </td>
+                </tr>
+			</t>
+		</t>
+		</xpath>
+	
+	</template>
+
+	<template id="custom_portal_layout" inherit_id="portal.portal_layout" name="Custom Portal Layout">
+		<xpath expr="//div[@class='o_portal_my_details']/div" position="after">
+			<t t-if="request.env['website'].search([],limit=1).reward_access_id=='TRUE' and 'exp' not in user_id.partner_id.customer_type">
+			<t t-if="my_details">
+				<h4><i class="fa fa-gift"></i>Total Points:
+				<span t-field="user_id.partner_id.total_points"/>
+				</h4>
+			</t>
+			<t t-else="">
+				<t t-raw="0"/>
+			</t>
+			</t>
+		</xpath>
+	 
+	</template>
+</odoo>
