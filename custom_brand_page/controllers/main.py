@@ -23,6 +23,7 @@ from odoo.addons.emipro_theme_base.controller.main import EmiproThemeBaseExtende
 import werkzeug.urls
 import werkzeug.utils
 from odoo import fields, models, http
+from werkzeug import urls
 
 _logger = logging.getLogger(__name__)
 
@@ -172,6 +173,13 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
         else:
             web_url = request.httprequest.referrer
         
+        
+        base_url=request.env['ir.config_parameter'].sudo().get_param('web.base.url')
+        if (not cate_country_id.category_page):
+            web_url = base_url
+        else:
+            web_url = urls.url_join (base_url ,cate_country_id.category_page.url)
+            
         redirect = werkzeug.utils.redirect(web_url or '/shop', 303)
         return redirect
         return request.redirect(request.httprequest.referrer or '/shop')
