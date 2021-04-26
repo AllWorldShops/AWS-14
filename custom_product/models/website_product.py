@@ -18,7 +18,7 @@ class ProductProduct(models.Model):
                 rec.description_sale = rec.mag_short_description
                 
     def cron_product_variant_remove_updates(self):  
-        product_tmpl_ids = self.env['product.template'].search([])
+        product_tmpl_ids = self.env['product.template'].search([],offset=2000)
         if product_tmpl_ids:
             for product_tmpl_id in product_tmpl_ids:
                 try:
