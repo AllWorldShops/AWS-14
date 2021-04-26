@@ -18,13 +18,14 @@ class ProductProduct(models.Model):
                 rec.description_sale = rec.mag_short_description
                 
     def cron_product_variant_remove_updates(self):  
-        product_tmpl_ids = self.env['product.template'].search([],offset=2000)
+        product_tmpl_ids = self.env['product.template'].search([],offset=0)
         if product_tmpl_ids:
             for product_tmpl_id in product_tmpl_ids:
                 try:
 #                     product_tmpl_id.categ_id = False
-                    product_tmpl_id.public_categ_ids = False
+                    product_tmpl_id.public_categ_ids = [(6, 0, [])]
                     product_tmpl_id.attribute_line_ids.unlink()
+                    self.env.cr.commit()
                 except Exception as e:
                     print(e, "An exception occurred")
 
