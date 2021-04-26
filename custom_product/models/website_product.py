@@ -16,6 +16,17 @@ class ProductProduct(models.Model):
             if rec:
                 rec.website_description = rec.mag_description
                 rec.description_sale = rec.mag_short_description
+                
+    def cron_product_variant_remove_updates(self):  
+        product_tmpl_ids = self.env['product.template'].search([])
+        if product_tmpl_ids:
+            for product_tmpl_id in product_tmpl_ids:
+                try:
+#                     product_tmpl_id.categ_id = False
+                    product_tmpl_id.public_categ_ids = False
+                    product_tmpl_id.attribute_line_ids.unlink()
+                except Exception as e:
+                    print(e, "An exception occurred")
 
 #     @api.multi
     def cron_product_state_updates(self):
