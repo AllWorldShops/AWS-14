@@ -810,7 +810,7 @@ class Website(models.Model):
         ('list_price', 'On Product Sale Price'),
         ('website_price', 'On Product Discount Price')
     ], string="Price Range Filter For Products",
-        required=True, default='list_price', readonly=False)
+        required=False, default='list_price', readonly=False)
 
     # @api.depends('banner_video_url')
     # def _compute_embed_code(self):
