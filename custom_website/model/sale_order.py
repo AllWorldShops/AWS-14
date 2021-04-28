@@ -91,7 +91,7 @@ class SaleOrder(models.Model):
                 if not sale_id.website_state == 'confirmed':
                     sale_id.website_state = 'confirmed'
             else:
-                _logger.info(sale_id.state+sale_id.website_state)
+                _logger.info(str(sale_id.state)+str(sale_id.website_state))
     
     @api.model
     def create(self, vals):
