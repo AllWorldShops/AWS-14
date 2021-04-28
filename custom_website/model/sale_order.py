@@ -90,8 +90,12 @@ class SaleOrder(models.Model):
             elif sale_id.state == 'sale':
                 if not sale_id.website_state == 'confirmed':
                     sale_id.website_state = 'confirmed'
+            elif sale_id.state == 'done':
+                if not sale_id.website_state == 'completed':
+                    sale_id.website_state = 'completed'
             else:
                 _logger.info(str(sale_id.state)+str(sale_id.website_state))
+                
     
     @api.model
     def create(self, vals):
