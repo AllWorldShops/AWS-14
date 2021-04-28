@@ -3,6 +3,8 @@ from odoo.exceptions import UserError
 from odoo import fields, models, api, _
 from datetime import datetime
 from collections import defaultdict
+import logging
+_logger = logging.getLogger(__name__)
 
 WEBSITE_STATE = [
         ('processing', 'Processing'),
@@ -88,6 +90,8 @@ class SaleOrder(models.Model):
             elif sale_id.state == 'sale':
                 if not sale_id.website_state == 'confirmed':
                     sale_id.website_state = 'confirmed'
+            else:
+                _logger.info(sale_id.state+sale_id.website_state)
     
     @api.model
     def create(self, vals):
