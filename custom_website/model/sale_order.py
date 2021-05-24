@@ -30,8 +30,8 @@ class SaleOrder(models.Model):
     @api.depends('invoice_ids', 'picking_ids', 'state')
     def getWebsiteState(self):
         for sale_id in self:
-            refund = sale_id.invoice_ids.filtered(lambda rec: not rec.state in ('cancel', 'paid') and rec.type == 'out_refund')
-            paid_refund = sale_id.invoice_ids.filtered(lambda rec: rec.state in ('paid') and rec.type == 'out_refund') 
+            refund = sale_id.invoice_ids.filtered(lambda rec: not rec.state in ('cancel', 'paid') and rec.move_type == 'out_refund')
+            paid_refund = sale_id.invoice_ids.filtered(lambda rec: rec.state in ('paid') and rec.move_type == 'out_refund') 
             
             inv_ids = [inv for inv in sale_id.invoice_ids if not inv.state == 'cancel']
             paid_inv_ids = [inv for inv in sale_id.invoice_ids if not inv.state in ('cancel', 'paid')]
