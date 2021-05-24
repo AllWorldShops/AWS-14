@@ -219,7 +219,7 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
             category = Category.search([('id', '=', int(category))], limit=1)
             
             if category.country_website_fitler:
-                if category.name == "All World Shop":
+                if category.name == "Shop the world":
                     category = Category
                 else:
                     category_domain = [('website_country_id','=',int(country_filter_id))]
@@ -229,7 +229,7 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
         else:
             category = Category
             category = Category.search([('id', '=', int(country_filter_id))], limit=1)
-            if category.name == "All World Shop":
+            if category.name == "Shop the world":
                 category = Category
             else:
                 category_domain = [('website_country_id','=',int(country_filter_id))]
@@ -308,7 +308,7 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
                 
         allworld_shop_id = Category.search([('id', '=', int(country_filter_id))], limit=1)
                 
-        if allworld_shop_id.name == "All World Shop":
+        if allworld_shop_id.name == "Shop the world":
             products = request.env['product.template'].search([('id','in',products.ids if products else [])])
         elif country_filter_id and products:
             products = request.env['product.template'].search([('website_country_id', '=', int(country_filter_id)), ('id','in',products.ids if products else [])])
@@ -461,7 +461,7 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
             
             allworld_shop_id = Category.search([('id', '=', int(country_filter_id))], limit=1)
                 
-            if allworld_shop_id.name == "All World Shop":
+            if allworld_shop_id.name == "Shop the world":
                 products = request.env['product.template'].search([('id','in',products.ids if products else [])])
             elif country_filter_id and products:
                 products = request.env['product.template'].search([('website_country_id', '=', int(country_filter_id)), ('id','in',products.ids if products else [])])
