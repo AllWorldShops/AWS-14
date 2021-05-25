@@ -325,7 +325,10 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
             else:
                 categs = []
                 
-            
+            if not categs and country_filter_id == 951:
+                categs =  products.mapped("public_categ_ids")
+                if categs:
+                    categs = Category.search([('id', 'in', categs.ids)])
             
         product_count = len(products or [])
         pager = request.website.pager(url=url, total=product_count, page=page, step=ppg, scope=7, url_args=post)
