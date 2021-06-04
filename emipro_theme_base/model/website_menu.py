@@ -67,7 +67,7 @@ class WebsiteMenu(models.Model):
 #             if menu['menu_label_text'] == '':
             if menu.get('menu_label_text','') == '':
                 menu_id = self.browse(menu['id'])
-                menu_id.write({'menu_label_text':menu['menu_label_text']})
+                menu_id.write({'menu_label_text':menu.get('menu_label_text','')})
                 transaltion_records = self.env["ir.translation"].search([('name', '=', 'website.menu,menu_label_text'), ('res_id', '=', menu['id'])])
                 for rec in transaltion_records:
                     rec.unlink()
