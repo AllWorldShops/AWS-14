@@ -575,4 +575,11 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
         }
         return request.render("website_sale.product", values)
 
+from odoo.addons.website_sale_delivery.controllers.main import WebsiteSaleDelivery
+
+class websitesaledelivery(EmiproThemeBase, WebsiteSaleDelivery):
+    
+    @http.route(['/shop/payment'], type='http', auth="public", website=True)
+    def payment(self, **post):
+        return super(websitesaledelivery, self).payment(**post)
     
