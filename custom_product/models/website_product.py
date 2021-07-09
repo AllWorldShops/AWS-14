@@ -2,6 +2,7 @@ from odoo import api, fields, models, _
 from odoo.http import request
 import requests
 from odoo.tools.translate import html_translate
+import re
 
 
 class ProductProduct(models.Model):
