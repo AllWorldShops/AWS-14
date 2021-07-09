@@ -104,6 +104,15 @@ class ProductTemplate(models.Model):
     website_description = fields.Html('Description for the website', sanitize_attributes=False, sanitize=False, translate=True)
     website_country_id = fields.Many2one("product.public.category", string="Website Country")
     
+    def cron_product_website_html_tags(self):
+        products_ids = self.search([('description_sale','!=',False)])
+        TAG_RE = re.compile(r'<[^>]+>')
+        if products_ids:
+            for products_id in products_ids:
+                description_sale = TAG_RE.sub('', products_id.description_sale)
+                products_id.description_sale = description_sale.replace('&nbsp;', ' ')
+                products_id.env.cr.commit()
+    
 #     @api.multi
     def cron_product_website_updates(self):  
         product_open_ids = self.env['product.product'].search([('magento_exported', '=', True)])

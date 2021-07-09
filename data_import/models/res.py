@@ -53,4 +53,6 @@ class Product(models.Model):
 
     product_nid = fields.Char('Partner nid', help="This field gets the value when the data is imported from the csv file.")
     manufacturers = fields.Char('Manufacturer', help="This field gets the value when the data is imported from the csv file.")
-    desc_text = fields.Text("Directions",translate=True)
+#     desc_text = fields.Text("Directions",translate=True)
+    desc_text = fields.Html('Directions', sanitize_attributes=False, translate=html_translate, sanitize_form=False)
+    
