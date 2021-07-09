@@ -12,8 +12,8 @@
 			.te_label_name
 			{
 				width: 130px;
-				height: 20px;
-				@include position(absolute,20px,null,null,-30px);
+				height: 30px;
+				@include position(absolute,20px,null,null,-20px);
 				z-index: 1;
 				overflow: hidden;
 				transform: rotate(-45deg);
