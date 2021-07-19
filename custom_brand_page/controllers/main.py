@@ -60,8 +60,8 @@ class Website(models.Model):
         :return: min and max price value
         """
         range_list = []
-        cust_min_val = request.httprequest.values.get('min_price', False)
-        cust_max_val = request.httprequest.values.get('max_price', False)
+        cust_min_val = request.httprequest.values.get('min_price', 0)
+        cust_max_val = request.httprequest.values.get('max_price', 0)
 
         prices_list = []
         is_web_price = request.website.price_filter_on == 'website_price'
