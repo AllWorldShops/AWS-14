@@ -328,7 +328,8 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
             if category:
                 categs =  categs + products.mapped("public_categ_ids")
                 if categs:
-                    categs = Category.search([('id', 'in', categs.ids)])
+#                     categs = Category.search([('id', 'in', categs.ids)])
+                    categs = Category.search([('id', '=', int(category))])
             else:
                 categs = []
                 
