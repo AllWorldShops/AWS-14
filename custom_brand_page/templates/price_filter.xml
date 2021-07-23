@@ -9,6 +9,7 @@
                 <t t-if="range_values">
                     <input type="hidden" id="price_slider_min" t-att-value="range_values[2]"/>
                     <input type="hidden" id="price_slider_max" t-att-value="range_values[3]"/>
+                    <input type="hidden" name="brand_id" id="brand_id" t-att-value="brand_id.id" t-if="brand_id"/>
                     <div class="ept_price_slider_block">
                         <div class="price_filter_head te_fa-plus">
                             <span class="m-0 te_pricerange_title">Price Range</span>

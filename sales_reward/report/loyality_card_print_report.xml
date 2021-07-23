@@ -2,7 +2,7 @@
     <odoo>
         <data>
         <record id="printcard_paperformat" model="report.paperformat">
-            <field name="name">Print Loyality card</field>
+            <field name="name">Print Loyalty card</field>
             <field name="default" eval="True" />
             <field name="format">A4</field>
             <field name="page_height">0</field>
@@ -66,7 +66,7 @@
                     </center>
                 </t>
                 <t t-else=''>
-                    <center><h3>Sorry !!! You are not part of Loyality program.</h3></center>
+                    <center><h3>Sorry !!! You are not part of Loyalty program.</h3></center>
                 </t>
             </div>
         </t>
@@ -81,13 +81,13 @@
         </template>
         <report 
             id="print_loyality_card_id"
-            string="Print loyality Card"
+            string="Print loyalty Card"
             paperformat="sales_reward.printcard_paperformat" 
             model="res.partner" 
             report_type="qweb-pdf"
             file="sales_reward.report_print_loyality_card" 
             name="sales_reward.report_print_loyality_card"
-            print_report_name="('Loyality card for %s' % object.name)" 
+            print_report_name="('Loyalty card for %s' % object.name)"
 
         />
     </data>

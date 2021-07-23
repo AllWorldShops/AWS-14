@@ -1,6 +1,7 @@
 from odoo import fields, http, tools, _
 from odoo.addons.sale.controllers.variant import VariantController
 from odoo.http import request
+from odoo.addons.website_sale.controllers.main import WebsiteSale
 
 class WebsiteSaleReward(VariantController):
 
@@ -41,3 +42,22 @@ class WebsiteSaleReward(VariantController):
             if(data):
                 return True
         return False
+
+class CustomWebsiteSale(WebsiteSale):
+
+    @http.route(['/shop/checkout'], type='http', auth="public", website=True, sitemap=False)
+    def checkout(self, **post):
+
+        order = request.website.sale_get_order()
+        point_cal = order._amount_all()
+        redirect = post.get('r', '/shop/cart')
+        # if request.website.sale_get_order().amount_total <= 0:
+        #     return request.redirect("%s?reward_error_one=11" % redirect)
+        if request.website.sale_get_order().amount_total <= 0:
+            if point_cal != True:
+                if 'warning' in point_cal:
+                    if 'error' in point_cal and point_cal['error'] == '11':
+                        # return "Invalid Order!"
+                        return request.redirect("%s?reward_error_one=11" % redirect)
+        else:
+            return super(CustomWebsiteSale,self).checkout()

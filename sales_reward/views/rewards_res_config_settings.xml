@@ -19,13 +19,14 @@
                                     <field name="vip_amount_per_point"/>
                                 </div>
                                 <div class="text-muted">
-                                Set amount for VIP which will be price of one point.
+                                Set price per point.
                                 </div>
+                                <label for="vip_point_duration"/>
                                 <div>
                                     <field name="vip_point_duration"/>
                                 </div>
                                 <div class="text-muted">
-                                Set duration for VIP point in number of days.
+                                Set validity duration for VIP points in number of days.
                                 </div>
                             </div>
                     </div>
@@ -38,13 +39,14 @@
                                     <field name="pro_amount_per_point"/>
                                 </div>
                                 <div class="text-muted">
-                                Set amount for Professional which will be price of one point.
+                                    Set price per point.
                                 </div>
+                                <label for="pro_point_duration"/>
                                 <div>
                                     <field name="pro_point_duration"/>
                                 </div>
                                 <div class="text-muted">
-                                Set duration for Professional point in number of days.
+                                Set validity duration for Professional points in number of days.
                                 </div>
                             </div>
                     </div>
@@ -57,13 +59,14 @@
                                     <field name="ind_amount_per_point"/>
                                 </div>
                                 <div class="text-muted">
-                                Set amount for Individual which will be price of one point.
+                                 Set price per point.
                                 </div>
+                                <label for="ind_point_duration"/>
                                 <div>
                                     <field name="ind_point_duration"/>
                                 </div>
                                 <div class="text-muted">
-                                Set duration for Individual point in number of days.
+                                Set validity duration for Individual points in number of days.
                                 </div>
                             </div>
                     </div>
@@ -79,7 +82,7 @@
                                     <field name="earn_point_mini_amount"/>
                                 </div>
                                 <div class="text-muted">
-                                Set the minimun Amount to earn point
+                                Set minimun amount of purchase to earn the points.
                                 </div>
                             </div>
                     </div>
@@ -92,29 +95,29 @@
                                     <field name="point_reedem_per_order"/>
                                 </div>
                                 <div class="text-muted">
-                                  Point Reedeem validation
+                                  Set the limitation of using earn points per order.
                                 </div>
                             </div>
                     </div>
-                    <div class="col-xs-12 col-md-6 o_setting_box" >
-                            <div class="o_setting_left_pane">
-                            </div>
-                            <div class="o_setting_right_pane">
-                                <label for="amount_value_point"/>
-                                <div>
-                                    <field name="amount_value_point"/>
-                                </div>
-                                <div class="text-muted">
-                                  Point credit amount
-                                </div>
-                                 <div>
-                                    <field name="points_for_amount"/>
-                                </div>
-                                <div class="text-muted">
-                                  Points 
-                                </div>
-                            </div>
-                    </div>
+<!--                    <div class="col-xs-12 col-md-6 o_setting_box" >-->
+<!--                            <div class="o_setting_left_pane">-->
+<!--                            </div>-->
+<!--                            <div class="o_setting_right_pane">-->
+<!--                                <label for="amount_value_point"/>-->
+<!--                                <div>-->
+<!--                                    <field name="amount_value_point"/>-->
+<!--                                </div>-->
+<!--                                <div class="text-muted">-->
+<!--                                  Point credit amount-->
+<!--                                </div>-->
+<!--                                 <div>-->
+<!--                                    <field name="points_for_amount"/>-->
+<!--                                </div>-->
+<!--                                <div class="text-muted">-->
+<!--                                  Points -->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                    </div>-->
                         <div class="col-xs-12 col-md-6 o_setting_box" >
                                 <div class="o_setting_left_pane">
                                 </div>
@@ -124,7 +127,7 @@
                                         <field name="point_credit_cond" widget='selection'/>
                                     </div>
                                     <div class="text-muted">
-                                      Point Credit Cond
+                                      Point Credit Condition
                                     </div>
                                 </div>
                         </div>
@@ -140,7 +143,7 @@
                                     <field name="valid_product_category" widget="many2many_tags"/>
                                 </div>
                                 <div class="text-muted">
-                                Select the product categories to assign the points.
+                                Select the product categories on which earning points is applicable.
                                 </div>
                             </div>
                     </div>
@@ -154,7 +157,7 @@
                             <div class="o_setting_right_pane">
                                 <label for="is_birthday_points"/>
                                 <div class="text-muted">
-                                   Set birthday points for customer.
+                                   Set birthday reward points for customer.
                                 </div>
                                
                             </div>
@@ -168,7 +171,7 @@
                                 <label for="birthday_points"/>
                                  <field name="birthday_points"/>
                                 <div class="text-muted">
-                                    Set points want to add in customer's account on his birthday.
+                                    Set points to add in customer's account on birthdays.
                                 </div>
                             </div>
                         </div>

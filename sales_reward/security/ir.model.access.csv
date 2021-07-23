@@ -1,2 +1,5 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_sales_reward_sales_reward,sales_reward.sales_reward,model_sales_reward_sales_reward,1,0,0,0
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_sale_reward","access_sale_reward","model_sale_reward","base.group_user",1,1,1,1
+"access_redeem_point","access_redeem_point","model_redeem_point","base.group_user",1,1,1,1
+"access_sales_reward_expire","sales_reward.sales_expire","model_reward_expire","base.group_user",1,1,1,0
+"access_portal_reward_expire","sales_portal_reward.sales_expire","model_reward_expire","base.group_portal",1,1,1,0

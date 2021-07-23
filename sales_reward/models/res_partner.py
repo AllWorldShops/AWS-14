@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from odoo import api, fields, models, _
+from odoo.exceptions import except_orm, Warning, RedirectWarning
 import time
+import datetime
 from datetime import date, timedelta
 
 class SalesRewards(models.Model):
@@ -38,28 +40,32 @@ class SalesRewards(models.Model):
         ('pro', 'Professional'),
         ('vip', 'VIP'),('exp','Export')], default='ind')
     total_points = fields.Integer(string="Total Reward Points", default=0)
-    total_amount = fields.Monetary(string="Total Reward Amount", compute="_compute_total_amount", store=True, readonly=True)
+    total_amount = fields.Monetary(default=0,string="Total Reward Amount", compute="_compute_total_amount", readonly=True)
     validity_redeem_points = fields.Date(string="Validity of Redeem Points", default=fields.Date.context_today)
 
     sale_reward_card=fields.Char(string='Loyalty Card Number',compute='sale_reward_number')
     barcode=fields.Char('Barcode',compute='sale_reward_number')
+    reward_expire_ids = fields.One2many("reward.expire", "partner_id", string="Sale Reward")
 
 
-    @api.onchange('total_points')
+    @api.onchange('total_points','partner_id')
     def _compute_total_amount(self):
+
         amount_per_point=0
         settings = self.get_setting_values()
-        for each in self:
-            if each.customer_type == 'ind':
-                amount_per_point = settings['ind_amount_per_point']
-            elif each.customer_type == 'pro':
-                amount_per_point = settings['pro_amount_per_point']
-            elif each.customer_type == 'vip':
-                amount_per_point = settings['vip_amount_per_point']
-            else :
-                each.total_amount = 0
-            if amount_per_point is not None:
-                each.total_amount = each.total_points*amount_per_point
+        if self.customer_type == 'ind':
+            amount_per_point = settings['ind_amount_per_point']
+        elif self.customer_type == 'pro':
+            amount_per_point = settings['pro_amount_per_point']
+        elif self.customer_type == 'vip':
+            amount_per_point = settings['vip_amount_per_point']
+        else :
+            self.total_amount = 0
+
+        if not amount_per_point:
+            self.total_amount = 0
+        if amount_per_point is not None:
+            self.total_amount = self.total_points*amount_per_point
 
     def get_redeem_price(self,data):
         customer_type = self.search([('id','=',data[0]['client']['id'])]).customer_type
@@ -70,37 +76,48 @@ class SalesRewards(models.Model):
             amount_per_point = settings['pro_amount_per_point']
         elif customer_type == 'vip':
             amount_per_point = settings['vip_amount_per_point']
-        else :
+        else:
             amount_per_point = 0
-        values = {'amount_per_point' : amount_per_point}
+        values = {'amount_per_point': amount_per_point}
+        return values
+
+
+    def get_reward_amount(self, data):
+        settings = self.get_setting_values()
+        values = {'ind': settings['ind_amount_per_point'], 'pro': settings['pro_amount_per_point'],
+                  'vip': settings['vip_amount_per_point'], 'exp': 0}
         return values
 
     def email_trigger_action(self):
         settings=self.env['res.partner'].get_setting_values()
 
         today = datetime.datetime.today().strftime('%m-%d')
+
         customer_data = self.env['res.partner'].search([('id', '>', "0")])
         for val in customer_data:
             if val.birthdate:
-                birth_date = val.birthdate[5:]
+
+                birth_date = val.birthdate.strftime('%m-%d')
                 if birth_date == today:
                     if settings['is_birthday_points'] :
                         birthdate_points=settings['birthday_points']
                         if settings['is_website_reward'] and val.is_website_user:
+                            val.total_points += birthdate_points
                             val.total_web_points+=birthdate_points
                             val.amount_of_web_points= val.total_web_points*(settings['website_amount_per_point'])
                         elif settings['is_pos_reward'] and val.is_pos_user:
-                                val.total_pos_points+=birthdate_points
-                                val.amount_of_pos_points=val.total_pos_points*(settings['pos_amount_per_point'])
+                            val.total_points += birthdate_points
+                            val.total_pos_points+=birthdate_points
+                            val.amount_of_pos_points=val.total_pos_points*(settings['pos_amount_per_point'])
                         self.create_send_mail(val)
         return True
 
-    def check_point_validity(self):
-        """Cron for Checking validity of points"""
-        customers = self.search([('validity_redeem_points', '<', date.today())])
-        for customer in customers:
-            if not customer.total_points == 0:
-                customer.total_points = 0
+#     def check_point_validity(self):
+#         """Cron for Checking validity of points"""
+#         customers = self.search([('validity_redeem_points', '<', date.today())])
+#         for customer in customers:
+#             if not customer.total_points == 0:
+#                 customer.total_points = 0
 
     def get_setting_values(self):
 

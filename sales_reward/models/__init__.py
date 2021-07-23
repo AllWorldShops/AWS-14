@@ -7,3 +7,5 @@ from . import sale_order
 from . import pos_order
 from . import birthday_point_and_email
 from . import send_mail
+from . import redeem_point
+from . import reward_expire

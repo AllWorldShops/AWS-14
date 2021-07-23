@@ -13,13 +13,13 @@ class RewardPointsSettings(models.TransientModel):
     is_pos_reward=fields.Boolean(string="POS sales", default=True)
     is_website_reward=fields.Boolean(string="Website sales", default=True)
     """Client price per point"""
-    vip_amount_per_point=fields.Monetary(string="Price of VIP point")
-    pro_amount_per_point=fields.Monetary(string="Price of Professional point")
-    ind_amount_per_point=fields.Monetary(string="Price of Individual point")
+    vip_amount_per_point=fields.Monetary(default=0,string="VIP point")
+    pro_amount_per_point=fields.Monetary(default=0,string="Professional point")
+    ind_amount_per_point=fields.Monetary(default=0,string="Individual point")
     """Client point time duration"""
-    vip_point_duration=fields.Integer(string="Duration of VIP point", default=0)
-    pro_point_duration=fields.Integer(string="Duration of Professional point", default=0)
-    ind_point_duration=fields.Integer(string="Duration of Individual point", default=0)
+    vip_point_duration=fields.Integer(string="Validity of VIP point", default=0)
+    pro_point_duration=fields.Integer(string="Validity of Professional point", default=0)
+    ind_point_duration=fields.Integer(string="Validity of Individual point", default=0)
     valid_product_category = fields.Many2many('product.category', string="Product Category")
 
     """POS Price range"""
@@ -40,11 +40,11 @@ class RewardPointsSettings(models.TransientModel):
     amount_per_birthday_point=fields.Monetary('Price of one point')
 
     is_send_mail=fields.Boolean('Send Email')
-    earn_point_mini_amount = fields.Monetary(string="Minimum Amount to purchase to earn point", default=0)
-    point_reedem_per_order = fields.Integer(string="Max Point Reedeem per order",default=0)
+    earn_point_mini_amount = fields.Monetary(string="Minimum Amount ", default=0)
+    point_reedem_per_order = fields.Integer(string="Maximum Points Redeem per order",default=0)
     amount_value_point = fields.Monetary(string="Amount value for point", default=0)
     points_for_amount = fields.Integer(string="Points",default=0)
-    point_credit_cond = fields.Selection([('confirm', 'On Payment'),('complete', 'On Delivery')])
+    point_credit_cond = fields.Selection([('confirm', 'On Payment'),('complete', 'On Delivery')],string="Point Credit Condition")
 
     def execute(self):
         res=super(RewardPointsSettings,self).execute()
@@ -65,7 +65,7 @@ class RewardPointsSettings(models.TransientModel):
             self.env['product.product'].search([('default_code','=','reward_vip')]).update({'list_price':-self.vip_amount_per_point})
         if(self.pro_amount_per_point):
             self.env['product.product'].search([('default_code','=','reward_pro')]).update({'list_price':-self.pro_amount_per_point})
-        if(self.pro_amount_per_point):
+        if(self.ind_amount_per_point):
             self.env['product.product'].search([('default_code','=','reward_ind')]).update({'list_price':-self.ind_amount_per_point})
 
         if self.is_pos_reward:

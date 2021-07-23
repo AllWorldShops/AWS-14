@@ -12,7 +12,7 @@ class AccountInvoiceRewards(models.Model):
     remaining_points=fields.Integer(compute="_compute_remaining_points")
     amount_into_points=fields.Float()
     customer_type_check=fields.Boolean('Check customer type', compute='check_customer_type', default=True)
-       
+    amount_of_web_points = fields.Float()
               
                 
     @api.onchange('partner_id')
@@ -30,6 +30,16 @@ class AccountInvoiceRewards(models.Model):
         else:
             self.customer_type_check=True
 
+    def get_partner_type_product(self):
+        reward_product=0
+        if(self.partner_id.customer_type=='ind'):
+            reward_product = self.env['product.product'].search([('default_code','=','reward_ind')])
+        elif(self.partner_id.customer_type=='vip'):
+            reward_product = self.env['product.product'].search([('default_code','=','reward_vip')])
+        elif(self.partner_id.customer_type=='pro'):
+            reward_product = self.env['product.product'].search([('default_code','=','reward_pro')])
+        return reward_product
+
     @api.model
     def create(self,vals):
         res = super(AccountInvoiceRewards, self).create(vals)
@@ -40,7 +50,6 @@ class AccountInvoiceRewards(models.Model):
                     'point_to_use': res.point_to_use,
                     'amount_into_points':res.amount_into_points
                     }
-            print(data)
             res.write(data)
         
         return res

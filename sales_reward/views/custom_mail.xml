@@ -16,9 +16,9 @@
         <p>
           Available Redeem Amount:
           % if object.is_website_user: 
-            ${(object.total_web_points)}
+            ${(object.total_points)}
           % else :
-            ${(object.total_pos_points)}
+            ${(object.total_points)}
           % endif
         </p><br/>
               Regards,<br/>

@@ -41,13 +41,23 @@
         'views/website_access.xml',
         'report/loyality_card_print_report.xml',
         'views/mail_template.xml',
+        'security/ir.model.access.csv',
+        'views/redeem_point_view.xml',
+        'data/demo.xml',
+       # 'views/ClientScreen.xml',
     ],
 
     'qweb': [
-        'static/src/xml/pos.xml'
+        # 'static/src/xml/pos.xml',
+        'static/src/xml/PaymentScreen.xml',
+        'static/src/xml/CustomPopupWidget.xml',
+        'static/src/xml/PaymentScreenStatus.xml',
+        'static/src/xml/OrderReceipt.xml',
+        #'static/src/xml/ClientScreen.xml',
+
     ],
     'images': [
-        'images/main.png',
+        'images/pos & website.gif',
     ],
     'demo': [
         'data/demo.xml',

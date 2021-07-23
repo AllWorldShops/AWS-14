@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
  <record id="loyality_card_template" model="mail.template">
-            <field name="name">Loyality Card</field>
+            <field name="name">Loyalty Card</field>
             <field name="model_id" ref="base.model_res_partner"></field>
             <field name="email_from"><![CDATA[${object.company_id.name} <${object.company_id.email}>]]></field>
             <field name="email_to">${object.email}</field>
-            <field name="subject">Loyality card</field>
+            <field name="subject">Loyalty card</field>
             <field name="report_template" ref="print_loyality_card_id"/> 
-            <field name="report_name">Loyality Card</field> 
+            <field name="report_name">Loyalty Card</field>
             <field name="auto_delete" eval="False"/>
             <field name="body_html"><![CDATA[
-			<p>Your's Loyality card</p>
+			<p>Your's Loyalty card</p>
             ]]>
             </field>
         </record>
