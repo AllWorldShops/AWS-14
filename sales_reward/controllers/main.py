@@ -2,6 +2,7 @@ from odoo import fields, http, tools, _
 from odoo.addons.sale.controllers.variant import VariantController
 from odoo.http import request
 from odoo.addons.website_sale.controllers.main import WebsiteSale
+from odoo.addons.portal.controllers.portal import CustomerPortal, pager as portal_pager, get_records_pager
 
 class WebsiteSaleReward(VariantController):
 
@@ -61,3 +62,15 @@ class CustomWebsiteSale(WebsiteSale):
                         return request.redirect("%s?reward_error_one=11" % redirect)
         else:
             return super(CustomWebsiteSale,self).checkout()
+        
+        
+class CustomerPortal(CustomerPortal):
+    
+    @http.route(['/my/reward'], type='http', auth="user", website=True)
+    def portal_my_rewards(self, **kw):
+        values = self._prepare_portal_layout_values()
+        partner = request.env.user.partner_id
+
+        return request.render("sales_reward.portal_my_rewards", values)
+    
+    

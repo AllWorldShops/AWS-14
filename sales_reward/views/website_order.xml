@@ -229,6 +229,123 @@
         </t>
 		</xpath>
 	</template>
+	
+	
+		<template id="portal_my_rewards" name="WebitPoints">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <div class="row">
+            <!-- <t t-call="theme_clarico.sidebar_menus"/> -->
+            <!-- <style> 	
+		     .button12 {
+				    text-decoration: none;
+				    color: #333333;
+				    padding: 10px 114px 10px 40px;
+				    border: 1px solid #CCCCCC;
+				    /* margin-left: 34px; */
+				    /* margin-right: 34px; */
+				    width: 56%;
+				    font-size: 15px;
+				    height: 41px;
+				    display: block;
+				}
+		     </style>
+		     <div class="mt-4 col-sm-1" style="float:left;margin-left: -14px;">
+		     	<a href="/my/home" class="button12">My<![CDATA[&nbsp;]]>Account</a>
+		     	<a href="/my/orders" class="button12">My<![CDATA[&nbsp;]]>orders</a>
+		     	<a href="/shop/wishlist" class="button12">Wishlist</a>
+			</div> -->
+
+				<style>
+				@media ( min-width : 1024px) {
+				.navbar_custom_align {
+					width: 82%;
+						}
+				}
+				</style>
+				<div class=" col-lg-10 col-md-9 mt-4">
+				<nav t-attf-class="d-flex navbar-expand-lg py-2 o_portal_navbar">
+					 <ol class="o_portal_submenu breadcrumb mb-0 py-2 flex-grow-1">
+			            <li class="breadcrumb-item"><a href="/my/home" aria-label="Home" title="Home"><i class="fa fa-home"/></a></li>
+			            <li class="breadcrumb-item">WebitPoints</li>
+			        </ol>
+				
+		            <!--  Navbar breadcrumb or title  -->
+		            <!-- <t t-if="breadcrumbs_searchbar">
+		                <t t-call="portal.portal_breadcrumbs"/>
+		            </t>
+		            
+		            <span t-else="" class="navbar-brand mb-0 h1 mr-auto" t-esc="title or 'No title'"/> -->
+						            
+				</nav>
+				<t t-if="not user_id.partner_id.reward_expire_ids">
+                 <p class="col-lg-10 col-md-9" style="float:right;">There are currently no reward points for your account.</p>
+                </t>
+                
+	            <t t-if="user_id.partner_id.reward_expire_ids">
+				
+				<div class="table-responsive border-top-0">
+	            	<table class="table rounded mb-0 bg-white o_portal_my_doc_table">
+		                <thead>
+		                    <tr class="active">
+		                        <th>Sale</th>
+		                        <th>Reward Date</th>
+		                        <th>Reward Point</th>
+		                        <th>Used Reward Point</th>
+		                        <th>Remaining Reward Point</th>
+		                        <th>Sale ID</th>
+		                        <th>Invoice</th>
+		                        <th>POS</th>
+		                    </tr>
+		                </thead>
+		                <t t-foreach="user_id.partner_id.reward_expire_ids" t-as="reward">
+		                    <tr>
+		                        <td><span t-field="reward.reward_option"/></td>
+		                        <td><span t-field="reward.reward_date"/></td>
+		                        <td><span t-field="reward.reward_point"/></td>
+		                        <td><span t-field="reward.used_reward_point"/></td>
+		                        <td><span t-field="reward.remaining_reward_point1"/></td>
+		                        <td><span t-field="reward.sale_id"/></td>
+		                        <td><span t-field="reward.invoice_id"/></td>
+		                        <td><span t-field="reward.pos_id"/></td>
+		                    </tr>
+	                	</t>
+	                </table>
+	               </div>
+	            </t>
+				</div>
+            <!-- <t t-if="orders" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>
+                            <span class='d-none d-md-inline'>Sales Order #</span>
+                            <span class='d-block d-md-none'>Ref.</span>
+                        </th>
+                        <th class="text-right">Order Date</th>
+                        <th class="text-center"/>
+                        <th class="text-right">Total</th>
+                    </tr>
+                </thead>
+                <t t-foreach="orders" t-as="order">
+                    <tr>
+                        <td><a t-att-href="order.get_portal_url()"><t t-esc="order.name"/></a></td>
+                        <td class="text-right">
+                            <span t-field="order.date_order" t-options="{'widget': 'date'}"/>&amp;nbsp;
+                            <span class='d-none d-md-inline' t-field="order.date_order" t-options="{'time_only': True}"/>
+                        </td>
+                        <td class="text-center">
+                            <span t-if="order.state == 'done'"  class="badge badge-pill badge-success">
+                                <i class="fa fa-fw fa-check" role="img" aria-label="Done" title="Done"/>Done
+                            </span>
+                        </td>
+                        <td class="text-right"><span t-field="order.amount_total"/></td>
+                    </tr>
+                </t>
+            </t> -->
+          </div>
+        </t>
+        
+    </template>
 
 	<template id="custom_portal_layout" inherit_id="portal.portal_layout" name="Custom Portal Layout">
 		<xpath expr="//div[@class='o_portal_my_details']" position="after">
