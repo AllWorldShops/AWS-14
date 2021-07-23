@@ -269,8 +269,8 @@ class SalesOrder(models.Model):
 
     @api.model
     def change_selected_redeemable_amount(self, values, user):
-        if self.is_number(str(values)):
-            website_sale_id = user.last_website_so_id
+#         if self.is_number(str(values)):
+        website_sale_id = user.last_website_so_id
         settings = self.env['res.partner'].get_setting_values()
         if user.customer_type == 'ind':
             amount_per_point = settings['ind_amount_per_point']
