@@ -182,10 +182,10 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
         
         
         base_url=request.env['ir.config_parameter'].sudo().get_param('web.base.url')
-        if (not cate_country_id.category_page):
+        if (not cate_country_id.sudo().category_page):
             web_url = base_url
         else:
-            web_url = urls.url_join (base_url ,cate_country_id.category_page.url)
+            web_url = urls.url_join (base_url ,cate_country_id.sudo().category_page.url)
             
         redirect = werkzeug.utils.redirect(web_url or '/shop', 303)
         return redirect
