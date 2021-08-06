@@ -15,6 +15,7 @@
     'depends': [
     'website',
     ],
+    
     'data': [
         'templates/webclient_templates.xml',
     ],
