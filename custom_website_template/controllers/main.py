@@ -11,7 +11,7 @@ from odoo.addons.sale_product_configurator.controllers.main import ProductConfig
 from http import cookies
 from odoo.addons.website_sale.controllers.main import WebsiteSale
 
-
+# Check below code for login issues
 
 class WebsiteSale(ProductConfiguratorController, Website):
 
