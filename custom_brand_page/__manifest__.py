@@ -15,7 +15,7 @@
     'website': 'https://www.pptssolutions.com',
     'depends': [
 # 	'website', 'website_sale', 'website_stock',
-    'website', 'website_sale','emipro_theme_brand','custom_sale',
+    'website', 'website_sale','emipro_theme_brand','custom_sale','emipro_theme_base'
     ],
     'data': [
         'templates/assets.xml',
