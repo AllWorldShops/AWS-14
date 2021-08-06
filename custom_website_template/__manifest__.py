@@ -13,7 +13,7 @@
     'author': 'PPTS [India] Pvt.Ltd.',
     'website': 'https://www.pptssolutions.com',
     'depends': [
-    'website', 'custom_brand_page',
+    'website',
     ],
     'data': [
         'templates/webclient_templates.xml',
