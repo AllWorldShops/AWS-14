@@ -4,6 +4,8 @@ import requests
 from odoo.tools.translate import html_translate
 import base64
 import urllib
+import os
+os.environ["PYTHONHTTPSVERIFY"] = "0"
 
 
 
