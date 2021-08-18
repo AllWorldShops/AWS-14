@@ -20,5 +20,7 @@ class ProductTemplate(models.Model):
             for product_id in product_ids:
                 if product_id.image_url and product_id.image_image_url:
                     product_id.image_1920 = product_id.image_image_url
+                    product_id.image_image_url = ""
+                    
                         
 
