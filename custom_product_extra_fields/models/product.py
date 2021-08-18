@@ -15,7 +15,7 @@ class ProductTemplate(models.Model):
     
     def product_image_cron(self):
         
-        product_ids = self.search([('image_url','!=',False)], limit=1)
+        product_ids = self.search([('image_url','!=',False)])
         if product_ids:
             for product_id in product_ids:
                 print(product_id)
