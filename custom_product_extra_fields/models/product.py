@@ -11,7 +11,7 @@ class ProductTemplate(models.Model):
     
     product_sku = fields.Char("SKU")
     image_url   = fields.Char("Image URL")
-    image_image_url = fields.Binary("image_image_url 1024")
+    image_image_url = fields.Char("image_image_url 1024")
     
     def product_image_cron(self):
         
