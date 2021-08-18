@@ -2,14 +2,8 @@ from odoo import api, fields, models, _
 from odoo.http import request
 import requests
 from odoo.tools.translate import html_translate
-import base64
 import urllib
-import os
-os.environ["PYTHONHTTPSVERIFY"] = "0"
-import ssl
-ssl._create_default_https_context = ssl._create_unverified_context
-
-
+import base64
 
 
 class ProductTemplate(models.Model):
@@ -20,13 +14,16 @@ class ProductTemplate(models.Model):
     
     def product_image_cron(self):
         
-        product_ids = self.search([('image_url','!=',False)])
-        print(len(product_ids))
+        product_ids = self.search([('image_url','!=',False)], limit=1)
         if product_ids:
             for product_id in product_ids:
+                print(product_id)
                 if product_id.image_url:
-                    context=ssl.SSLContext(ssl.PROTOCOL_SSLv23)
-                    image_medium = base64.encodebytes(urllib.request.urlopen(product_id.image_url, context=ssl._create_unverified_contex).read())
+                    response = requests.get(product_id.image_url, stream = True)
+                    if response.status_code == 200:
+                        response.raw.decode_content = True
+                        image_medium = base64.encodebytes(response.content)
                     if image_medium:
                         product_id.image_1920 = image_medium
+                        
 
