@@ -26,7 +26,7 @@ class ProductTemplate(models.Model):
             for product_id in product_ids:
                 if product_id.image_url:
                     context=ssl.SSLContext(ssl.PROTOCOL_SSLv23)
-                    image_medium = base64.encodebytes(urllib.request.urlopen(product_id.image_url, context=ssl._create_unverified_contex()).read())
+                    image_medium = base64.encodebytes(urllib.request.urlopen(product_id.image_url, context=ssl._create_unverified_contex).read())
                     if image_medium:
                         product_id.image_1920 = image_medium
 
