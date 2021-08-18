@@ -19,12 +19,7 @@ class ProductTemplate(models.Model):
         if product_ids:
             for product_id in product_ids:
                 print(product_id)
-                if product_id.image_url:
-                    response = requests.get(product_id.image_url, stream = True, verify=False)
-                    if response.status_code == 200:
-                        response.raw.decode_content = True
-                        image_medium = base64.encodebytes(response.content)
-                    if image_medium:
-                        product_id.image_1920 = image_medium
+                if product_id.image_url and product_id.image_image_url:
+                    product_id.image_1920 = product_id.image_image_url
                         
 
