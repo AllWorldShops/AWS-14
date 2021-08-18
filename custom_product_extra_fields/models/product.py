@@ -21,7 +21,7 @@ class ProductTemplate(models.Model):
         if product_ids:
             for product_id in product_ids:
                 if product_id.image_url:
-                    image_medium = base64.encodestring(urllib.request.urlopen(product_id.image_url).read())
+                    image_medium = base64.encodebytes(urllib.request.urlopen(product_id.image_url).read())
                     if image_medium:
                         product_id.image_1920 = image_medium
 
