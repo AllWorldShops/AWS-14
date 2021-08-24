@@ -1080,10 +1080,590 @@
 	    </section>
 		</div>		
 		
+		
+		
+		
 
 
         
        </section>
+       
+       <script>
+				
+		setTimeout(function(){ 
+		$("#hover_categoy1").hover(function(){
+			    $(".hover_content1").css("display", "block");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "block");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  
+			$("#hover_categoy2").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "block");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "block");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  
+			  $("#hover_categoy3").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "block");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "block");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy4").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "block");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "block");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy5").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "block");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "block");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy6").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "block");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "block");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy7").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "block");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "block");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy8").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "block");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "block");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy9").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "block");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "block");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy10").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "block");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "block");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy11").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "block");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "block");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy12").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "block");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "block");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy13").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "block");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "block");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy14").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "block");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "block");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy15").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "block");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "block");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy16").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "block");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "block");
+			  });
+			  
+		
+		
+		 }, 3000);		
+		
+		</script>
+       
+       
+       
+       
+       
     </template>
     
     
