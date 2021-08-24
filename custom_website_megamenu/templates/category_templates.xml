@@ -1,0 +1,1100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	
+	
+	<template id="megamenu_cateory_website" name="Cateory Mega menu">
+       <section class="">
+       
+       
+       <style>
+		* {box-sizing: border-box}
+		body {font-family: "Lato", sans-serif;}
+		
+		/* Style the tab */
+		.tab {
+		  float: left;
+		  background-color: #f1f1f1;
+		  width: 19%;
+		}
+		
+		/* Style the buttons inside the tab */
+		.tab button {
+		  display: block;
+		  background-color: inherit;
+		  color: black;
+		  padding: 22px 16px;
+		  width: 100%;
+		  border: none;
+		  outline: none;
+		  text-align: left;
+		  cursor: pointer;
+		  transition: 0.3s;
+		  font-size: 17px;
+		}
+		
+		/* Change background color of buttons on hover */
+		.tab button:hover {
+		  background-color: #ddd;
+		}
+		
+		/* Create an active/current "tab button" class */
+		.tab button.active {
+		  background-color: #ccc;
+		}
+		
+		/* Style the tab content */
+		.tabcontent {
+		  float: left;
+		  padding: 0px 12px;
+		  width: 70%;
+		  border-left: none;
+		}
+		</style>
+
+		<script>
+				
+		setTimeout(function(){ 
+		$("#hover_categoy1").hover(function(){
+			    $(".hover_content1").css("display", "block");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "block");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  
+			$("#hover_categoy2").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "block");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "block");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  
+			  $("#hover_categoy3").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "block");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "block");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy4").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "block");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "block");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy5").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "block");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "block");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy6").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "block");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "block");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy7").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "block");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "block");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy8").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "block");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "block");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy9").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "block");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "block");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy10").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "block");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "block");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy11").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "block");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "block");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy12").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "block");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "block");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy13").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "block");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "block");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy14").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "block");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "block");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy15").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "block");
+			    $(".hover_content16").css("display", "none");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "block");
+			    $(".hover_content16").css("display", "none");
+			  });
+			  $("#hover_categoy16").hover(function(){
+			    $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "block");
+			    }, function(){
+			   $(".hover_content1").css("display", "none");
+			    $(".hover_content2").css("display", "none");
+			    $(".hover_content3").css("display", "none");
+			    $(".hover_content4").css("display", "none");
+			    $(".hover_content5").css("display", "none");
+			    $(".hover_content6").css("display", "none");
+			    $(".hover_content7").css("display", "none");
+			    $(".hover_content8").css("display", "none");
+			    $(".hover_content9").css("display", "none");
+			    $(".hover_content10").css("display", "none");
+			    $(".hover_content11").css("display", "none");
+			    $(".hover_content12").css("display", "none");
+			    $(".hover_content13").css("display", "none");
+			    $(".hover_content14").css("display", "none");
+			    $(".hover_content15").css("display", "none");
+			    $(".hover_content16").css("display", "block");
+			  });
+			  
+		
+		
+		 }, 3000);		
+		
+		</script>
+
+       
+		<div class="tab">
+		  <button class="tablinks"  id="hover_categoy1">Art &#38; Craft</button>
+		  <button class="tablinks" id="hover_categoy2">Bags &#38; Luggage </button>
+		  <button class="tablinks" id="hover_categoy3">Beauty &#38; Spa </button>
+		  <button class="tablinks" id="hover_categoy4">Books &#38; Stationery </button>
+		  <button class="tablinks" id="hover_categoy5">Clothing &#38; Footwear  </button>
+		  <button class="tablinks" id="hover_categoy6">Food &#38; Confectionary </button>
+		  <button class="tablinks" id="hover_categoy7">Health Care </button>
+		  <button class="tablinks" id="hover_categoy8">Home &#38; Garden </button>
+		  <button class="tablinks" id="hover_categoy9">Honey </button>
+		  <button class="tablinks" id="hover_categoy10">Jewelry</button>
+		  <button class="tablinks" id="hover_categoy11">Liquor </button>
+		  <button class="tablinks" id="hover_categoy12">Mother &#38; Baby </button>
+		  <button class="tablinks" id="hover_categoy13">New Zealand Souvenirs </button>
+		  <button class="tablinks" id="hover_categoy14">Sport &#38; Adventure </button>
+		  <button class="tablinks" id="hover_categoy15">Toys &#38; Games </button>
+		  <button class="tablinks" id="hover_categoy16">Wool - Fur - Leather </button>
+		</div>
+		
+		<div id="art" class="tabcontent hover_content1" style="">
+		  <h3>Art</h3>
+		  
+		  <p>Lorem ipsum dolor phaedrum Lorem ipsum dolor sit amet, eam et reque justo quidam, te est audire persius. Duis meis quas vim ex, ius no oblique phaedrum pertinacia. Ornatus referrentur nec cu, dicam dolore vivendum ne mea. Usu bonorum inermis efficiantur ad, nec at detracto repudiandae, erat denique percipit at est</p>
+		  
+		  <section class="s_mega_menu_multi_menus py-2">
+	        <div class="container">
+	            <div class="row">
+	                <t t-set="menu1_title">CRAFT</t>
+	                <t t-set="menu2_title">ART</t>
+	                <t t-foreach="request.env['product.public.category'].sudo().search([('id','in',[392,223])])" t-as="cat_id">
+	                    <div class="col-lg-3 py-2 text-center">
+	                    	<h4 t-esc="cat_id.name"/> 
+	                        <nav class="nav flex-column text-left">
+	                            <t t-foreach="request.env['product.public.category'].sudo().search([('parent_id','in',[cat_id.id])])" t-as="i">
+	                                <a t-att-href="'/shop/category/%s' % i.id" class="nav-link" data-name="Menu Item"
+	                                   t-esc="i.name"/>
+	                            </t>
+	                        </nav>
+	                    </div>
+	                </t>
+	            </div>
+	        </div>
+	    </section>
+		</div>
+		
+		<div id="bags" class="tabcontent hover_content2" style="display:none;">
+		  <h3>Bags &#38; Luggage</h3>
+		  
+		  <p></p>
+		  
+		  <section class="s_mega_menu_multi_menus py-2">
+	        <div class="container">
+	            <div class="row">
+	                <t t-set="menu1_title">Bags</t>
+	                <t t-set="menu2_title">Luggage</t>
+	                <t t-foreach="request.env['product.public.category'].sudo().search([('id','in',[952,953])])" t-as="cat_id">
+	                    <div class="col-lg-3 py-2 text-center">
+	                    	<h4 t-esc="cat_id.name"/> 
+	                        <nav class="nav flex-column text-left">
+	                            <t t-foreach="request.env['product.public.category'].sudo().search([('parent_id','in',[cat_id.id])])" t-as="i">
+	                                <a t-att-href="'/shop/category/%s' % i.id" class="nav-link" data-name="Menu Item"
+	                                   t-esc="i.name"/>
+	                            </t>
+	                        </nav>
+	                    </div>
+	                </t>
+	            </div>
+	        </div>
+	    </section>
+		</div>
+		
+		
+		<div id="Beauty" class="tabcontent hover_content3" style="display:none;">
+		  <h3>Beauty &#38; Spa</h3>
+		  
+		  <p></p>
+		  
+		  <section class="s_mega_menu_multi_menus py-2">
+	        <div class="container">
+	            <div class="row">
+	                <t t-set="menu1_title">Facial Care</t>
+	                <t t-foreach="request.env['product.public.category'].sudo().search([('id','in',[66])])" t-as="cat_id">
+	                    <div class="col-lg-3 py-2 text-center">
+	                    	<h4 t-esc="cat_id.name"/> 
+	                        <nav class="nav flex-column text-left">
+	                            <t t-foreach="request.env['product.public.category'].sudo().search([('parent_id','in',[cat_id.id])])" t-as="i">
+	                                <a t-att-href="'/shop/category/%s' % i.id" class="nav-link" data-name="Menu Item"
+	                                   t-esc="i.name"/>
+	                            </t>
+	                        </nav>
+	                    </div>
+	                </t>
+	            </div>
+	        </div>
+	    </section>
+		</div>
+		
+		<div id="Books" class="tabcontent hover_content4" style="display:none;">
+		  <h3>Books &#38; Stationery</h3>
+		  
+		  <p></p>
+		  
+		  <section class="s_mega_menu_multi_menus py-2">
+	        <div class="container">
+	            <div class="row">
+	                <t t-set="menu1_title">Books</t>
+	                <t t-set="menu2_title">Stationery</t>
+	                <t t-foreach="request.env['product.public.category'].sudo().search([('id','in',[306,849])])" t-as="cat_id">
+	                    <div class="col-lg-3 py-2 text-center">
+	                    	<h4 t-esc="cat_id.name"/> 
+	                        <nav class="nav flex-column text-left">
+	                            <t t-foreach="request.env['product.public.category'].sudo().search([('parent_id','in',[cat_id.id])])" t-as="i">
+	                                <a t-att-href="'/shop/category/%s' % i.id" class="nav-link" data-name="Menu Item"
+	                                   t-esc="i.name"/>
+	                            </t>
+	                        </nav>
+	                    </div>
+	                </t>
+	            </div>
+	        </div>
+	    </section>
+		</div>
+		
+		
+		<div id="Clothing" class="tabcontent hover_content5" style="display:none;">
+		  <h3>Clothing &#38; Footwear</h3>
+		  
+		  <p></p>
+		  
+		  <section class="s_mega_menu_multi_menus py-2">
+	        <div class="container">
+	            <div class="row">
+	                <t t-set="menu1_title">Clothing</t>
+	                <t t-set="menu2_title">Footwear</t>
+	                <t t-set="menu3_title">Others</t>
+	                <t t-foreach="request.env['product.public.category'].sudo().search([('id','in',[45,71,130])])" t-as="cat_id">
+	                    <div class="col-lg-3 py-2 text-center">
+	                    	<h4 t-esc="cat_id.name"/> 
+	                        <nav class="nav flex-column text-left">
+	                            <t t-foreach="request.env['product.public.category'].sudo().search([('parent_id','in',[cat_id.id])])" t-as="i">
+	                                <a t-att-href="'/shop/category/%s' % i.id" class="nav-link" data-name="Menu Item"
+	                                   t-esc="i.name"/>
+	                            </t>
+	                        </nav>
+	                    </div>
+	                </t>
+	            </div>
+	        </div>
+	    </section>
+		</div>
+		
+		<div id="Food" class="tabcontent hover_content6" style="display:none;">
+		  <h3>Food &#38; Confectionary</h3>
+		  
+		  <p></p>
+		  
+		  <section class="s_mega_menu_multi_menus py-2">
+	        <div class="container">
+	            <div class="row">
+	                <t t-set="menu1_title">Food</t>
+	                <t t-set="menu2_title">Confectionary</t>
+	                <t t-set="menu2_title">Beverage</t>
+	                <t t-set="menu2_title">others</t>
+	                <t t-foreach="request.env['product.public.category'].sudo().search([('id','in',[69,992,279,717])])" t-as="cat_id">
+	                    <div class="col-lg-3 py-2 text-center">
+	                    	<h4 t-esc="cat_id.name"/> 
+	                        <nav class="nav flex-column text-left">
+	                            <t t-foreach="request.env['product.public.category'].sudo().search([('parent_id','in',[cat_id.id])])" t-as="i">
+	                                <a t-att-href="'/shop/category/%s' % i.id" class="nav-link" data-name="Menu Item"
+	                                   t-esc="i.name"/>
+	                            </t>
+	                        </nav>
+	                    </div>
+	                </t>
+	            </div>
+	        </div>
+	    </section>
+		</div>
+		
+		<div id="Health" class="tabcontent hover_content7" style="display:none;">
+		  <h3>Health Care</h3>
+		  
+		  <p></p>
+		  
+		  <section class="s_mega_menu_multi_menus py-2">
+	        <div class="container">
+	            <div class="row">
+	                <t t-set="menu1_title">Health Supplement</t>
+	                <t t-set="menu2_title">Health Symptoms</t>
+	                <t t-set="menu2_title">Age &#38; Gender</t>
+	                <t t-set="menu2_title">others</t>
+	                <t t-foreach="request.env['product.public.category'].sudo().search([('id','in',[509,510,201,718])])" t-as="cat_id">
+	                    <div class="col-lg-3 py-2 text-center">
+	                    	<h4 t-esc="cat_id.name"/> 
+	                        <nav class="nav flex-column text-left">
+	                            <t t-foreach="request.env['product.public.category'].sudo().search([('parent_id','in',[cat_id.id])])" t-as="i">
+	                                <a t-att-href="'/shop/category/%s' % i.id" class="nav-link" data-name="Menu Item"
+	                                   t-esc="i.name"/>
+	                            </t>
+	                        </nav>
+	                    </div>
+	                </t>
+	            </div>
+	        </div>
+	    </section>
+		</div>
+		
+		<div id="Home" class="tabcontent hover_content8" style="display:none;">
+		  <h3>Home &#38; Garden</h3>
+		  
+		  <p></p>
+		  
+		  <section class="s_mega_menu_multi_menus py-2">
+	        <div class="container">
+	            <div class="row">
+	                <t t-set="menu1_title">Home Decor</t>
+	                <t t-set="menu2_title">Garden Decor</t>
+	                <t t-set="menu2_title">others</t>
+	                <t t-foreach="request.env['product.public.category'].sudo().search([('id','in',[521,470,719])])" t-as="cat_id">
+	                    <div class="col-lg-3 py-2 text-center">
+	                    	<h4 t-esc="cat_id.name"/> 
+	                        <nav class="nav flex-column text-left">
+	                            <t t-foreach="request.env['product.public.category'].sudo().search([('parent_id','in',[cat_id.id])])" t-as="i">
+	                                <a t-att-href="'/shop/category/%s' % i.id" class="nav-link" data-name="Menu Item"
+	                                   t-esc="i.name"/>
+	                            </t>
+	                        </nav>
+	                    </div>
+	                </t>
+	            </div>
+	        </div>
+	    </section>
+		</div>
+		
+		
+		<div id="Honey" class="tabcontent hover_content9" style="display:none;">
+		  <h3>Honey</h3>
+		  
+		  <p></p>
+		  
+		  <section class="s_mega_menu_multi_menus py-2">
+	        <div class="container">
+	            <div class="row">
+	                <t t-set="menu1_title">Table Honey</t>
+	                <t t-set="menu2_title">Medical Honey</t>
+	                <t t-set="menu2_title">Other Honey Products</t>
+	                <t t-set="menu2_title">Honey Skincare</t>
+	                <t t-foreach="request.env['product.public.category'].sudo().search([('id','in',[862,641,715,87])])" t-as="cat_id">
+	                    <div class="col-lg-3 py-2 text-center">
+	                    	<h4 t-esc="cat_id.name"/> 
+	                        <nav class="nav flex-column text-left">
+	                            <t t-foreach="request.env['product.public.category'].sudo().search([('parent_id','in',[cat_id.id])])" t-as="i">
+	                                <a t-att-href="'/shop/category/%s' % i.id" class="nav-link" data-name="Menu Item"
+	                                   t-esc="i.name"/>
+	                            </t>
+	                        </nav>
+	                    </div>
+	                </t>
+	            </div>
+	        </div>
+	    </section>
+		</div>
+		
+		
+		<div id="Jewelry" class="tabcontent hover_content10" style="display:none;">
+		  <h3>Jewelry</h3>
+		  
+		  <p></p>
+		  
+		  <section class="s_mega_menu_multi_menus py-2">
+	        <div class="container">
+	            <div class="row">
+	                <t t-set="menu1_title">Jewelry</t>
+	                <t t-set="menu2_title">Others</t>
+	                <t t-foreach="request.env['product.public.category'].sudo().search([('id','in',[555,129])])" t-as="cat_id">
+	                    <div class="col-lg-3 py-2 text-center">
+	                    	<h4 t-esc="cat_id.name"/> 
+	                        <nav class="nav flex-column text-left">
+	                            <t t-foreach="request.env['product.public.category'].sudo().search([('parent_id','in',[cat_id.id])])" t-as="i">
+	                                <a t-att-href="'/shop/category/%s' % i.id" class="nav-link" data-name="Menu Item"
+	                                   t-esc="i.name"/>
+	                            </t>
+	                        </nav>
+	                    </div>
+	                </t>
+	            </div>
+	        </div>
+	    </section>
+		</div>
+		
+		<div id="Liquor" class="tabcontent hover_content11" style="display:none;">
+		  <h3>Liquor</h3>
+		  
+		  <p></p>
+		  
+		  <section class="s_mega_menu_multi_menus py-2">
+	        <div class="container">
+	            <div class="row">
+	                <t t-set="menu1_title">White Wine</t>
+	                <t t-set="menu2_title">Red Wine</t>
+	                <t t-set="menu2_title">Beer</t>
+	                <t t-set="menu2_title">Others</t>
+	                <t t-foreach="request.env['product.public.category'].sudo().search([('id','in',[926,774,20,716])])" t-as="cat_id">
+	                    <div class="col-lg-3 py-2 text-center">
+	                    	<h4 t-esc="cat_id.name"/> 
+	                        <nav class="nav flex-column text-left">
+	                            <t t-foreach="request.env['product.public.category'].sudo().search([('parent_id','in',[cat_id.id])])" t-as="i">
+	                                <a t-att-href="'/shop/category/%s' % i.id" class="nav-link" data-name="Menu Item"
+	                                   t-esc="i.name"/>
+	                            </t>
+	                        </nav>
+	                    </div>
+	                </t>
+	            </div>
+	        </div>
+	    </section>
+		</div>
+
+		<div id="Mother" class="tabcontent hover_content12" style="display:none;">
+		  <h3>Mother &#38; Baby</h3>
+		  
+		  <p></p>
+		  
+		  <section class="s_mega_menu_multi_menus py-2">
+	        <div class="container">
+	            <div class="row">
+	                <t t-set="menu1_title">Baby</t>
+	                <t t-set="menu2_title">Mother</t>
+	                <t t-foreach="request.env['product.public.category'].sudo().search([('id','in',[6,120])])" t-as="cat_id">
+	                    <div class="col-lg-3 py-2 text-center">
+	                    	<h4 t-esc="cat_id.name"/> 
+	                        <nav class="nav flex-column text-left">
+	                            <t t-foreach="request.env['product.public.category'].sudo().search([('parent_id','in',[cat_id.id])])" t-as="i">
+	                                <a t-att-href="'/shop/category/%s' % i.id" class="nav-link" data-name="Menu Item"
+	                                   t-esc="i.name"/>
+	                            </t>
+	                        </nav>
+	                    </div>
+	                </t>
+	            </div>
+	        </div>
+	    </section>
+		</div>		
+		
+		
+		<div id="NewZealand" class="tabcontent hover_content13" style="display:none;">
+		  <h3>NewZealand Souvenirs</h3>
+		  
+		  <p></p>
+		  
+		  <section class="s_mega_menu_multi_menus py-2">
+	        <div class="container">
+	            <div class="row">
+	                <t t-set="menu1_title">	Maori Art</t>
+	                <t t-set="menu2_title">Collectables</t>
+	                <t t-set="menu2_title">Others</t>
+	                <t t-foreach="request.env['product.public.category'].sudo().search([('id','in',[625,376,713])])" t-as="cat_id">
+	                    <div class="col-lg-3 py-2 text-center">
+	                    	<h4 t-esc="cat_id.name"/> 
+	                        <nav class="nav flex-column text-left">
+	                            <t t-foreach="request.env['product.public.category'].sudo().search([('parent_id','in',[cat_id.id])])" t-as="i">
+	                                <a t-att-href="'/shop/category/%s' % i.id" class="nav-link" data-name="Menu Item"
+	                                   t-esc="i.name"/>
+	                            </t>
+	                        </nav>
+	                    </div>
+	                </t>
+	            </div>
+	        </div>
+	    </section>
+		</div>	
+		
+		<div id="Sport" class="tabcontent hover_content14" style="display:none;">
+		  <h3>Sport &#38; Adventure</h3>
+		  
+		  <p></p>
+		  
+		  <section class="s_mega_menu_multi_menus py-2">
+	        <div class="container">
+	            <div class="row">
+	                <t t-set="menu1_title">Sport</t>
+	                <t t-set="menu2_title">Adventure</t>
+	                <t t-set="menu2_title">Others</t>
+	                <t t-foreach="request.env['product.public.category'].sudo().search([('id','in',[837,3,973])])" t-as="cat_id">
+	                    <div class="col-lg-3 py-2 text-center">
+	                    	<h4 t-esc="cat_id.name"/> 
+	                        <nav class="nav flex-column text-left">
+	                            <t t-foreach="request.env['product.public.category'].sudo().search([('parent_id','in',[cat_id.id])])" t-as="i">
+	                                <a t-att-href="'/shop/category/%s' % i.id" class="nav-link" data-name="Menu Item"
+	                                   t-esc="i.name"/>
+	                            </t>
+	                        </nav>
+	                    </div>
+	                </t>
+	            </div>
+	        </div>
+	    </section>
+		</div>		
+		
+		<div id="Toys" class="tabcontent hover_content15" style="display:none;">
+		  <h3>	Toys &#38; Games</h3>
+		  
+		  <p></p>
+		  
+		  <section class="s_mega_menu_multi_menus py-2">
+	        <div class="container">
+	            <div class="row">
+	                <t t-set="menu1_title">Sport</t>
+	                <t t-set="menu2_title">Games</t>
+	                <t t-set="menu2_title">Others</t>
+	                <t t-foreach="request.env['product.public.category'].sudo().search([('id','in',[889,466,132])])" t-as="cat_id">
+	                    <div class="col-lg-3 py-2 text-center">
+	                    	<h4 t-esc="cat_id.name"/> 
+	                        <nav class="nav flex-column text-left">
+	                            <t t-foreach="request.env['product.public.category'].sudo().search([('parent_id','in',[cat_id.id])])" t-as="i">
+	                                <a t-att-href="'/shop/category/%s' % i.id" class="nav-link" data-name="Menu Item"
+	                                   t-esc="i.name"/>
+	                            </t>
+	                        </nav>
+	                    </div>
+	                </t>
+	            </div>
+	        </div>
+	    </section>
+		</div>		
+		
+		
+		
+		<div id="Wool" class="tabcontent hover_content16" style="display:none;">
+		  <h3>	Wool - Fur - Leather</h3>
+		  
+		  <p></p>
+		  
+		  <section class="s_mega_menu_multi_menus py-2">
+	        <div class="container">
+	            <div class="row">
+	                <t t-set="menu1_title">	Product Type</t>
+	                <t t-set="menu2_title">	Wool &#38; Fur</t>
+	                <t t-set="menu2_title">Others</t>
+	                <t t-foreach="request.env['product.public.category'].sudo().search([('id','in',[144,938,714])])" t-as="cat_id">
+	                    <div class="col-lg-3 py-2 text-center">
+	                    	<h4 t-esc="cat_id.name"/> 
+	                        <nav class="nav flex-column text-left">
+	                            <t t-foreach="request.env['product.public.category'].sudo().search([('parent_id','in',[cat_id.id])])" t-as="i">
+	                                <a t-att-href="'/shop/category/%s' % i.id" class="nav-link" data-name="Menu Item"
+	                                   t-esc="i.name"/>
+	                            </t>
+	                        </nav>
+	                    </div>
+	                </t>
+	            </div>
+	        </div>
+	    </section>
+		</div>		
+		
+
+
+        
+       </section>
+    </template>
+    
+    
+    <template id="theme_custom_website_megamenu" inherit_id="website.snippets">
+    
+    	<xpath expr="//div[@id='snippet_mega_menu']/div[hasclass('o_panel_body')]" position="inside">
+    		<t t-snippet="custom_website_megamenu.megamenu_cateory_website"
+               t-thumbnail=""/>
+    	</xpath>
+    
+    </template>
+	
+	</data>
+</odoo>
