@@ -18,7 +18,7 @@ class ProductTemplate(models.Model):
         product_ids = self.search([('image_url','!=',False)])
         if product_ids:
             for product_id in product_ids:
-                if product_id.image_url and product_id.image_image_url:
+                if product_id.image_url and product_id.image_image_url and not product_id.image_1920:
                     product_id.image_1920 = product_id.image_image_url
                     product_id.image_image_url = ""
                     
