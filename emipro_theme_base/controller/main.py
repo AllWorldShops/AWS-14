@@ -377,7 +377,7 @@ class EmiproThemeBase(http.Controller):
                     'filter_data': products,
                     'is_default': False,
                     'category_offer_url': '/shop?category_offers=True',
-                    'show_view_all': True,
+                    'show_view_all': False,
                 }
                 html_slider_data = self.get_template_html(style_id, values)
                 return html_slider_data
@@ -399,7 +399,7 @@ class EmiproThemeBase(http.Controller):
                     'filter_data': products,
                     'is_default': False,
                     'allproduct_offer_url': '/shop',
-                    'show_view_all': True,
+                    'show_view_all': False,
                 }
                 html_slider_data = self.get_template_html(style_id, values)
                 return html_slider_data
@@ -419,7 +419,7 @@ class EmiproThemeBase(http.Controller):
                     'filter_data': products,
                     'is_default': False,
                     'product_offer_url': '/shop?product_offers=True',
-                    'show_view_all': True,
+                    'show_view_all': False,
                 }
                 html_slider_data = self.get_template_html(style_id, values)
                 return html_slider_data
@@ -454,7 +454,7 @@ class EmiproThemeBase(http.Controller):
                 'filter_data': products,
                 'is_default': False,
                 'allproduct_offer_url': '/shop',
-                'show_view_all': True,
+                'show_view_all': False,
             }
             html_slider_data = self.get_template_html(style_id, values)
             return html_slider_data
