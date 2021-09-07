@@ -309,7 +309,7 @@ class EmiproThemeBase(http.Controller):
                     # 'active_filter_data': filter_id if filter_id else slider_obj.slider_filter_ids[0].filter_id.id,
                     'active_filter_data': filter_id if filter_id else slider_obj.slider_filter_ids[0].id,
                     'is_default': False if filter_id else True,
-                    'show_view_all': True
+                    'show_view_all': False
                 }
             tmplt_external_id = slider_obj.slider_style_id.get_external_id().get(
                 slider_obj.slider_style_id.id) + "_template"
