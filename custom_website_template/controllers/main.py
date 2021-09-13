@@ -13,7 +13,7 @@ from odoo.addons.website_sale.controllers.main import WebsiteSale
 
 # Check below code for login issues
 
-class WebsiteSale(ProductConfiguratorController, Website):
+class WebsiteSale(ProductConfiguratorController, WebsiteSale):
 
     @http.route(['/shop/change_pricelist/<model("product.pricelist"):pl_id>'], type='http', auth="public", website=True, sitemap=False)
     def pricelist_change(self, pl_id, **post):
@@ -21,6 +21,6 @@ class WebsiteSale(ProductConfiguratorController, Website):
                 and request.website.is_pricelist_available(pl_id.id):
             request.session['website_sale_current_pl'] = pl_id.id
             request.website.sale_get_order(force_pricelist=pl_id.id)
-        return request.redirect(request.httprequest.referrer or '/shop')
+        return request.redirect(request.httprequest.referrer or '/')
 
 
