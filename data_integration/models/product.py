@@ -6,6 +6,7 @@ from odoo.exceptions import UserError
 import logging
 _logger = logging.getLogger(__name__)
 import csv
+from odoo import modules, tools
 
 class Product(models.Model):
     _inherit = "product.template"
@@ -271,11 +272,22 @@ class DataIntegration(models.Model):
             
             
     def create_csv_prduct(self, company_id):
+        
+        
+        
+        csvpath = modules.module.get_resource_path(
+            'data_integration',
+            'data/',
+           'products-to-import-26-02-22.csv',
+        )
+        
+        print(csvpath)
+        
         product_csv_count = self.product_csv_count 
         if product_csv_count < 0:
             product_csv_count = 0
             
-        with open(self.csv_product_path) as csvfile:
+        with open(csvpath) as csvfile:
             reader = csv.DictReader(csvfile)
             
             product_ref = []
