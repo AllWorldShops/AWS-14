@@ -13,6 +13,10 @@ class ProductTemplate(models.Model):
     image_url   = fields.Char("Image URL")
     image_image_url = fields.Char("image_image_url 1024")
     
+    aw_mfg_part_no  = fields.Char("MFG PART NUMBER")
+    # aw_connect_manufacturer = fields.Char("Manufacturer")
+    # aw_desc_text = fields.Html('AW Connect Description', sanitize_attributes=False, translate=html_translate, sanitize_form=False)
+    
     def product_image_cron(self):
         
         product_ids = self.search([('image_url','!=',False)])

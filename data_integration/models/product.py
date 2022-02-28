@@ -5,6 +5,7 @@ import xmlrpc.client
 from odoo.exceptions import UserError
 import logging
 _logger = logging.getLogger(__name__)
+import csv
 
 class Product(models.Model):
     _inherit = "product.template"
@@ -16,6 +17,8 @@ class DataIntegration(models.Model):
     _inherit = "data.integration"
     
     product_offset = fields.Integer("Product Offset")
+    product_csv_count = fields.Integer("Product count")
+    csv_product_path = fields.Char("Product path")
     
     def product_cron(self):
         
@@ -257,6 +260,84 @@ class DataIntegration(models.Model):
                 return country_id.id
             
         return False
+    
+    
+    
+    def csv_prduct_import(self, id=None):
+        company_id = 5
+        if id:
+            data_integ_id = self.env['data.integration'].browse(id)
+            data_integ_id.create_csv_prduct(company_id)
+            
+            
+    def create_csv_prduct(self, company_id):
+        product_csv_count = self.product_csv_count 
+        if product_csv_count < 0:
+            product_csv_count = 0
+            
+        with open(self.csv_product_path) as csvfile:
+            reader = csv.DictReader(csvfile)
+            
+            product_ref = []
+            count = 0
+            
+            for row in list(reader)[product_csv_count:]:
+                _logger.info("Product Count : "+str(self.product_csv_count))
+                
+                
+                product_id  = self.env['product.template'].search([('default_code', '=', row.get('Internal Reference', ''))])
+                if not product_id:
+                    categ_id = self.env['product.category'].search([('name','=',row.get('Product Category', ''))], limit=1)
+                    public_categ_id = self.env['product.public.category'].search([('name','=',row.get('Product Category', ''))], limit=1)
+                    
+                    if categ_id:
+                        categ_id = categ_id.id
+                    else:
+                        categ_id = self.create_categ(row.get('Product Category', ''), 'product.category').id
+                        
+                    if public_categ_id:
+                        public_categ_id = public_categ_id
+                    else:
+                        public_categ_id = self.create_categ(row.get('Product Category', ''), 'product.public.category')
+                    
+                        
+                    product_vals = {
+                            'name':row.get('Name', ''),
+                            'default_code': row.get('Internal Reference', ''),
+                            'categ_id':categ_id,
+                            'type': 'product',
+                            'active': True,
+                            'aw_mfg_part_no':row.get('aw_mfg_part_no', ''),
+                            'desc_text':row.get('Description', ''),
+                            'public_categ_ids': [(6,0,public_categ_id.ids)],
+                            'company_id': company_id,
+                            'manufacturers': row.get('Manufacturer', ''),
+                        }
+                    product = self.env['product.template'].create(product_vals)
+                    
+                    
+                self.product_csv_count = self.product_csv_count+1
+                                
+                self._cr.commit()
+                    
+                    
+    def create_categ(self, name, model):
+                
+        categ_id = self.env[model].create({
+                    'name' : name,
+                    })
+        
+        self._cr.commit()
+        
+        return categ_id
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
