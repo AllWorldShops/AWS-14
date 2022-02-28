@@ -282,6 +282,7 @@ class DataIntegration(models.Model):
         )
         
         print(csvpath)
+        _logger.info("Product Count : "+str(csvpath))
         
         product_csv_count = self.product_csv_count 
         if product_csv_count < 0:
