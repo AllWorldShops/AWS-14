@@ -221,6 +221,8 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
         
         add_qty = int(post.get('add_qty', 1))
         Category = request.env['product.public.category']
+        
+        # Allworld Shop filters method
         if category:
             
             category = Category.search([('id', '=', int(category))], limit=1)
@@ -273,11 +275,18 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
             post['attrib'] = attrib_list
 
         Product = request.env['product.template'].with_context(bin_size=True)
+        
+        # All World connect products filters
+        awc_domain = []
+        
+        if request.website.company_id.id == 5:
+            awc_domain += [('company_id','=', request.website.company_id.id)]
+        
         if category_domain:
             domain = EmiproThemeBaseExtended._get_search_domain(EmiproThemeBaseExtended(), '', '', attrib_values)
-            search_product = Product.search(category_domain+domain, order=self._get_search_order(post))
+            search_product = Product.search(category_domain+domain+awc_domain, order=self._get_search_order(post))
         else:
-            search_product = Product.search(category_domain+domain, order=self._get_search_order(post))
+            search_product = Product.search(category_domain+domain+awc_domain, order=self._get_search_order(post))
             
         website_domain = request.website.website_domain()
         if category:
@@ -288,7 +297,11 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
             categs_domain.append(('id', 'in', search_categories.ids))
         else:
             search_categories = Category
-        categs = Category.search(website_domain+[('parent_id', '=', int(country_filter_id))])
+            
+        if request.website.company_id.id != 5:
+            categs = Category.search(website_domain+[('parent_id', '=', int(country_filter_id))])
+        else:
+            categs = Category
 
         if category:
             url = "/shop/category/%s" % slug(category)
