@@ -16,7 +16,7 @@ class Website(models.Model):
         @Author : Angel Patel (24/09/2020)
         :return: cat_array
         """
-        category_obj = self.env['product.public.category'].sudo().search([('parent_id', '=', False),('website_id','in',[request.env['website'].sudo().get_current_website().id])])
+        category_obj = self.env['product.public.category'].sudo().search([('country_website_fitler', '=', False),('website_id','in',[request.env['website'].sudo().get_current_website().id])])
         cat_array = [{'name': "All",'id':""}]
         if category_obj:
             for cat in category_obj:
