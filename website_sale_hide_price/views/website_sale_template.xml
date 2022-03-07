@@ -14,21 +14,45 @@
                 </attribute>
         </xpath>
     </template>
+    
+    
+    
+    <template id="products_item_discount_message" inherit_id="theme_clarico_vega.products_item_discount_message" priority="21">
+        <xpath expr="//div[hasclass('product_price')]" position="replace">
+            <div class="product_price" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer" t-if="product.product_variant_ids and website.website_show_price">
+                <span t-if="combination_info['price']" t-esc="combination_info['price']"
+                      t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                <del t-attf-class="text-danger mr-1 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                     style="white-space: nowrap;" t-esc="combination_info['list_price']"
+                     t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                <span itemprop="price" style="display:none;" t-esc="combination_info['price']"/>
+                <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
+                <div t-attf-class="te_discount {{'' if combination_info['has_discounted_price'] else 'd-none'}}">
+                    <t t-set="difference"
+                       t-value="round(combination_info['list_price'] - combination_info['price'],2)"/>
+                    <t t-set="discount" t-value="round(difference*100/combination_info['list_price'])"/>
+                    <span class="te_percentage" t-esc="'(%s'%(discount)+'% Off)'"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+    
+    
     <!-- Hide Add To Cart Button and quantity selector if not website_show_price -->
-    <template id="product" inherit_id="website_sale.product">
+   <!--  <template id="product" inherit_id="website_sale.product">
         <xpath expr="//a[@id='add_to_cart']" position="attributes">
             <attribute name="t-if">
                     website.website_show_price
                 </attribute>
         </xpath>
-    </template>
-    <template id="product_quantity" inherit_id="website_sale.product_quantity">
+    </template> -->
+   <!--  <template id="product_quantity" inherit_id="website_sale.product_quantity">
         <xpath expr="//div[hasclass('css_quantity')]" position="attributes">
             <attribute name="t-if">
                     website.website_show_price
                 </attribute>
         </xpath>
-    </template>
+    </template> -->
     <template id="website_search_box" inherit_id="website.website_search_box">
         <xpath expr="//input[@name='search']" position="attributes">
             <attribute

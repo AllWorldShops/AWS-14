@@ -8,7 +8,9 @@
     "website": "https://github.com/OCA/e-commerce",
     "license": "AGPL-3",
     "summary": "Hide product prices on the shop",
-    "depends": ["website_sale"],
+    "depends": [
+        "theme_clarico_vega",
+        "website_sale"],
     "data": [
         "views/website_view.xml",
         "views/website_sale_template.xml"],
