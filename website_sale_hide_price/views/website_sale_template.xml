@@ -17,7 +17,7 @@
     
     
     
-    <template id="products_item_discount_message" inherit_id="theme_clarico_vega.products_item_discount_message" priority="21">
+   <!--  <template id="products_item_discount_message" inherit_id="theme_clarico_vega.products_item_discount_message" priority="21">
         <xpath expr="//div[hasclass('product_price')]" position="replace">
             <div class="product_price" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer" t-if="product.product_variant_ids and website.website_show_price">
                 <span t-if="combination_info['price']" t-esc="combination_info['price']"
@@ -34,7 +34,7 @@
                     <span class="te_percentage" t-esc="'(%s'%(discount)+'% Off)'"/>
                 </div>
             </div>
-        </xpath>
+        </xpath> -->
     </template>
     
     
