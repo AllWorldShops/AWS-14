@@ -96,6 +96,49 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
     def cart_update_custom(self, product_id, add_qty=1, set_qty=0, product_custom_attribute_values=None, **kw):
        res = super(EmiproThemeBase, self).cart_update(product_id=product_id, add_qty=1, set_qty=0, product_custom_attribute_values=product_custom_attribute_values, **kw)
        return res
+   
+   
+    def _get_products_recently_viewed(self):
+        
+        if not request.website.website_show_price:
+        
+            """
+            Returns list of recently viewed products according to current user
+            """
+            max_number_of_product_for_carousel = 12
+            visitor = request.env['website.visitor']._get_visitor_from_request()
+            if visitor:
+                excluded_products = request.website.sale_get_order().mapped('order_line.product_id.id')
+                products = request.env['website.track'].sudo().read_group(
+                    [('visitor_id', '=', visitor.id), ('product_id', '!=', False), ('product_id.website_published', '=', True), ('product_id', 'not in', excluded_products)],
+                    ['product_id', 'visit_datetime:max'], ['product_id'], limit=max_number_of_product_for_carousel, orderby='visit_datetime DESC')
+                products_ids = [product['product_id'][0] for product in products]
+                if products_ids:
+                    viewed_products = request.env['product.product'].with_context(display_default_code=False).browse(products_ids)
+    
+                    FieldMonetary = request.env['ir.qweb.field.monetary']
+                    monetary_options = {
+                        'display_currency': request.website.get_current_pricelist().currency_id,
+                    }
+                    rating = request.website.viewref('website_sale.product_comment').active
+                    res = {'products': []}
+                    for product in viewed_products:
+                        combination_info = product._get_combination_info_variant()
+                        res_product = product.read(['id', 'name', 'website_url'])[0]
+                        res_product.update(combination_info)
+                        res_product['price'] = ''
+                        if rating:
+                            res_product['rating'] = request.env["ir.ui.view"]._render_template('portal_rating.rating_widget_stars_static', values={
+                                'rating_avg': product.rating_avg,
+                                'rating_count': product.rating_count,
+                            })
+                        res['products'].append(res_product)
+    
+                    return res
+            return {}
+        else:
+          res = super(EmiproThemeBase, self)._get_products_recently_viewed()
+          return res
     
     
     @http.route(['/shop/cart/update'], type='http', auth="public", methods=['POST'], website=True)
