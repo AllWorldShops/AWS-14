@@ -98,6 +98,68 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
        return res
    
    
+    def _get_shop_payment_values(self, order, **kwargs):
+        values = super(WebsiteSaleDelivery, self)._get_shop_payment_values(order, **kwargs)
+        
+        if not request.website.website_show_price:
+            values['delivery_has_storable'] = False
+            return values
+        else:
+            return values
+        
+    @http.route(['/shop/print'], type='http', auth="public", website=True, sitemap=False)
+    def print_saleorder(self, **kwargs):
+        sale_order_id = request.session.get('sale_last_order_id')
+        if not sale_order_id:
+            sale_order_id = request.session.get('awc_sale_order_id')
+        if sale_order_id:
+            pdf, _ = request.env.ref('sale.action_report_saleorder').sudo()._render_qweb_pdf([sale_order_id])
+            pdfhttpheaders = [('Content-Type', 'application/pdf'), ('Content-Length', u'%s' % len(pdf))]
+            return request.make_response(pdf, headers=pdfhttpheaders)
+        else:
+            return request.redirect('/')
+   
+   
+    @http.route(['/shop/confirmation'], type='http', auth="public", website=True, sitemap=False)
+    def payment_confirmation(self, **post):
+        
+        """ End of checkout process controller. Confirmation is basically seing
+        the status of a sale.order. State at this point :
+
+         - should not have any context / session info: clean them
+         - take a sale.order id, because we request a sale.order and are not
+           session dependant anymore
+        """
+        
+        if not request.website.website_show_price:
+            
+            sale_order_id = request.session.get('sale_order_id')
+            
+            if sale_order_id:
+                request.session['awc_sale_order_id'] = sale_order_id
+                order = request.env['sale.order'].sudo().browse(sale_order_id)
+                
+                request.session['sale_order_id'] = None
+                request.session['sale_transaction_id'] = None
+                request.session['sale_last_order_id'] = None
+                
+                order._send_order_confirmation_mail()
+                
+                return request.render("website_sale_hide_price.confirmation_awc", {'order': order})
+            elif request.session.get('awc_sale_order_id'):
+                
+                order = request.env['sale.order'].sudo().browse(request.session.get('awc_sale_order_id'))
+                
+                return request.render("website_sale_hide_price.confirmation_awc", {'order': order})
+                
+            else:
+                return request.redirect('/')
+            
+        else:
+            res = super(EmiproThemeBase, self).payment_confirmation(**post)
+            return res
+   
+   
     def _get_products_recently_viewed(self):
         
         if not request.website.website_show_price:
