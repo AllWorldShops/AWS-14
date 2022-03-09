@@ -107,14 +107,12 @@
                         <div class="col-12 col-xl">
                             <div class="oe_cart">
                                 <t t-set="payment_tx_id" t-value="order.get_portal_last_transaction()"/>
-                                <!-- <t t-if="payment_tx_id.state == 'done'"> -->
                                     <div class="thanks_msg">
                                         <h2>Thank you for your order.
                                             <a role="button" class="btn btn-primary d-none d-md-inline-block" href="/shop/print" target="_blank" aria-label="Print" title="Print"><i class="fa fa-print"></i> Print</a>
                                             <a class="btn btn-primary d-none d-md-inline-block" t-att-href="order.get_portal_url(report_type='pdf', download=True)" title="Download"><i class="fa fa-download"/> Download</a>
                                         </h2>
                                     </div>
-                                <!-- </t> -->
                                <!--  <t t-if="request.env['res.users']._get_signup_invitation_scope() == 'b2c' and request.website.is_public_user()">
                                     <p class="alert alert-info mt-3" role="status">
                                         <a role="button" t-att-href='order.partner_id.signup_prepare() and order.partner_id.with_context(relative_url=True).signup_url' class='btn btn-primary'>Sign Up</a>
