@@ -112,7 +112,7 @@
 						<th class="td-img">Product</th>
 						<th></th>
 						<th class="text-center td-qty">Quantity</th>
-						<th class="text-center td-price">Price</th>
+						<th class="text-center td-price" t-if="website.website_show_price">Price</th>
 						<th class="text-center td-action"></th>
 					</tr>
 				</thead>
@@ -179,7 +179,7 @@
 											t-esc="int(line.product_uom_qty)" />
 									</t>
 								</td>
-								<td class="text-center td-price" name="price">
+								<td class="text-center td-price" name="price" t-if="website.website_show_price">
 									<t t-set="combination"
 										t-value="line.product_id.product_template_attribute_value_ids + line.product_no_variant_attribute_value_ids" />
 									<t t-set="combination_info"
