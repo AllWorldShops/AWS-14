@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 	<template id="web_site_order" inherit_id="website_sale.total">
-	
-		<xpath expr="//div[@id='cart_total']" position="attributes">
-			<attribute name="t-if">
-                  website.website_show_price
-            </attribute>
-		</xpath>
 		
 		<xpath expr="//div[@id='cart_total']" position="before">
-			<t t-if='website_sale_order.website_id.reward_access_id=="TRUE" and website.website_show_price'>
+			<t t-if='website_sale_order.website_id.reward_access_id=="TRUE"'>
 			<t t-if="website_sale_order.partner_id.name and 'exp' not in website_sale_order.partner_id.customer_type">
 				<table class="table">
 	                  <tr id="Your_total_points">
@@ -104,7 +98,7 @@
                     <th class="td-img">Product</th>
                     <th></th>
                     <th class="text-center td-qty">Quantity</th>
-                    <th class="text-center td-price" t-if="website.website_show_price">Price</th>
+                    <th class="text-center td-price">Price</th>
                     <th class="text-center td-action"></th>
                 </tr>
             </thead>
@@ -146,7 +140,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="text-center td-price" name="price" t-if="website.website_show_price">
+                        <td class="text-center td-price" name="price">
                             <t t-set="combination" t-value="line.product_id.product_template_attribute_value_ids + line.product_no_variant_attribute_value_ids"/>
                             <t t-set="combination_info" t-value="line.product_id.product_tmpl_id._get_combination_info(combination)"/>
 
