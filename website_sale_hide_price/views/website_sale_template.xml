@@ -66,6 +66,10 @@
     	<xpath expr="//div[@id='payment_method']" position="attributes">
 			<attribute name="t-if">website.website_show_price</attribute>
 		</xpath>
+		
+		<xpath expr="//div[@t-if='not acquirers']" position="attributes">
+			<attribute name="t-if">website.website_show_price</attribute>
+		</xpath>
     
     </template>
     
