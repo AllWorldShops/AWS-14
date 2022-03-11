@@ -258,7 +258,7 @@
 					<!-- <t t-if="weight &lt; 1 and website_sale_order">  -->
 						<div id="product_info" name="product_info" t-att-style="'display:block;' if weight &lt; 1 and website_sale_order else 'display:none;'"
 							class="modal-content"
-							t-if="website_sale_order.website_order_line">
+							t-if="website_sale_order.website_order_line and website.website_show_price">
 							<div class="modal-header">
 								<h4 class="modal-title">Package Weight Info
 								</h4>

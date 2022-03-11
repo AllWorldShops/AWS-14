@@ -2,6 +2,19 @@
 <odoo>
 	<template id="web_site_order" inherit_id="website_sale.total">
 	
+	
+		<xpath expr="//div[@id='cart_total']" position="before">
+		
+			<a class="no-decoration" href="/shop/confirmation" t-if="(not website.website_show_price) and (not request.session.get('awc_sale_order_id'))">
+               <div id="wizard-step40" t-att-class="'progress-wizard-step %s' % (step == 40 and 'active' and 'complete' or 'disabled')">
+                 <div class="progress-wizard-bar d-none d-md-block"/>
+                 <span class="progress-wizard-dot d-none d-md-inline-block"></span>
+                 <div class="text-center progress-wizard-steplabel col-sm-6 float-right border border-2 py-2">Request for Quotation</div>
+               </div>
+            </a>
+			
+		</xpath>
+	
 		<xpath expr="//div[@id='cart_total']" position="attributes">
 			<attribute name="t-if">
                   website.website_show_price
