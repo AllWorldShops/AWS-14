@@ -3,17 +3,16 @@
 	<template id="web_site_order" inherit_id="website_sale.total">
 	
 	
-		<xpath expr="//div[@id='cart_total']" position="before">
+		<!-- <xpath expr="//div[@id='cart_total']" position="before">
 		
-			<a class="no-decoration" href="/shop/confirmation" t-if="(not website.website_show_price) and (not request.session.get('awc_sale_order_id'))">
+			<a role="button" class="btn btn-primary te_theme_button float-right mt-2" href="/shop/confirmation" t-if="(not website.website_show_price)">
                <div id="wizard-step40" t-att-class="'progress-wizard-step %s' % (step == 40 and 'active' and 'complete' or 'disabled')">
                  <div class="progress-wizard-bar d-none d-md-block"/>
-                 <span class="progress-wizard-dot d-none d-md-inline-block"></span>
-                 <div class="text-right progress-wizard-steplabel col-sm-9 float-right py-2">Request for Quotation</div>
+                 <div class="">Request for Quotation</div>
                </div>
             </a>
 			
-		</xpath>
+		</xpath> -->
 	
 		<xpath expr="//div[@id='cart_total']" position="attributes">
 			<attribute name="t-if">

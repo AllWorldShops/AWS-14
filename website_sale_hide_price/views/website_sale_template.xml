@@ -70,6 +70,18 @@
 		<xpath expr="//div[@t-if='not acquirers']" position="attributes">
 			<attribute name="t-if">website.website_show_price</attribute>
 		</xpath>
+		
+		
+		<xpath expr="//t[@t-call='website_sale.cart_summary']" position="after">
+        	
+			<a role="button" class="btn btn-primary te_theme_button float-right mt-2" href="/shop/confirmation" t-if="(not website.website_show_price)">
+               <div id="wizard-step40" t-att-class="'progress-wizard-step %s' % (step == 40 and 'active' and 'complete' or 'disabled')">
+                 <div class="progress-wizard-bar d-none d-md-block"/>
+                 <div class="">Request for Quotation</div>
+               </div>
+            </a>
+        	
+        </xpath>
     
     </template>
     
@@ -99,6 +111,23 @@
         
         
     </template>
+    
+    
+    
+    <!-- <template id="checkout_awc" inherit_id="website_sale.checkout">
+    
+        <xpath expr="//t[@t-call='website_sale.cart_summary']" position="after">
+        	
+			<a role="button" class="btn btn-primary te_theme_button float-right mt-2" href="/shop/confirmation" t-if="(not website.website_show_price)">
+               <div id="wizard-step40" t-att-class="'progress-wizard-step %s' % (step == 40 and 'active' and 'complete' or 'disabled')">
+                 <div class="progress-wizard-bar d-none d-md-block"/>
+                 <div class="">Request for Quotation</div>
+               </div>
+            </a>
+        	
+        </xpath>
+        
+    </template> -->
     
        <template id="confirmation_awc">
         <t t-call="website.layout">
