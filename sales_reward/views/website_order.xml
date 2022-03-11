@@ -9,7 +9,7 @@
                <div id="wizard-step40" t-att-class="'progress-wizard-step %s' % (step == 40 and 'active' and 'complete' or 'disabled')">
                  <div class="progress-wizard-bar d-none d-md-block"/>
                  <span class="progress-wizard-dot d-none d-md-inline-block"></span>
-                 <div class="text-center progress-wizard-steplabel col-sm-6 float-right border border-2 py-2">Request for Quotation</div>
+                 <div class="text-right progress-wizard-steplabel col-sm-9 float-right py-2">Request for Quotation</div>
                </div>
             </a>
 			
