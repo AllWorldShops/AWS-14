@@ -154,7 +154,7 @@
                                     <a role="button"
                                        id="add_to_cart"
                                        t-attf-class="btn btn-primary btn-lg mt16 a-submit te_theme_button quick-add-to-cart #{'disabled out_of_stock' if product.sudo().virtual_available &lt; 1 else ''}"
-                                       href="#" style="background-color:blue;">
+                                       href="#" style="background-color:#a5806d;">
                                         <span class="fa fa-shopping-cart"/>
                                         Add to Cart
                                     </a>

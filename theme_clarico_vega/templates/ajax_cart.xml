@@ -136,7 +136,7 @@
                                 </t>
                                 <a role="button"
                                    class="btn btn-primary btn-lg mt16 a-submit te_theme_button ajax-add-to-cart"
-                                   href="javascript:void(0)" id="add_to_cart" t-att-product-id="product.id" style="background-color:blue;">
+                                   href="javascript:void(0)" id="add_to_cart" t-att-product-id="product.id" style="background-color:#a5806d;">
                                     <span class="fa fa-shopping-cart"/>
                                     Add to Cart
                                 </a>

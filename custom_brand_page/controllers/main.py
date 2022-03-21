@@ -113,7 +113,10 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
         if not sale_order_id:
             sale_order_id = request.session.get('awc_sale_order_id')
         if sale_order_id:
-            pdf, _ = request.env.ref('sale.action_report_saleorder').sudo()._render_qweb_pdf([sale_order_id])
+            if request.website.website_show_price:
+                pdf, _ = request.env.ref('sale.action_report_saleorder').sudo()._render_qweb_pdf([sale_order_id])
+            else:
+                pdf, _ = request.env.ref('ppts_sales_quotation_report.action_sale_quotation_report').sudo()._render_qweb_pdf([sale_order_id])
             pdfhttpheaders = [('Content-Type', 'application/pdf'), ('Content-Length', u'%s' % len(pdf))]
             return request.make_response(pdf, headers=pdfhttpheaders)
         else:
@@ -172,7 +175,7 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
             if visitor:
                 excluded_products = request.website.sale_get_order().mapped('order_line.product_id.id')
                 products = request.env['website.track'].sudo().read_group(
-                    [('visitor_id', '=', visitor.id), ('product_id', '!=', False), ('product_id.website_published', '=', True), ('product_id', 'not in', excluded_products)],
+                    [('visitor_id', '=', visitor.id), ('product_id', '!=', False), ('product_id.website_published', '=', True), ('product_id', 'not in', excluded_products),('product_id.company_id','=',request.env.company.id)],
                     ['product_id', 'visit_datetime:max'], ['product_id'], limit=max_number_of_product_for_carousel, orderby='visit_datetime DESC')
                 products_ids = [product['product_id'][0] for product in products]
                 if products_ids:

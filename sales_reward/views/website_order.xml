@@ -369,9 +369,11 @@
 		<xpath expr="//div[@class='o_portal_my_details']" position="after">
 			<t t-if="request.env['website'].search([],limit=1).reward_access_id=='TRUE' and 'exp' not in user_id.partner_id.customer_type">
 			<t t-if="my_details">
-				<h4><i class="fa fa-gift"></i>Total Points:
-				<span t-field="user_id.partner_id.total_points"/>
-				</h4>
+				<t t-if ="website.website_show_price">
+					<h4><i class="fa fa-gift"></i>Total Points:
+					<span t-field="user_id.partner_id.total_points"/>
+					</h4>
+				</t>
 			</t>
 			<t t-else="">
 				<t t-raw="0"/>

@@ -94,7 +94,14 @@
     
     <template id="wizard_checkout_awc" inherit_id="website_sale.wizard_checkout">
     
-        
+        <xpath expr="//div[hasclass('row')]" position="after">
+            <div>
+                <h3 class="o_page_header mt8">Review Order</h3>
+            </div>
+        </xpath>
+
+
+
         <xpath expr="//div[hasclass('progress-wizard')]/a[3]" position="after">
            <a class="no-decoration" t-att-href="step&gt;=40 and '/shop/confirmation' or '#'" t-if="not website.website_show_price">
                <div id="wizard-step40" t-att-class="'progress-wizard-step %s' % (step == 40 and 'active' or step&gt;40 and 'complete' or 'disabled')">
@@ -134,17 +141,18 @@
             <t t-set="additional_title">Shop - Confirmed</t>
             <div id="wrap">
                 <div class="container oe_website_sale py-2">
-                    <h1><span>Order</span> <em t-field="order.name" /> <t t-if="order.state == 'sale'"><span>Confirmed</span></t></h1>
+                    <h1><span>Order</span> <span>#</span> <em t-field="order.name" /><t t-if="order.state != 'sale'"><span>  Created Successfully</span></t> <t t-if="order.state == 'sale'"><span>Confirmed</span></t></h1>
 
                     <div class="row">
                         <div class="col-12">
                             <div class="oe_cart">
                                 <t t-set="payment_tx_id" t-value="order.get_portal_last_transaction()"/>
                                     <div class="thanks_msg">
-                                        <h2>Thank you for your order.
-                                            <a role="button" class="btn btn-primary d-none d-md-inline-block" href="/shop/print" target="_blank" aria-label="Print" title="Print"><i class="fa fa-print"></i> Print</a>
-                                            <a class="btn btn-primary d-none d-md-inline-block" t-att-href="order.get_portal_url(report_type='pdf', download=True)" title="Download"><i class="fa fa-download"/> Download</a>
+                                        <h2>We have received your quotation.Our sale team will get back to you in 1 working day.
+                                            
                                         </h2>
+                                        <a role="button" class="btn btn-primary d-none d-md-inline-block" href="/shop/print" target="_blank" aria-label="Print" title="Print"><i class="fa fa-print"></i> Print</a>
+                                            <a class="btn btn-primary d-none d-md-inline-block" t-att-href="order.get_portal_url(report_type='pdf', download=True)" title="Download"><i class="fa fa-download"/> Download</a>
                                     </div>
                                <!--  <t t-if="request.env['res.users']._get_signup_invitation_scope() == 'b2c' and request.website.is_public_user()">
                                     <p class="alert alert-info mt-3" role="status">
@@ -176,16 +184,18 @@
 	                            <t t-call="website_sale.cart_summary">
 	                                <t t-set="hide_coupon" t-value="1"/>
 	                            </t>
-	                            
-                                <div class="card mt-3">
-                                  <div class="card-body">
-                                    <t t-set="same_shipping" t-value="bool(order.partner_shipping_id==order.partner_id or only_services)" />
-                                    <div><b>Billing <t t-if="same_shipping and not only_services"> &amp; Shipping</t>: </b><span t-esc='order.partner_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')" class="address-inline"/></div>
-                                    <div t-if="not same_shipping and not only_services" groups="sale.group_delivery_invoice_address"><b>Shipping: </b><span t-esc='order.partner_shipping_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"  class="address-inline"/></div>
-                                  </div>
+	                            <t t-if ="website.website_show_price">
+                                    <div class="card mt-3">
+                                      <div class="card-body">
+                                        <t t-set="same_shipping" t-value="bool(order.partner_shipping_id==order.partner_id or only_services)" />
+                                        <div><b>Billing <t t-if="same_shipping and not only_services"> &amp; Shipping</t>: </b><span t-esc='order.partner_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')" class="address-inline"/></div>
+                                        <div t-if="not same_shipping and not only_services" groups="sale.group_delivery_invoice_address"><b>Shipping: </b><span t-esc='order.partner_shipping_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"  class="address-inline"/></div>
+                                      </div>
+                                    </div>
+                                </t>
+                                    <div class="oe_structure mt-3" id="oe_structure_website_sale_confirmation_2"/>
                                 </div>
-                                <div class="oe_structure mt-3" id="oe_structure_website_sale_confirmation_2"/>
-                            </div>
+
                         </div>
                         <!-- <div class="col-12 ">
                             
