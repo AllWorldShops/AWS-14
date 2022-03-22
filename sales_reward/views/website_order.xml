@@ -189,9 +189,27 @@
                 <div class="container oe_website_sale py-2">
                     <div class="row">
                         <div class="col-12">
+
+                            <style>
+                            .bill-add-raw-pab{
+                              width: 100%;
+							    position: absolute;
+							    margin-top: -80px;
+                            }
+                            
+                            .bill-add-raw-pab h4{
+                                border-bottom: 3px solid;
+                                font-size:36px;
+                                font-weight:bold;
+                            }
+                          </style>
+
                             <t t-call="website_sale.wizard_checkout">
-                                <t t-set="step" t-value="10" />
+                                <t t-set="step" t-value="10"/>
                             </t>
+                            
+                            <div class="bill-add-raw-pab"><h4 class="o_page_header mt8">Review Order</h4></div>
+                          
                         </div>
                         <div class="col-12 col-xl-8 oe_cart">
                             <div class="row">

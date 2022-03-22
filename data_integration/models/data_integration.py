@@ -69,3 +69,24 @@ class UomUom(models.Model):
 #     _inherit = "res.country.group"
 #     
 #     old_id = fields.Integer("Odoo10 ID")
+
+
+class ResCountry(models.Model):
+    _inherit = 'res.country'
+
+    def get_website_sale_countries(self, mode='billing'):
+        res = super(ResCountry, self).get_website_sale_countries(mode=mode)
+        if mode == 'shipping' and self.env.company.id != 5:
+            countries = self.env['res.country']
+            delivery_carriers = self.env['delivery.carrier'].sudo().search([('website_published', '=', True)])
+            for carrier in delivery_carriers:
+                if not carrier.country_ids and not carrier.state_ids:
+                    countries = res
+                    break
+                countries |= carrier.country_ids
+
+            res = res & countries
+        if mode == 'shipping' and self.env.company.id == 5:
+            countries = self.env['res.country'].search([])
+            res = countries    
+        return res

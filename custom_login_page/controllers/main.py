@@ -28,5 +28,4 @@ class AuthSignupHome(Home):
                     auth_login=werkzeug.url_encode({'auth_login': user_sudo.email}),
                 ).send_mail(user_sudo.id, force_send=True)
              
-        return response
-    
+        return response 

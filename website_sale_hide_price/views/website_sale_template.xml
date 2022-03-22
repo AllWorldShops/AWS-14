@@ -93,14 +93,6 @@
     </template>
     
     <template id="wizard_checkout_awc" inherit_id="website_sale.wizard_checkout">
-    
-        <xpath expr="//div[hasclass('row')]" position="after">
-            <div>
-                <h3 class="o_page_header mt8">Review Order</h3>
-            </div>
-        </xpath>
-
-
 
         <xpath expr="//div[hasclass('progress-wizard')]/a[3]" position="after">
            <a class="no-decoration" t-att-href="step&gt;=40 and '/shop/confirmation' or '#'" t-if="not website.website_show_price">
