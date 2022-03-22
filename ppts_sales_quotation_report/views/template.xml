@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+
+    <template id="external_layout_standard_custom" inherit_id="web.external_layout_standard">
+        <xpath expr="//ul[hasclass('list-inline')]" position="before">
+            <b>**This is a Computer Generated Document.Signature Is Not Required.**</b>
+        </xpath>
+    </template>
+
+
     <template id="report_sale_quotation_report_template">
         <t t-call="web.external_layout">
         <div class="page">
@@ -95,8 +103,8 @@
             </table>
             <table style="width:100%">
                 <tr>
-                    <td style="width:50%">
-                        <h2 class="mt16">
+                    <td style="width:70%">
+                        <strong class="mt16">
                             <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
                                 <span t-if="doc.state not in ['draft','sent']">Order # </span>
                                 <span t-if="doc.state in ['draft','sent']">Quotation # </span>
@@ -108,9 +116,9 @@
                             </t>
 
                             <span t-field="doc.name"/>
-                        </h2>
+                        </strong>
                     </td>
-                    <td style="width:50%;text-align:right">
+                    <td style="width:30%;text-align:right">
                         <span>
                             <strong>Quotation Date:</strong>
                             <span t-field="doc.date_order" t-options='{"widget": "date"}'/>
@@ -261,8 +269,19 @@
                                 </td>
                             </tr>
                         </table>
+                        
                     </div>
                 </div>
+                <t t-if="doc.payment_term_id">
+                <table style="width:100%;">
+                    <tr>
+                        <td style="width:50%;font-size:16px;">
+                            <span>Payment Terms:</span>
+                            <span t-field="doc.payment_term_id"/>
+                        </td>
+                    </tr>
+                </table>
+            </t>
             </div>
         </div>
     </t>
