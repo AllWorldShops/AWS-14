@@ -44,8 +44,15 @@
     </template>
     
     
-    <template id="products_categories_country_top_menu" active="True" customize_show="True">
     
+    
+      <!-- live stage instance -->
+    <!-- <a role="button" href="#" class="dropdown-toggle btn btn-secondary categories_country_top_menu" data-toggle="dropdown" style="border-radius: 20px;color:#212529;background-color:#e9ecef;border-color:#e9ecef;">
+		                <img class="o_lang_flag" t-attf-src="/website/image/product.public.category/{{co_categ_id.id}}/image_1920/90x90" t-if="co_categ_id"/>
+		                <t t-esc="co_categ_id and co_categ_id.name or ' - '" />
+		            </a> -->
+    
+    <template id="products_categories_country_top_menu" active="True" customize_show="True">
 	     <div class="col-lg-3 te_header_style_2_right">
 	            <t t-set="website_country_categ_ids" t-value="request.env['product.public.category'].sudo().search([('country_website_fitler','=',True)])"/>
 	            
@@ -310,7 +317,7 @@
             <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
             <input name="product_id" t-att-value="product_variant_id" type="hidden"/>
             <t t-if="product_variant_id">
-                <a href="#" role="button" class="btn btn-secondary a-submit" aria-label="Shopping cart" title="Shopping cart">
+                <a href="#" role="button" t-att-variant-count="product.product_variant_count" t-att-product-id="'%s' % product.id" class="btn btn-secondary a-submit not_product_page" aria-label="Shopping cart" title="Shopping cart">
                     <span class="fa fa-shopping-cart"/>
                 </a>
             </t>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.reward.sale</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="10"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Sales Reward" string="Sales Reward" data-key="sales_reward">
+                    <h2>Set the Client Points</h2>
+                    <div class="row mt16 o_settings_container">
+                    <div class="col-xs-12 col-md-6 o_setting_box" >
+                            <div class="o_setting_left_pane">
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="vip_amount_per_point"/>
+                                <div>
+                                    <field name="vip_amount_per_point"/>
+                                </div>
+                                <div class="text-muted">
+                                Set price per point.
+                                </div>
+                                <label for="vip_point_duration"/>
+                                <div>
+                                    <field name="vip_point_duration"/>
+                                </div>
+                                <div class="text-muted">
+                                Set validity duration for VIP points in number of days.
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box" >
+                            <div class="o_setting_left_pane">
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pro_amount_per_point"/>
+                                <div>
+                                    <field name="pro_amount_per_point"/>
+                                </div>
+                                <div class="text-muted">
+                                    Set price per point.
+                                </div>
+                                <label for="pro_point_duration"/>
+                                <div>
+                                    <field name="pro_point_duration"/>
+                                </div>
+                                <div class="text-muted">
+                                Set validity duration for Professional points in number of days.
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box" >
+                            <div class="o_setting_left_pane">
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="ind_amount_per_point"/>
+                                <div>
+                                    <field name="ind_amount_per_point"/>
+                                </div>
+                                <div class="text-muted">
+                                 Set price per point.
+                                </div>
+                                <label for="ind_point_duration"/>
+                                <div>
+                                    <field name="ind_point_duration"/>
+                                </div>
+                                <div class="text-muted">
+                                Set validity duration for Individual points in number of days.
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+                <h2>Earn Points</h2>
+                    <div class="row mt16 o_settings_container">
+                    <div class="col-xs-12 col-md-6 o_setting_box" >
+                            <div class="o_setting_left_pane">
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="earn_point_mini_amount"/>
+                                <div>
+                                    <field name="earn_point_mini_amount"/>
+                                </div>
+                                <div class="text-muted">
+                                Set minimun amount of purchase to earn the points.
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box" >
+                            <div class="o_setting_left_pane">
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="point_reedem_per_order"/>
+                                <div>
+                                    <field name="point_reedem_per_order"/>
+                                </div>
+                                <div class="text-muted">
+                                  Set the limitation of using earn points per order.
+                                </div>
+                            </div>
+                    </div>
+<!--                    <div class="col-xs-12 col-md-6 o_setting_box" >-->
+<!--                            <div class="o_setting_left_pane">-->
+<!--                            </div>-->
+<!--                            <div class="o_setting_right_pane">-->
+<!--                                <label for="amount_value_point"/>-->
+<!--                                <div>-->
+<!--                                    <field name="amount_value_point"/>-->
+<!--                                </div>-->
+<!--                                <div class="text-muted">-->
+<!--                                  Point credit amount-->
+<!--                                </div>-->
+<!--                                 <div>-->
+<!--                                    <field name="points_for_amount"/>-->
+<!--                                </div>-->
+<!--                                <div class="text-muted">-->
+<!--                                  Points -->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                    </div>-->
+                        <div class="col-xs-12 col-md-6 o_setting_box" >
+                                <div class="o_setting_left_pane">
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="point_credit_cond"/>
+                                    <div>
+                                        <field name="point_credit_cond" widget='selection'/>
+                                    </div>
+                                    <div class="text-muted">
+                                      Point Credit Condition
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <h2>Product Category</h2>
+                    <div class="row mt16 o_settings_container">
+                    <div class="col-xs-12 col-md-6 o_setting_box" >
+                            <div class="o_setting_left_pane">
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="valid_product_category"/>
+                                <div>
+                                    <field name="valid_product_category" widget="many2many_tags"/>
+                                </div>
+                                <div class="text-muted">
+                                Select the product categories on which earning points is applicable.
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+                   <h2>Birthday Points</h2>
+                   <div class="row mt16 o_settings_container">
+                        <div class="col-xs-12 col-md-6 o_setting_box" title="Add birthday points to the customer, this settings will add set points in customer's account on his birth date .">
+                            <div class="o_setting_left_pane">
+                                <field name="is_birthday_points"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="is_birthday_points"/>
+                                <div class="text-muted">
+                                   Set birthday reward points for customer.
+                                </div>
+                               
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box"/>
+                        <div class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('is_birthday_points', '=', False)]}" >
+                            <div class="o_setting_left_pane">
+                               
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="birthday_points"/>
+                                 <field name="birthday_points"/>
+                                <div class="text-muted">
+                                    Set points to add in customer's account on birthdays.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <h2>Send Mail</h2>
+                <div class="row mt16 o_settings_container">
+                <div class="col-xs-12 col-md-6 o_setting_box" >
+                            <div class="o_setting_left_pane">
+                                <field name="is_send_mail"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="is_send_mail"/>
+                                
+                                <div class="text-muted">
+                                It will send an email to customer for every purchase details and wish on birthday.
+                                </div>
+                            </div>
+                </div>
+                </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_sale_reward_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="res_config_settings_view_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'sales_reward'}</field>
+    </record>
+    <menuitem id="menu_sale_reward_root"
+            name="Reward Settings"
+            
+            sequence="8"/>
+     <menuitem id="menu_sale_reward_config"
+            name="Reward Settings"
+            parent="menu_sale_reward_root"
+            sequence="0"/>
+
+    <menuitem id="menu_reward_general_settings"
+        name="Configuration"
+        parent="menu_sale_reward_config"
+        sequence="0"
+        action="action_sale_reward_config_settings"
+        groups="base.group_system"/>
+
+</odoo>

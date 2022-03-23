@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="custom_email_view" model="mail.template">
+          <field name="name">Example e-mail template</field>
+          <field name="email_from">${object.company_id and object.company_id.email or ''}</field>
+          <field name="subject">Order is paid!</field>
+          <field name="email_to">${object.email|safe}</field>
+          <field name="lang">${object.lang}</field>
+          <field name="model_id" ref="base.model_res_partner"/>
+          <field name="auto_delete" eval="True"/>
+    <field name="body_html">
+            <![CDATA[
+        <p>Dear ${(object.name)},<br/><br/>
+        Great, Order is paid!<br/></p>
+        <p>
+          Available Redeem Amount:
+          % if object.is_website_user: 
+            ${(object.total_points)}
+          % else :
+            ${(object.total_points)}
+          % endif
+        </p><br/>
+              Regards,<br/>
+              ${(object.company_id.name)}
+      ]]>
+    </field>
+       </record>
+    </data>
+</odoo>

@@ -9,6 +9,7 @@
     'depends': ['base','website_sale'],
     'data': [ 
         "views/product_views.xml",
+        "data/mail_data.xml",
         ],
     'images': [],
     'installable': True,

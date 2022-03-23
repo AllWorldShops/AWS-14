@@ -333,7 +333,7 @@
                             <div class="prod_add_cart">
                                 <t t-set="buy_now_show"
                                    t-value="request.website.viewref('website_sale.product_buy_now').active"/>
-                                <a role="button" id="add_to_cart"
+                                <a role="button" id="add_to_cart" style="background-color:#a5806d;"
                                    class="btn btn-primary btn-md mt16 a-submit te_theme_button" href="#">
                                     <span class="fa fa-shopping-cart"/>
                                     Add to Cart

@@ -112,7 +112,7 @@
 						<th class="td-img">Product</th>
 						<th></th>
 						<th class="text-center td-qty">Quantity</th>
-						<th class="text-center td-price">Price</th>
+						<th class="text-center td-price" t-if="website.website_show_price">Price</th>
 						<th class="text-center td-action"></th>
 					</tr>
 				</thead>
@@ -179,7 +179,7 @@
 											t-esc="int(line.product_uom_qty)" />
 									</t>
 								</td>
-								<td class="text-center td-price" name="price">
+								<td class="text-center td-price" name="price" t-if="website.website_show_price">
 									<t t-set="combination"
 										t-value="line.product_id.product_template_attribute_value_ids + line.product_no_variant_attribute_value_ids" />
 									<t t-set="combination_info"
@@ -258,7 +258,7 @@
 					<!-- <t t-if="weight &lt; 1 and website_sale_order">  -->
 						<div id="product_info" name="product_info" t-att-style="'display:block;' if weight &lt; 1 and website_sale_order else 'display:none;'"
 							class="modal-content"
-							t-if="website_sale_order.website_order_line">
+							t-if="website_sale_order.website_order_line and website.website_show_price">
 							<div class="modal-header">
 								<h4 class="modal-title">Package Weight Info
 								</h4>

@@ -3,6 +3,8 @@ from odoo.exceptions import UserError
 from odoo import fields, models, api, _
 from datetime import datetime
 from collections import defaultdict
+import logging
+_logger = logging.getLogger(__name__)
 
 WEBSITE_STATE = [
         ('processing', 'Processing'),
@@ -28,8 +30,8 @@ class SaleOrder(models.Model):
     @api.depends('invoice_ids', 'picking_ids', 'state')
     def getWebsiteState(self):
         for sale_id in self:
-            refund = sale_id.invoice_ids.filtered(lambda rec: not rec.state in ('cancel', 'paid') and rec.type == 'out_refund')
-            paid_refund = sale_id.invoice_ids.filtered(lambda rec: rec.state in ('paid') and rec.type == 'out_refund') 
+            refund = sale_id.invoice_ids.filtered(lambda rec: not rec.state in ('cancel', 'paid') and rec.move_type == 'out_refund')
+            paid_refund = sale_id.invoice_ids.filtered(lambda rec: rec.state in ('paid') and rec.move_type == 'out_refund') 
             
             inv_ids = [inv for inv in sale_id.invoice_ids if not inv.state == 'cancel']
             paid_inv_ids = [inv for inv in sale_id.invoice_ids if not inv.state in ('cancel', 'paid')]
@@ -88,6 +90,12 @@ class SaleOrder(models.Model):
             elif sale_id.state == 'sale':
                 if not sale_id.website_state == 'confirmed':
                     sale_id.website_state = 'confirmed'
+            elif sale_id.state == 'done':
+                if not sale_id.website_state == 'completed':
+                    sale_id.website_state = 'completed'
+            else:
+                _logger.info(str(sale_id.state)+str(sale_id.website_state))
+                
     
     @api.model
     def create(self, vals):

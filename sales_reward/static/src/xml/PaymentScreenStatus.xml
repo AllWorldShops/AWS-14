@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="PSStemplate" xml:space="preserve">
+    <template id="assets" inherit_id="point_of_sale.assets">
+    <xpath expr="." position="inside">
+        <script type="text/javascript" src="/sales_reward/static/src/js/PaymentScreenStatus.js"></script>
+        <script type="text/javascript" src="/sales_reward/static/src/js/PaymentScreen.js"></script>
+        <script type="text/javascript" src="/sales_reward/static/src/js/NumberPopup.js"></script>
+    </xpath>
+    </template>
+<t t-name="CustomPaymentScreenStatus" t-inherit="point_of_sale.PaymentScreenStatus" t-inherit-mode="extension" owl="1">
+    <xpath expr="//div[hasclass('payment-status-container')]" position="replace">
+        <div class="payment-status-container">
+        <div>
+            <div class="payment-status-remaining">
+                <span class="label">Remaining</span>
+                <span class="amount"
+                      t-att-class="{ highlight: currentOrder.get_due() > 0 }">
+                    <t t-esc="remainingText" />
+                </span>
+            </div>
+            <div class="payment-status-total-due">
+                <span class="label">Total Due</span>
+                <span>
+                    <t t-esc="totalDueText" />
+                </span>
+            </div>
+        </div>
+        <div>
+            <div class="payment-status-total-due">
+                <span class="label">Redeem Points</span>
+                <span class="amount">
+                    <t t-esc="display_redeem_points"/>
+                </span>
+            </div>
+            <div class="payment-status-total-due">
+                <span class="label">Selected Redeemed Points</span>
+                <span class="amount"
+                      t-att-class="{ highlight: currentOrder.get_due() > 0 }">
+                    <t t-esc="selected_redeem_points" />
+
+<!--                    <t t-esc="click_confirm()" />-->
+                </span>
+            </div>
+            <div class="payment-status-total-due">
+                <span class="label">Redeemed Amount</span>
+                <span class="amount"
+                      t-att-class="{ highlight: currentOrder.get_due() > 0 }">
+                    <t t-esc="redeem_amount" />
+                </span>
+            </div>
+        </div>
+        <div>
+            <div class="payment-status-change">
+                <span class="label">Change</span>
+                <span class="amount"
+                      t-att-class="{ highlight: currentOrder.get_change() > 0 }">
+                    <t t-esc="changeText" />
+                </span>
+            </div>
+        </div>
+        </div>
+    </xpath>
+</t>
+</templates>

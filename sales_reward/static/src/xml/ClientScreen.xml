@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<!--        <t t-name="ClientListScreen" t-inherit="point_of_sale.ClientListScreen" t-inherit-mode="extension" owl="1">-->
+<!--            <xpath expr="//tr" position="inside">-->
+<!--                &lt;!&ndash;            <th t-if="env.pos.get_client().total_pos_points">Points</th>&ndash;&gt;-->
+<!--                <th t-if="!env.pos.sales_reward">Points</th>-->
+<!--                &lt;!&ndash;            <th t-if="!env.isMobile">Points</th>&ndash;&gt;-->
+<!--            </xpath>-->
+<!--        </t>-->
+
+<!--    <t t-name="ClientListScreen" t-inherit="point_of_sale.ClientListScreen" t-inherit-mode="extension" owl="1">-->
+<!--            <xpath expr="//tbody" position="inside">-->
+<!--                <t t-foreach="clients" t-as="partner"-->
+<!--                                               t-key="partner.id">-->
+<!--                </t>-->
+<!--            </xpath>-->
+<!--        </t>-->
+
+
+
+</odoo>

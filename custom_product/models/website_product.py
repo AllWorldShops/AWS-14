@@ -2,6 +2,7 @@ from odoo import api, fields, models, _
 from odoo.http import request
 import requests
 from odoo.tools.translate import html_translate
+import re
 
 
 class ProductProduct(models.Model):
@@ -16,6 +17,18 @@ class ProductProduct(models.Model):
             if rec:
                 rec.website_description = rec.mag_description
                 rec.description_sale = rec.mag_short_description
+                
+    def cron_product_variant_remove_updates(self):  
+        product_tmpl_ids = self.env['product.template'].search([],offset=0)
+        if product_tmpl_ids:
+            for product_tmpl_id in product_tmpl_ids:
+                try:
+#                     product_tmpl_id.categ_id = False
+                    product_tmpl_id.public_categ_ids = [(6, 0, [])]
+                    product_tmpl_id.attribute_line_ids.unlink()
+                    self.env.cr.commit()
+                except Exception as e:
+                    print(e, "An exception occurred")
 
 #     @api.multi
     def cron_product_state_updates(self):
@@ -91,6 +104,15 @@ class ProductTemplate(models.Model):
     node_id = fields.Char("Node ID")
     website_description = fields.Html('Description for the website', sanitize_attributes=False, sanitize=False, translate=True)
     website_country_id = fields.Many2one("product.public.category", string="Website Country")
+    
+    def cron_product_website_html_tags(self):
+        products_ids = self.search([('description_sale','!=',False)])
+        TAG_RE = re.compile(r'<[^>]+>')
+        if products_ids:
+            for products_id in products_ids:
+                description_sale = TAG_RE.sub('', products_id.description_sale)
+                products_id.description_sale = description_sale.replace('&nbsp;', ' ')
+                products_id.env.cr.commit()
     
 #     @api.multi
     def cron_product_website_updates(self):  

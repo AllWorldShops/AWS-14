@@ -23,6 +23,7 @@ from odoo.addons.emipro_theme_base.controller.main import EmiproThemeBaseExtende
 import werkzeug.urls
 import werkzeug.utils
 from odoo import fields, models, http
+from werkzeug import urls
 
 _logger = logging.getLogger(__name__)
 
@@ -59,8 +60,8 @@ class Website(models.Model):
         :return: min and max price value
         """
         range_list = []
-        cust_min_val = request.httprequest.values.get('min_price', False)
-        cust_max_val = request.httprequest.values.get('max_price', False)
+        cust_min_val = request.httprequest.values.get('min_price', 0)
+        cust_max_val = request.httprequest.values.get('max_price', 0)
 
         prices_list = []
         is_web_price = request.website.price_filter_on == 'website_price'
@@ -88,6 +89,121 @@ class Website(models.Model):
         return range_list
 
 class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
+    
+    
+    @http.route(['/shop/cart/update_custom'], type='json', auth="public", methods=['GET', 'POST'], website=True,
+                csrf=False)
+    def cart_update_custom(self, product_id, add_qty=1, set_qty=0, product_custom_attribute_values=None, **kw):
+       res = super(EmiproThemeBase, self).cart_update(product_id=product_id, add_qty=1, set_qty=0, product_custom_attribute_values=product_custom_attribute_values, **kw)
+       return res
+   
+   
+    def _get_shop_payment_values(self, order, **kwargs):
+        values = super(WebsiteSaleDelivery, self)._get_shop_payment_values(order, **kwargs)
+        
+        if not request.website.website_show_price:
+            values['delivery_has_storable'] = False
+            return values
+        else:
+            return values
+        
+    @http.route(['/shop/print'], type='http', auth="public", website=True, sitemap=False)
+    def print_saleorder(self, **kwargs):
+        sale_order_id = request.session.get('sale_last_order_id')
+        if not sale_order_id:
+            sale_order_id = request.session.get('awc_sale_order_id')
+        if sale_order_id:
+            if request.website.website_show_price:
+                pdf, _ = request.env.ref('sale.action_report_saleorder').sudo()._render_qweb_pdf([sale_order_id])
+            else:
+                pdf, _ = request.env.ref('ppts_sales_quotation_report.action_sale_quotation_report').sudo()._render_qweb_pdf([sale_order_id])
+            pdfhttpheaders = [('Content-Type', 'application/pdf'), ('Content-Length', u'%s' % len(pdf))]
+            return request.make_response(pdf, headers=pdfhttpheaders)
+        else:
+            return request.redirect('/')
+   
+   
+    @http.route(['/shop/confirmation'], type='http', auth="public", website=True, sitemap=False)
+    def payment_confirmation(self, **post):
+        
+        """ End of checkout process controller. Confirmation is basically seing
+        the status of a sale.order. State at this point :
+
+         - should not have any context / session info: clean them
+         - take a sale.order id, because we request a sale.order and are not
+           session dependant anymore
+        """
+        
+        if not request.website.website_show_price:
+            
+            sale_order_id = request.session.get('sale_order_id')
+            
+            if sale_order_id:
+                request.session['awc_sale_order_id'] = sale_order_id
+                order = request.env['sale.order'].sudo().browse(sale_order_id)
+                
+                request.session['sale_order_id'] = None
+                request.session['sale_transaction_id'] = None
+                request.session['sale_last_order_id'] = None
+                
+                order._send_order_confirmation_mail()
+                
+                return request.render("website_sale_hide_price.confirmation_awc", {'order': order})
+            elif request.session.get('awc_sale_order_id'):
+                
+                order = request.env['sale.order'].sudo().browse(request.session.get('awc_sale_order_id'))
+                
+                return request.render("website_sale_hide_price.confirmation_awc", {'order': order})
+                
+            else:
+                return request.redirect('/')
+            
+        else:
+            res = super(EmiproThemeBase, self).payment_confirmation(**post)
+            return res
+   
+   
+    def _get_products_recently_viewed(self):
+        
+        if not request.website.website_show_price:
+        
+            """
+            Returns list of recently viewed products according to current user
+            """
+            max_number_of_product_for_carousel = 12
+            visitor = request.env['website.visitor']._get_visitor_from_request()
+            if visitor:
+                excluded_products = request.website.sale_get_order().mapped('order_line.product_id.id')
+                products = request.env['website.track'].sudo().read_group(
+                    [('visitor_id', '=', visitor.id), ('product_id', '!=', False), ('product_id.website_published', '=', True), ('product_id', 'not in', excluded_products),('product_id.company_id','=',request.env.company.id)],
+                    ['product_id', 'visit_datetime:max'], ['product_id'], limit=max_number_of_product_for_carousel, orderby='visit_datetime DESC')
+                products_ids = [product['product_id'][0] for product in products]
+                if products_ids:
+                    viewed_products = request.env['product.product'].with_context(display_default_code=False).browse(products_ids)
+    
+                    FieldMonetary = request.env['ir.qweb.field.monetary']
+                    monetary_options = {
+                        'display_currency': request.website.get_current_pricelist().currency_id,
+                    }
+                    rating = request.website.viewref('website_sale.product_comment').active
+                    res = {'products': []}
+                    for product in viewed_products:
+                        combination_info = product._get_combination_info_variant()
+                        res_product = product.read(['id', 'name', 'website_url'])[0]
+                        res_product.update(combination_info)
+                        res_product['price'] = ''
+                        if rating:
+                            res_product['rating'] = request.env["ir.ui.view"]._render_template('portal_rating.rating_widget_stars_static', values={
+                                'rating_avg': product.rating_avg,
+                                'rating_count': product.rating_count,
+                            })
+                        res['products'].append(res_product)
+    
+                    return res
+            return {}
+        else:
+          res = super(EmiproThemeBase, self)._get_products_recently_viewed()
+          return res
     
     
     @http.route(['/shop/cart/update'], type='http', auth="public", methods=['POST'], website=True)
@@ -172,6 +288,13 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
         else:
             web_url = request.httprequest.referrer
         
+        
+        base_url=request.env['ir.config_parameter'].sudo().get_param('web.base.url')
+        if (not cate_country_id.sudo().category_page):
+            web_url = base_url
+        else:
+            web_url = urls.url_join (base_url ,cate_country_id.sudo().category_page.url)
+            
         redirect = werkzeug.utils.redirect(web_url or '/shop', 303)
         return redirect
         return request.redirect(request.httprequest.referrer or '/shop')
@@ -206,12 +329,14 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
         
         add_qty = int(post.get('add_qty', 1))
         Category = request.env['product.public.category']
+        
+        # Allworld Shop filters method
         if category:
             
             category = Category.search([('id', '=', int(category))], limit=1)
             
             if category.country_website_fitler:
-                if category.name == "All World Shop":
+                if category.name == "Shop the world":
                     category = Category
                 else:
                     category_domain = [('website_country_id','=',int(country_filter_id))]
@@ -221,7 +346,7 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
         else:
             category = Category
             category = Category.search([('id', '=', int(country_filter_id))], limit=1)
-            if category.name == "All World Shop":
+            if category.name == "Shop the world":
                 category = Category
             else:
                 category_domain = [('website_country_id','=',int(country_filter_id))]
@@ -258,11 +383,18 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
             post['attrib'] = attrib_list
 
         Product = request.env['product.template'].with_context(bin_size=True)
+        
+        # All World connect products filters
+        awc_domain = []
+        
+        if request.website.company_id.id == 5:
+            awc_domain += [('company_id','=', request.website.company_id.id)]
+        
         if category_domain:
             domain = EmiproThemeBaseExtended._get_search_domain(EmiproThemeBaseExtended(), '', '', attrib_values)
-            search_product = Product.search(category_domain+domain, order=self._get_search_order(post))
+            search_product = Product.search(category_domain+domain+awc_domain, order=self._get_search_order(post))
         else:
-            search_product = Product.search(category_domain+domain, order=self._get_search_order(post))
+            search_product = Product.search(category_domain+domain+awc_domain, order=self._get_search_order(post))
             
         website_domain = request.website.website_domain()
         if category:
@@ -273,7 +405,11 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
             categs_domain.append(('id', 'in', search_categories.ids))
         else:
             search_categories = Category
-        categs = Category.search(website_domain+[('parent_id', '=', int(country_filter_id))])
+            
+        if request.website.company_id.id != 5:
+            categs = Category.search(website_domain+[('parent_id', '=', int(country_filter_id))])
+        else:
+            categs = Category
 
         if category:
             url = "/shop/category/%s" % slug(category)
@@ -300,7 +436,7 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
                 
         allworld_shop_id = Category.search([('id', '=', int(country_filter_id))], limit=1)
                 
-        if allworld_shop_id.name == "All World Shop":
+        if allworld_shop_id.name == "Shop the world":
             products = request.env['product.template'].search([('id','in',products.ids if products else [])])
         elif country_filter_id and products:
             products = request.env['product.template'].search([('website_country_id', '=', int(country_filter_id)), ('id','in',products.ids if products else [])])
@@ -313,11 +449,15 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
             if category:
                 categs =  categs + products.mapped("public_categ_ids")
                 if categs:
-                    categs = Category.search([('id', 'in', categs.ids)])
+#                     categs = Category.search([('id', 'in', categs.ids)])
+                    categs = Category.search([('id', '=', int(category))])
             else:
                 categs = []
                 
-            
+            if not categs and country_filter_id == 951:
+                categs =  products.mapped("public_categ_ids")
+                if categs:
+                    categs = Category.search([('id', 'in', categs.ids)])
             
         product_count = len(products or [])
         pager = request.website.pager(url=url, total=product_count, page=page, step=ppg, scope=7, url_args=post)
@@ -453,7 +593,7 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
             
             allworld_shop_id = Category.search([('id', '=', int(country_filter_id))], limit=1)
                 
-            if allworld_shop_id.name == "All World Shop":
+            if allworld_shop_id.name == "Shop the world":
                 products = request.env['product.template'].search([('id','in',products.ids if products else [])])
             elif country_filter_id and products:
                 products = request.env['product.template'].search([('website_country_id', '=', int(country_filter_id)), ('id','in',products.ids if products else [])])
@@ -557,4 +697,11 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
         }
         return request.render("website_sale.product", values)
 
+from odoo.addons.website_sale_delivery.controllers.main import WebsiteSaleDelivery
+
+class websitesaledelivery(EmiproThemeBase, WebsiteSaleDelivery):
+    
+    @http.route(['/shop/payment'], type='http', auth="public", website=True)
+    def payment(self, **post):
+        return super(websitesaledelivery, self).payment(**post)
     

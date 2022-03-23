@@ -140,7 +140,7 @@
                                                                    title="Shopping cart"
                                                                    t-att-id="'add_to_cart' if ajax_cart and not product.optional_product_ids else ''"
                                                                    t-att-product-id="product.id"
-                                                                   t-att-variant-count="product.product_variant_count">
+                                                                   t-att-variant-count="product.product_variant_count" style="background-color:blue;">
                                                                     <span class="fa fa-shopping-cart"/>
                                                                     Add to Cart
                                                                 </a>
@@ -151,7 +151,7 @@
                                                                    title="Shopping cart"
                                                                    t-att-id="'add_to_cart' if ajax_cart else ''"
                                                                    t-att-product-id="product.id"
-                                                                   t-att-variant-count="product.product_variant_count">
+                                                                   t-att-variant-count="product.product_variant_count" style="background-color:blue;">
                                                                     <span class="fa fa-shopping-cart"/>
                                                                     Add to Cart
                                                                 </a>
@@ -345,7 +345,7 @@
                                                                        title="Shopping cart"
                                                                        t-att-id="'add_to_cart' if ajax_cart and not product.optional_product_ids else ''"
                                                                        t-att-product-id="product.id"
-                                                                       t-att-variant-count="product.product_variant_count">
+                                                                       t-att-variant-count="product.product_variant_count" style="background-color:blue;">
                                                                         <span class="fa fa-shopping-cart"/>
                                                                     </a>
                                                                 </t>
@@ -355,7 +355,7 @@
                                                                        title="Shopping cart"
                                                                        t-att-id="'add_to_cart' if ajax_cart else ''"
                                                                        t-att-product-id="product.id"
-                                                                       t-att-variant-count="product.product_variant_count">
+                                                                       t-att-variant-count="product.product_variant_count" style="background-color:blue;">
                                                                         <span class="fa fa-shopping-cart"/>
                                                                     </a>
                                                                 </t>
@@ -513,7 +513,7 @@
                                                                    title="Shopping cart"
                                                                    t-att-id="'add_to_cart' if ajax_cart and not product.optional_product_ids else ''"
                                                                    t-att-product-id="product.id"
-                                                                   t-att-variant-count="product.product_variant_count">
+                                                                   t-att-variant-count="product.product_variant_count" style="background-color:blue;">
                                                                     <span class="fa fa-shopping-cart"/>
                                                                 </a>
                                                             </t>
@@ -523,7 +523,7 @@
                                                                    title="Shopping cart"
                                                                    t-att-id="'add_to_cart' if ajax_cart else ''"
                                                                    t-att-product-id="product.id"
-                                                                   t-att-variant-count="product.product_variant_count">
+                                                                   t-att-variant-count="product.product_variant_count" style="background-color:blue;">
                                                                     <span class="fa fa-shopping-cart"/>
                                                                 </a>
                                                             </t>
@@ -686,7 +686,7 @@
                                                                    title="Shopping cart"
                                                                    t-att-id="'add_to_cart' if ajax_cart and not product.optional_product_ids else ''"
                                                                    t-att-product-id="product.id"
-                                                                   t-att-variant-count="product.product_variant_count">
+                                                                   t-att-variant-count="product.product_variant_count" style="background-color:blue;">
                                                                     <span class="fa fa-shopping-cart"/>
                                                                 </a>
                                                             </t>
@@ -696,7 +696,7 @@
                                                                    title="Shopping cart"
                                                                    t-att-id="'add_to_cart' if ajax_cart else ''"
                                                                    t-att-product-id="product.id"
-                                                                   t-att-variant-count="product.product_variant_count">
+                                                                   t-att-variant-count="product.product_variant_count" style="background-color:blue;">
                                                                     <span class="fa fa-shopping-cart"/>
                                                                 </a>
                                                             </t>
@@ -1038,7 +1038,7 @@
                                                                title="Shopping cart"
                                                                t-att-id="'add_to_cart' if ajax_cart and not product.optional_product_ids else ''"
                                                                t-att-product-id="product.id"
-                                                               t-att-variant-count="product.product_variant_count">
+                                                               t-att-variant-count="product.product_variant_count" style="background-color:blue;">
                                                                 <span class="fa fa-shopping-cart"/>
                                                                 Add to Cart
                                                             </a>
@@ -1049,7 +1049,7 @@
                                                                title="Shopping cart"
                                                                t-att-id="'add_to_cart' if ajax_cart else ''"
                                                                t-att-product-id="product.id"
-                                                               t-att-variant-count="product.product_variant_count">
+                                                               t-att-variant-count="product.product_variant_count" style="background-color:blue;">
                                                                 <span class="fa fa-shopping-cart"/>
                                                                 Add to Cart
                                                             </a>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="product_price" inherit_id="website_sale.product_price">
+        <xpath expr="//div[@itemprop='offers']" position="attributes">
+            <attribute name="t-if">
+                    website.website_show_price
+            </attribute>
+        </xpath>
+    </template>
+    <template id="products_item" inherit_id="website_sale.products_item">
+        <xpath expr="//div[@itemprop='offers']" position="attributes">
+            <attribute name="t-if">
+                    product.product_variant_ids and website.website_show_price
+                </attribute>
+        </xpath>
+    </template>
+    
+    
+    
+    <!-- <template id="products_item_discount_message" inherit_id="theme_clarico_vega.products_item_discount_message" priority="21">
+        <xpath expr="//div[hasclass('product_price')]" position="replace">
+            <div class="product_price" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer" t-if="product.product_variant_ids and website.website_show_price">
+                <span t-if="combination_info['price']" t-esc="combination_info['price']"
+                      t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                <del t-attf-class="text-danger mr-1 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                     style="white-space: nowrap;" t-esc="combination_info['list_price']"
+                     t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                <span itemprop="price" style="display:none;" t-esc="combination_info['price']"/>
+                <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
+                <div t-attf-class="te_discount {{'' if combination_info['has_discounted_price'] else 'd-none'}}">
+                    <t t-set="difference"
+                       t-value="round(combination_info['list_price'] - combination_info['price'],2)"/>
+                    <t t-set="discount" t-value="round(difference*100/combination_info['list_price'])"/>
+                    <span class="te_percentage" t-esc="'(%s'%(discount)+'% Off)'"/>
+                </div>
+            </div>
+        </xpath>
+    </template> -->
+    
+    
+    <!-- Hide Add To Cart Button and quantity selector if not website_show_price -->
+   <!--  <template id="product" inherit_id="website_sale.product">
+        <xpath expr="//a[@id='add_to_cart']" position="attributes">
+            <attribute name="t-if">
+                    website.website_show_price
+                </attribute>
+        </xpath>
+    </template> -->
+   <!--  <template id="product_quantity" inherit_id="website_sale.product_quantity">
+        <xpath expr="//div[hasclass('css_quantity')]" position="attributes">
+            <attribute name="t-if">
+                    website.website_show_price
+                </attribute>
+        </xpath>
+    </template> -->
+    <template id="website_search_box" inherit_id="website.website_search_box">
+        <xpath expr="//input[@name='search']" position="attributes">
+            <attribute
+                name="t-att-data-display-price"
+            >website and website.website_show_price</attribute>
+        </xpath>
+    </template>
+    
+    <template id="payment" name="Payment" inherit_id="website_sale.payment" >
+    	    
+    	<xpath expr="//div[@id='payment_method']" position="attributes">
+			<attribute name="t-if">website.website_show_price</attribute>
+		</xpath>
+		
+		<xpath expr="//div[@t-if='not acquirers']" position="attributes">
+			<attribute name="t-if">website.website_show_price</attribute>
+		</xpath>
+		
+		
+		<xpath expr="//t[@t-call='website_sale.cart_summary']" position="after">
+        	
+			<a role="button" class="btn btn-primary te_theme_button float-right mt-2" href="/shop/confirmation" t-if="(not website.website_show_price)">
+               <div id="wizard-step40" t-att-class="'progress-wizard-step %s' % (step == 40 and 'active' and 'complete' or 'disabled')">
+                 <div class="progress-wizard-bar d-none d-md-block"/>
+                 <div class="">Request for Quotation</div>
+               </div>
+            </a>
+        	
+        </xpath>
+    
+    </template>
+    
+    
+     <template id="short_cart_summary_hide_awc" inherit_id="website_sale.short_cart_summary">
+        <xpath expr="//div[hasclass('js_cart_summary')]" position="attributes">
+           <attribute name="t-if">website.website_show_price and website_sale_order and website_sale_order.website_order_line</attribute>
+        </xpath>
+    </template>
+    
+    <template id="wizard_checkout_awc" inherit_id="website_sale.wizard_checkout">
+
+        <xpath expr="//div[hasclass('progress-wizard')]/a[3]" position="after">
+           <a class="no-decoration" t-att-href="step&gt;=40 and '/shop/confirmation' or '#'" t-if="not website.website_show_price">
+               <div id="wizard-step40" t-att-class="'progress-wizard-step %s' % (step == 40 and 'active' or step&gt;40 and 'complete' or 'disabled')">
+                 <div class="progress-wizard-bar d-none d-md-block"/>
+                 <span class="progress-wizard-dot d-none d-md-inline-block"></span>
+                 <div class="text-center progress-wizard-steplabel">Request for Quotation</div>
+               </div>
+           </a>
+        </xpath>
+        
+        <xpath expr="//div[hasclass('progress-wizard')]/a[3]" position="attributes">
+           <attribute name="t-if">website.website_show_price</attribute>
+        </xpath>
+        
+        
+    </template>
+    
+    
+    
+    <!-- <template id="checkout_awc" inherit_id="website_sale.checkout">
+    
+        <xpath expr="//t[@t-call='website_sale.cart_summary']" position="after">
+        	
+			<a role="button" class="btn btn-primary te_theme_button float-right mt-2" href="/shop/confirmation" t-if="(not website.website_show_price)">
+               <div id="wizard-step40" t-att-class="'progress-wizard-step %s' % (step == 40 and 'active' and 'complete' or 'disabled')">
+                 <div class="progress-wizard-bar d-none d-md-block"/>
+                 <div class="">Request for Quotation</div>
+               </div>
+            </a>
+        	
+        </xpath>
+        
+    </template> -->
+    
+       <template id="confirmation_awc">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Shop - Confirmed</t>
+            <div id="wrap">
+                <div class="container oe_website_sale py-2">
+                    <h1><span>Order</span> <span>#</span> <em t-field="order.name" /><t t-if="order.state != 'sale'"><span>  Created Successfully</span></t> <t t-if="order.state == 'sale'"><span>Confirmed</span></t></h1>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="oe_cart">
+                                <t t-set="payment_tx_id" t-value="order.get_portal_last_transaction()"/>
+                                    <div class="thanks_msg">
+                                        <h2>We have received your quotation.Our sale team will get back to you in 1 working day.
+                                            
+                                        </h2>
+                                        <a role="button" class="btn btn-primary d-none d-md-inline-block" href="/shop/print" target="_blank" aria-label="Print" title="Print"><i class="fa fa-print"></i> Print</a>
+                                            <a class="btn btn-primary d-none d-md-inline-block" t-att-href="order.get_portal_url(report_type='pdf', download=True)" title="Download"><i class="fa fa-download"/> Download</a>
+                                    </div>
+                               <!--  <t t-if="request.env['res.users']._get_signup_invitation_scope() == 'b2c' and request.website.is_public_user()">
+                                    <p class="alert alert-info mt-3" role="status">
+                                        <a role="button" t-att-href='order.partner_id.signup_prepare() and order.partner_id.with_context(relative_url=True).signup_url' class='btn btn-primary'>Sign Up</a>
+                                         to follow your order.
+                                    </p>
+                                </t> -->
+                                <div class="oe_structure clearfix mt-3" id="oe_structure_website_sale_confirmation_1"/>
+                                <!-- <h3 class="text-left mt-3">
+                                    <strong>Payment Information:</strong>
+                                </h3>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2">
+                                                <t t-esc="order.get_portal_last_transaction().acquirer_id.name" />
+                                            </td>
+                                            <td class="text-right" width="100">
+                                                <strong>Total:</strong>
+                                            </td>
+                                            <td class="text-right" width="100">
+                                                <strong t-field="order.amount_total" t-options="{'widget': 'monetary', 'display_currency': order.pricelist_id.currency_id}" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table> -->
+                                
+                                <t t-set="website_sale_order" t-value="order"/>
+	                            <t t-call="website_sale.cart_summary">
+	                                <t t-set="hide_coupon" t-value="1"/>
+	                            </t>
+	                            <t t-if ="website.website_show_price">
+                                    <div class="card mt-3">
+                                      <div class="card-body">
+                                        <t t-set="same_shipping" t-value="bool(order.partner_shipping_id==order.partner_id or only_services)" />
+                                        <div><b>Billing <t t-if="same_shipping and not only_services"> &amp; Shipping</t>: </b><span t-esc='order.partner_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')" class="address-inline"/></div>
+                                        <div t-if="not same_shipping and not only_services" groups="sale.group_delivery_invoice_address"><b>Shipping: </b><span t-esc='order.partner_shipping_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"  class="address-inline"/></div>
+                                      </div>
+                                    </div>
+                                </t>
+                                    <div class="oe_structure mt-3" id="oe_structure_website_sale_confirmation_2"/>
+                                </div>
+
+                        </div>
+                        <!-- <div class="col-12 ">
+                            
+                        </div> -->
+                    </div>
+                </div>
+                <div class="oe_structure" id="oe_structure_website_sale_confirmation_3"/>
+            </div>
+        </t>
+    </template>
+    
+    
+    
+</odoo>

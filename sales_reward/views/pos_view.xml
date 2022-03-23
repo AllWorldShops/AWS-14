@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+       <template id="assets" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+<!--                <script type="text/javascript" src="/sales_reward/static/src/js/pos.js"></script>-->
+                <script type="text/javascript" src="/sales_reward/static/src/js/PaymentScreen.js"></script>
+                <script type="text/javascript" src="/sales_reward/static/src/js/PaymentScreenStatus.js"></script>
+                <script type="text/javascript" src="/sales_reward/static/src/js/PosLoyalty.js"></script>
+                <script type="text/javascript" src="/sales_reward/static/src/js/NumberPopup.js"></script>
+            </xpath>
+        </template>
+
+        <template id="sale_inherit_js" inherit_id="web.assets_backend">
+             <xpath expr="script[last()]" position="after">
+                <script type="text/javascript" src="sales_reward/static/src/js/rewardPointValidation.js">
+                	
+                </script>
+            </xpath>
+        </template>
+          <template id="sale_frontend_inherit_js" inherit_id="website.assets_frontend">
+             <xpath expr="script[last()]" position="after">
+                <script type="text/javascript" src="/sales_reward/static/src/js/rewardPointValidation.js"></script>
+            </xpath>
+        </template>
+</odoo>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+    	<record id="tax_free_product" model="account.tax">
+            <field name="name">Reward</field>
+            <field name="amount">0</field>
+        </record>
+    	<record id="product_product_reedem_Ind" model="product.product">
+            <field name="name">Reedem Point Ind</field>
+            <field name="categ_id">1</field>
+            <field name="standard_price">-1</field>
+            <field name="list_price">-1</field>
+            <field name="type">service</field>
+            <field name='taxes_id' eval="[(6, 0, [ref('tax_free_product')])]"/>
+            <field name="default_code">reward_ind</field>
+        </record>
+        <record id="product_product_reedem_vip" model="product.product">
+            <field name="name">Reedem Point Vip</field>
+            <field name="categ_id">1</field>
+            <field name="standard_price">-1</field>
+            <field name="list_price">-1</field>
+            <field name="type">service</field>
+            <field name='taxes_id' eval="[(6, 0, [ref('tax_free_product')])]"/>
+            <field name="default_code">reward_vip</field>
+        </record>
+	      <record id="product_product_reedem_pro" model="product.product">
+	        <field name="name">Reedem Point Professional</field>
+	        <field name="categ_id">1</field>
+	        <field name="standard_price">-1</field>
+	        <field name="list_price">-1</field>
+	        <field name="type">service</field>
+	        <field name='taxes_id' eval="[(6, 0, [ref('tax_free_product')])]"/>
+	        <field name="default_code">reward_pro</field>
+	    </record>
+    </data>
+</odoo>

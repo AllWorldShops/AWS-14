@@ -1,0 +1,48 @@
+<odoo>
+
+    	<record id="redeem_point_wizard_view" model="ir.ui.view">
+                <field name="name">redeem.point.wizard.form</field>
+                <field name="model">redeem.point</field>
+                <field name="arch" type="xml">
+                    <form string="Points to redeem">
+                        <group col="2">
+                            <field name="point_to_use"/>
+                        </group>
+
+                    <footer>
+                    	<button name="get_points_to_redeem" string="Get Points" class="btn-primary" type="object"/>
+                    	<button string="Cancel" class="btn-default" special="cancel" />
+                    </footer>
+                    </form>
+                </field>
+            </record>
+
+            <record id="action_redeem_points_wizard" model="ir.actions.act_window">
+	            <field name="name">Points to Redeem</field>
+	            <field name="type">ir.actions.act_window</field>
+	            <field name="res_model">redeem.point</field>
+	            <field name="view_mode">form</field>
+	            <field name="view_id" ref="redeem_point_wizard_view"/>
+	            <field name="target">new</field>
+        </record>
+
+
+        <record id="sale_order_form_view" model="ir.ui.view">
+			<field name="name">sale.order.form</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form" />
+			<field name="arch" type="xml">
+
+				<xpath expr="//button[@name='action_confirm']" position="after">
+					<button name="%(action_redeem_points_wizard)d"  type="action" class="oe_highlight" string="Redeem Points" attrs="{'invisible' : ['|', ('is_website', '=', True),('state', '!=', 'draft')]}"/>
+				</xpath>
+
+
+			</field>
+		</record>
+
+
+
+
+
+</odoo>

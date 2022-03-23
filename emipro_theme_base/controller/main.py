@@ -309,7 +309,7 @@ class EmiproThemeBase(http.Controller):
                     # 'active_filter_data': filter_id if filter_id else slider_obj.slider_filter_ids[0].filter_id.id,
                     'active_filter_data': filter_id if filter_id else slider_obj.slider_filter_ids[0].id,
                     'is_default': False if filter_id else True,
-                    'show_view_all': True
+                    'show_view_all': False
                 }
             tmplt_external_id = slider_obj.slider_style_id.get_external_id().get(
                 slider_obj.slider_style_id.id) + "_template"
@@ -377,7 +377,7 @@ class EmiproThemeBase(http.Controller):
                     'filter_data': products,
                     'is_default': False,
                     'category_offer_url': '/shop?category_offers=True',
-                    'show_view_all': True,
+                    'show_view_all': False,
                 }
                 html_slider_data = self.get_template_html(style_id, values)
                 return html_slider_data
@@ -399,7 +399,7 @@ class EmiproThemeBase(http.Controller):
                     'filter_data': products,
                     'is_default': False,
                     'allproduct_offer_url': '/shop',
-                    'show_view_all': True,
+                    'show_view_all': False,
                 }
                 html_slider_data = self.get_template_html(style_id, values)
                 return html_slider_data
@@ -419,7 +419,7 @@ class EmiproThemeBase(http.Controller):
                     'filter_data': products,
                     'is_default': False,
                     'product_offer_url': '/shop?product_offers=True',
-                    'show_view_all': True,
+                    'show_view_all': False,
                 }
                 html_slider_data = self.get_template_html(style_id, values)
                 return html_slider_data
@@ -454,7 +454,7 @@ class EmiproThemeBase(http.Controller):
                 'filter_data': products,
                 'is_default': False,
                 'allproduct_offer_url': '/shop',
-                'show_view_all': True,
+                'show_view_all': False,
             }
             html_slider_data = self.get_template_html(style_id, values)
             return html_slider_data

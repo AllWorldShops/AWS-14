@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+          <xpath expr="." position="inside">
+            <script type="text/javascript" src="/sales_reward/static/src/js/pos.js"></script>  
+            <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script> 
+          </xpath>
+
+
+    <t t-name="ClientDetails">
+        <section class="client-details">
+            <div class="client-picture">
+                <img t-att-src="widget.partner_icon_url(partner.id)" />
+            </div>
+            <div class="client-name"><t t-esc="partner.name" /></div>
+            <div class="edit-buttons">
+                <div class="button edit"><i class="fa fa-pencil-square" /></div>
+                <div class="button custom"><i class="fa fa-floppy-o"/></div>
+            </div>
+            <div class="client-details-box clearfix">
+                <div class="client-details-left">
+                    <div class="client-detail">
+                        <span class="label">Address</span>
+                        <t t-if="partner.address">
+                            <span class="detail client-address"><t t-esc="partner.address" /></span>
+                        </t>
+                        <t t-if="!partner.address">
+                            <span class="detail client-address empty">N/A</span>
+                        </t>
+                    </div>
+                    <div class="client-detail">
+                        <span class="label">Email</span>
+                        <t t-if="partner.email">
+                            <span class="detail client-email"><t t-esc="partner.email" /></span>
+                        </t>
+                        <t t-if="!partner.email">
+                            <span class="detail client-email empty">N/A</span>
+                        </t>
+                    </div>
+                    <div class="client-detail">
+                        <span class="label">Phone</span>
+                        <t t-if="partner.phone">
+                            <span class="detail client-phone"><t t-esc="partner.phone" /></span>
+                        </t>
+                        <t t-if="!partner.is_pos_user">
+                            <span class="detail client-phone empty">N/A</span>
+                        </t>
+                    </div>
+                    <div class='client-detail'>
+                        <t t-if="partner.is_pos_user and partner.customer_type!='exp'">
+                            <span style='font-weight: bold;'>Total Reward points </span>
+                            <span class='detail'>
+                                <t t-esc='partner.total_points.toString().slice(0,5) ||0' />
+                            </span>
+                        </t>
+                    </div>
+             <!--        <div class='client-detail'>
+                        <t t-if="partner.status">
+                            <span style='font-weight: bold;'>Purchase Rewards Total  </span>
+                            <span class='detail client-reward-purchase'>
+                                <t t-esc='partner.total_purchase_points.toString().slice(0,4)||0' />
+                            </span>
+                        </t>
+                    </div> -->
+                </div>
+                <div class="client-details-right">
+                    <div class="client-detail">
+                        <span class="label">Language</span>
+                        <t t-if="partner.lang">
+                            <span class="detail client-id"><t t-esc="partner.lang"/></span>
+                        </t>
+                        <t t-if="!partner.lang">
+                            <span class="detail client-id empty">N/A</span>
+                        </t>
+                    </div>
+
+                    <div class="client-detail">
+                        <span class="label">Barcode</span>
+                        <t t-if="partner.barcode">
+                            <span class="detail client-id"><t t-esc="partner.barcode"/></span>
+                        </t>
+                        <t t-if="!partner.barcode">
+                            <span class="detail client-id empty">N/A</span>
+                        </t>
+                    </div>
+                    <div class="client-detail">
+                        <span class="label">Tax ID</span>
+                        <t t-if="partner.vat">
+                            <span class="detail vat"><t t-esc="partner.vat"/></span>
+                        </t>
+                        <t t-if="!partner.vat">
+                            <span class="detail vat empty">N/A</span>
+                        </t>
+                    </div>
+                    <!-- <div class='client-detail'>
+                        <t t-if="partner.is_pos_user">
+                            <span style='font-weight: bold;'>Redeemable Points.  </span>
+                            <span class='detail client-reward'>
+                                <t t-esc='partner.redeemable_amount.toString().slice(0,4)|| 0' />
+                            </span>
+                        </t>
+                    </div>
+                    <div class='client-detail'>
+                        <t t-if="partner.status">
+                            <span style='font-weight: bold;'>Redeemable Amt.  </span>
+                            <span class='detail client-reward-purchase'>
+                                <t t-esc='partner.purchase_redeem_amount.toString().slice(0,4)||0' />
+                            </span>
+                        </t>
+                    </div>                     -->
+                </div>
+            </div>
+                <div class='client-detail'>
+                </div>
+        </section>
+    </t>
+
+
+    <t t-name="PaymentScreenWidget">
+        <div class='payment-screen screen'>
+            <div class='screen-content'>
+                <div class='top-content'>
+                    <span class='button back'>
+                        <i class='fa fa-angle-double-left'></i>
+                        Back
+                    </span>
+                    <h1>Payment</h1>
+                    <span class='button next'>
+                        Validate
+                        <i class='fa fa-angle-double-right'></i>
+                    </span>
+                </div>
+                <div class='left-content pc40 touch-scrollable scrollable-y'>
+
+                    <div class='paymentmethods-container'>
+                    </div>
+
+                </div>
+                <div class='right-content pc60 touch-scrollable scrollable-y'>
+
+                    <section class='paymentlines-container'>
+                    </section>
+
+                    <section class='payment-numpad'>
+                    </section>
+
+                    <div class='payment-buttons'>
+                        <div class='button js_set_customer'>
+                            <i class='fa fa-user'/>
+                            <span class='js_customer_name'>
+                                <t t-if="widget.pos.get_client()">
+                                    <t t-esc="widget.pos.get_client().name"/>
+                                </t>
+                                <t t-if="!widget.pos.get_client()">
+                                    Customer
+                                </t>
+                            </span>
+                        </div>
+                        <div class='button js_redeem_amount' id='check'>
+                                <span>
+                                    Redeem loyalt
+                                </span>
+                        </div>
+
+
+                            <t t-if='widget.pos.get_order()'>
+                                <div t-attf-class='button js_invoice #{ widget.pos.get_order().is_to_invoice() ? "highlight" : ""} '>
+                                    <i class='fa fa-file-text-o' /> Invoice Here
+                                </div>
+                            </t>
+
+
+                        <t t-if='widget.pos.config.tip_product_id'>
+                            <div class='button js_tip'>
+                                <i class='fa fa-heart' /> Tip
+                            </div>
+                        </t>
+                        <t t-if='widget.pos.config.iface_cashdrawer'>
+                            <div class='button js_cashdrawer'>
+                                <i class='fa fa-archive' /> Open Cashbox
+                            </div>
+                        </t>
+
+
+
+                    </div>
+                 </div>
+             </div>
+         </div>
+     </t>
+
+
+
+    <t t-name="CustomPopupWidget">
+        <div class="modal-dialog" >
+            <div class="popup popup-customtextinput" style="height:500px;">
+                <p class="title"><t t-esc=" widget.options.title || '' " /></p>
+                <div class="popup-customtextinput">
+                    <div>
+                        <t t-if="widget.pos.get_client()">
+                            <span style="font-weight:normal; font-size:17px;">Total Rewards:
+                                <t t-esc='widget.pos.get_client().total_points.toString().slice(0,4)||0' />
+                            </span>
+                        </t>
+                    </div>                        
+          
+
+                    <t t-if="widget.pos.get_client()">
+                        <span style="font-weight:normal; font-size:17px;">Redeem Points: 
+                            <div class='popup-input value active' style="min-height:34px;
+                                width:30%;margin-top:5px;margin-left:5px;vertical-align: middle;">    
+                                    <t t-esc='widget.inputbuffer' />
+                            </div>
+                        </span>
+                    </t>
+                    <div class='popup-numpad'>
+                        <t t-if="widget.pos.get_client()">
+                        <button class="input-button number-char" data-action='1'>1</button>
+                        <button class="input-button number-char" data-action='2'>2</button>
+                        <button class="input-button number-char" data-action='3'>3</button>
+                        <t t-if="widget.options.cheap">
+                            <button class="mode-button add" data-action='+1'>+1</button>
+                        </t><t t-if="!widget.options.cheap">
+                            <button class="mode-button add" data-action='+10'>+10</button>
+                        </t>
+                        <br />
+                        <button class="input-button number-char" data-action='4'>4</button>
+                        <button class="input-button number-char" data-action='5'>5</button>
+                        <button class="input-button number-char" data-action='6'>6</button>
+                        <t t-if="widget.options.cheap">
+                            <button class="mode-button add" data-action='+2'>+2</button>
+                        </t><t t-if="!widget.options.cheap">
+                            <button class="mode-button add" data-action='+20'>+20</button>
+                        </t>
+                        <br />
+                        <button class="input-button number-char" data-action='7'>7</button>
+                        <button class="input-button number-char" data-action='8'>8</button>
+                        <button class="input-button number-char" data-action='9'>9</button>
+                        <t t-if="widget.options.cheap">
+                            <button class="mode-button add" data-action='+5'>+5</button>
+                        </t><t t-if="!widget.options.cheap">
+                            <button class="mode-button add" data-action='+50'>+50</button>
+                        </t>
+                        <br />
+                        <button class="input-button numpad-char" data-action='CLEAR' >C</button>
+                        <button class="input-button number-char" data-action='0'>0</button>
+                        <button class="input-button number-char dot" t-att-data-action='widget.decimal_separator'><t t-esc='widget.decimal_separator'/></button>
+                        <button class="input-button numpad-backspace" data-action='BACKSPACE' >
+                            <img style="pointer-events: none;" src="/point_of_sale/static/src/img/backspace.png" width="24" height="21" />
+                        </button>
+                        </t>
+                        <br />
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="button confirm">
+                        Redeem 
+                    </div>
+                    <div class="button cancel">
+                        Cancel 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="PaymentScreen-Paymentlines">
+        <t t-if="!paymentlines.length">
+            <div class='paymentlines-empty'>
+                <div class='total'>
+                    <t t-esc="widget.format_currency(order.get_total_with_tax())"/>
+                </div>
+                <div class='message'>
+                    Please select a payment method. 
+                </div>
+            </div>
+        </t>
+        <t t-if="paymentlines.length">
+            <table class='paymentlines' id='thed'>
+                <colgroup>
+                    <col class='due'/>
+                    <col class='tendered' />
+                    <col class='change' />
+                    <col class='method' />
+                    <col class='controls' />
+                    <t t-if='order.client_type()'>
+                    <col class='redeemable_amount'/>
+                    <col class='select_redeemable_amount'/>
+                </t>
+                </colgroup>
+                <thead>
+                    <tr class='label'>
+                        <th>Due</th>
+                        <th>Tendered</th>
+                        <th>Change</th>
+                        <th>Method</th>
+                        <t t-if='order.client_type()'>
+                            <th>Redeem Point</th>
+                            <th>Selected Redeem Point</th>
+                            <th>(-)Redeemed Amount</th>
+                        </t>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach='paymentlines' t-as='line'>
+                        <t t-if='line.selected'>
+                            <tr class='paymentline selected'>
+                                <td class='col-due'> <t t-esc='widget.format_currency_no_symbol(order.get_due(line))' /> </td>
+                                <td> 
+                                    <t t-esc='widget.format_currency_no_symbol(line.get_amount())' />
+                                </td>
+                                <t t-if='order.get_change(line)'>
+                                    <td class='col-change highlight' > 
+                                        <t t-esc='widget.format_currency_no_symbol(order.get_change(line))' />
+                                    </td>
+                                </t>
+                                <t t-if='!order.get_change(line)'>
+                                    <td class='col-change' ></td>
+                                </t>
+                                    
+                                <td class='col-name' > <t t-esc='line.name' /> </td>
+                                <t t-if='order.client_type()'>
+                                <td>
+                                    <span id='total_redeem'><t t-esc='order.display_redeem_points().toString().slice(0,4)' />
+                                </span>
+                                </td>
+                            
+                                <td><span id='set_redeem'>
+                                    <t t-esc='order.show_redeem_point()'/></span></td>
+                                    <td><span id='show_redeem'><t t-esc="order.set_redeem_point()"/></span></td>
+                            </t>
+                                  
+
+                                <td class='delete-button' t-att-data-cid='line.cid'> <i class='fa fa-times-circle' /> </td>
+                            </tr>
+                        </t>
+                        <t t-if='!line.selected'>
+                            <tr class='paymentline' t-att-data-cid='line.cid'>
+                                <td class='col-due'> <t t-esc='widget.format_currency_no_symbol(order.get_due(line))' /> </td>
+                                <td class='col-tendered'> <t t-esc='widget.format_currency_no_symbol(line.get_amount())' /> </td>
+                                <td class='col-change'> 
+                                    <t t-if='order.get_change(line)'>
+                                        <t t-esc='widget.format_currency_no_symbol(order.get_change(line))' />
+                                     </t>
+                                </td>
+                                <td class='col-name'> <t t-esc='line.name' /> </td>
+                                <td class='delete-button' t-att-data-cid='line.cid'> <i class='fa fa-times-circle' /> </td>
+                            </tr>
+                        </t>
+                    </t>
+                    <t t-if='extradue'>
+                        <tr class='paymentline extra' t-att-data-cid='0'>
+                            <td class='col-due'> <t t-esc='widget.format_currency_no_symbol(extradue)' /> </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </t>
+
+    </t>
+
+    <t t-name="OrderReceipt">
+        <div class="pos-sale-ticket">
+
+            <div class="pos-center-align"><t t-esc="moment().format('L LT')"/><br /> <t t-esc="order.name"/></div>
+            <br />
+            <t t-esc="widget.pos.company.name"/><br />
+            Phone: <t t-esc="widget.pos.company.phone || ''"/><br />
+            User: <t t-esc="widget.pos.cashier ? widget.pos.cashier.name : widget.pos.user.name"/><br />
+            <br />
+            <t t-if="receipt.header">
+                <div style='text-align:center'>
+                    <t t-esc="receipt.header" />
+                </div>
+                <br />
+            </t>
+            <table class='receipt-orderlines'>
+                <colgroup>
+                    <col width='50%' />
+                    <col width='25%' />
+                    <col width='25%' />
+                </colgroup>
+                <tr t-foreach="orderlines" t-as="orderline">
+                    <td>
+                        <t t-esc="orderline.get_product().display_name"/>
+                         <t t-if="orderline.get_discount() > 0">
+                            <div class="pos-disc-font">
+                                With a <t t-esc="orderline.get_discount()"/>% discount
+                            </div>
+                        </t>
+                    </td>
+                    <td class="pos-center-align">
+                        <t t-esc="orderline.get_quantity_str_with_unit()"/>
+                    </td>
+                    <td class="pos-center-align">
+                        <t t-esc="widget.format_currency(orderline.get_display_price())"/>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <table class='receipt-orderlines'>
+                <colgroup>
+                    <col width='50%' />
+                    <col width='50%' />
+                </colgroup>
+                <tr>
+                    <td class="pos-left-align">Subtotal:</td>
+                    <td class="pos-right-align">
+                        <t t-esc="widget.format_currency(order.custom_get_total_without_tax())"/>
+                    </td>
+                </tr>
+                <t t-foreach="order.get_tax_details()" t-as="taxdetail">
+                    <tr>
+                        <td><t t-esc="taxdetail.name" /></td>
+                        <td class="pos-right-align">
+                            <t t-esc="widget.format_currency(taxdetail.amount)" />
+                        </td>
+                    </tr>
+                </t>
+                <tr>
+                    <td>Discount:</td>
+                    <td class="pos-right-align">
+                        <t t-esc="widget.format_currency(order.get_total_discount())"/>
+                        <t t-esc='customer_type_check' style='border:1px solid red;'/>
+                    </td>
+                </tr>
+                <t t-if='order.client_type()'>
+                <tr>
+                    <td>Points Redeemed :</td>
+                    <td class="pos-right-align">
+                        <t t-esc="order.show_redeem_point().toString().slice(0,4)"/>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Amount Redeemed:</td>
+                    <td class="pos-right-align">
+                        <t t-if='order.set_redeem_point()'>
+                        <t t-esc="widget.format_currency(order.set_redeem_point())"/>
+                    </t>
+                    <t t-else=''>
+                        <t t-esc="widget.format_currency(0)"/>
+                    </t>
+                    </td>
+                </tr>
+                </t>
+                <tr class="emph">
+                    <td>Total:</td>
+                    <td class="pos-right-align">
+                        <t t-esc="widget.format_currency(order.get_total_with_tax())"/>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <table class='receipt-paymentlines'>
+                <t t-foreach="paymentlines" t-as="line">
+                  <tr>
+                      <td>
+                          <t t-esc="line.name"/>
+                      </td>
+                      <td class="pos-right-align">
+                          <t t-esc="widget.format_currency(line.get_amount())"/>
+                      </td>
+                  </tr>
+                </t>
+            </table>
+            <br />
+            <table class='receipt-change'>
+                <tr><td>Change:</td><td class="pos-right-align">
+                    <t t-esc="widget.format_currency(order.get_change())"/>
+                    </td></tr>
+            </table>
+             <table>
+                <tr>
+                    <div class="pos-center-align">
+  
+                    </div>
+                </tr>
+            </table>
+            <table>
+                <t t-if='customer_type_check'>
+                <tr>
+                    <div class="pos-center-align">
+                    Loyalty Points
+                    </div>
+                </tr>
+                <tr>
+                   <td class="pos-left-align">
+                        Your Points:
+                    </td>
+                    <td class="pos-right-align">
+                        <t t-if="widget.pos.get_client()">
+                            <t t-esc='order.display_redeem_points().toString().slice(0,4)||0'/>
+                        </t>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="pos-left-align">
+                        Redeemed Points:
+                    </td>
+                    <td class="pos-right-align">
+                        <t t-esc="order.show_redeem_point().toString().slice(0,4)||0"/>
+                    </td>
+                </tr>
+            </t>
+       <!--      <tr>
+                    <td class="pos-left-align">
+                        Total Points
+                    </td >
+                    <td class="pos-right-align">
+                        <t t-if="widget.pos.get_client()">
+                            <t t-set="tot" t-value="widget.pos.get_client().total_pos_points - order.show_redeem_point().toString().slice(0,4)||0"/>
+                            <t t-esc="tot"/>
+                        </t>
+                    </td>
+                    
+                </tr> -->
+            </table>
+            <table>
+                <tr>
+                    <div class="pos-center-align">
+                  
+                    </div>
+                </tr>
+            </table>
+            <t t-if="receipt.footer">
+                <br />
+                <div style='text-align:center'>
+                    <t t-esc="receipt.footer" />
+                </div>
+            </t>
+        </div>
+    </t>
+
+</templates>

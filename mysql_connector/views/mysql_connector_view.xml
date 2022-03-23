@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="mysqldb_config_form" model="ir.ui.view">
+            <field name="name">mysqldb.config.form</field>
+            <field name="model">mysqldb.config</field>
+            <field name="arch" type="xml">
+                <form string="ModelTitle">
+                    <sheet>
+                       <group>
+
+                          <group string="DB Connection Info">
+                                <field name="db_provider_name"/>
+                                <field name="db_hostname"/>
+                                <field name="db_name"/>
+                                <field name="db_username"/>
+                                <field name="db_password"/>
+                                <field name="db_sync_type"/>
+                                <field name="db_test_query"/>
+                            </group>
+                         </group>
+                        <group>
+                            <button name="run_testquery" string="Test Connection" type="object" class="oe_highlight"/>
+                        </group>
+
+                         <group>
+                           <field name="db_query_result"/>
+                        </group>
+
+                    </sheet>
+                        <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="ModelName_tree_view" model="ir.ui.view">
+            <field name="name">mysqldb.config.ModelName.tree</field>
+            <field name="model">mysqldb.config</field>
+            <field name="arch" type="xml">
+                <tree string="ModelTitle">
+                    <field name="db_provider_name"/>
+                    <field name="db_hostname"/>
+                    <field name="db_name"/>
+                    <field name="db_username"/>
+                    <field name="db_password"/>
+                    <field name="db_sync_type"/>
+                    <field name="db_test_query"/>
+                </tree>
+            </field>
+        </record>
+<!-- 
+        <record id="mysqldbconfig_act_window" model="ir.actions.act_window">
+            <field name="name">MySQL DB Config</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mysqldb.config</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record> -->
+
+        <!--<menuitem name="MySQL Config" id="mysqldbconfig_menu" parent="account.menu_finance" action="Mysqldbconfig_act_window"/>-->
+
+
+        <record id="mysqldbconfig_act_window" model="ir.actions.act_window">
+            <field name="name">MySQL DB Config</field>
+            <field name="res_model">mysqldb.config</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="ModelName_tree_view" />
+        </record>
+
+
+        <menuitem
+        id="mysqldbconfig_menu1"
+        name="MySQL Config"
+        action="mysqldbconfig_act_window"
+        parent="crm.res_partner_menu_customer"
+        sequence="1"/>
+
+
+<!-- 
+        <menuitem id="event_maincateg_master" action="event_maincateg_action_view"
+            name="Main Category" parent="event_custom_master" sequence="6" />
+             -->
+</odoo>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="partner_reward_form_view">
+            <field name="name">partner.rewards.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/group/group[1]/field[@name='vat']" position="after">
+                    <field name="customer_type" string="Customer Type"
+                           attrs="{'invisible': [('customer_type','=',False)]}"/>
+                    <field name="total_points" string="User Points"
+                           attrs="{'invisible': [('customer_type','=','exp')]}"/>
+                    <field name="total_amount" string="User Points Amount"
+                           attrs="{'invisible': [('customer_type','=','exp')]}"/>
+                    <field name="validity_redeem_points" string="Validity of Redeem Points"
+                           attrs="{'invisible': [('customer_type','=','exp')]}"/>
+                    <field name="sale_reward_card" string="Loyalty Card Number"
+                           attrs="{'invisible': [('customer_type','=','exp')]}"/>
+                </xpath>
+                
+                <xpath expr="//page[@name='sales_purchases']" position="after">
+                    <page string="Sale Reward" name="sale_reward">
+                           <field name="reward_expire_ids" widget="section_and_note_one2many" mode="tree,kanban" attrs="{'readonly': 0}" >
+                               <tree string="Sale Reward">
+                               	<field name="reward_option"/>
+                               	<field name="reward_date"/>
+                               	<field name="reward_point" sum="Total"/>
+                               	<field name="used_reward_point" sum="Total"/>
+                               	<field name="remaining_reward_point" sum="Total" invisible="1"/>
+                               	<field name="remaining_reward_point1" sum="Total"/>
+                               	<field name="sale_id"/>
+                               	<field name="invoice_id"/>
+                               	<field name="pos_id"/>
+                               </tree>
+                           </field>
+                    </page>
+	             </xpath>
+                
+            </field>
+        </record>
+
+        <record id="view_res_partner_sale_tree" model="ir.ui.view">
+            <field name="name">partnertree</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='email']" position="after">
+                    <field name="total_points" string="User Points(Loyalty)"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

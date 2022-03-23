@@ -810,7 +810,7 @@ class Website(models.Model):
         ('list_price', 'On Product Sale Price'),
         ('website_price', 'On Product Discount Price')
     ], string="Price Range Filter For Products",
-        required=True, default='list_price', readonly=False)
+        required=False, default='list_price', readonly=False)
 
     # @api.depends('banner_video_url')
     # def _compute_embed_code(self):
@@ -928,8 +928,8 @@ class Website(models.Model):
         :return: min and max price value
         """
         range_list = []
-        cust_min_val = request.httprequest.values.get('min_price', False)
-        cust_max_val = request.httprequest.values.get('max_price', False)
+        cust_min_val = request.httprequest.values.get('min_price', 0)
+        cust_max_val = request.httprequest.values.get('max_price', 0)
 
         domain = WebsiteSaleWishlist._get_search_domain(self, search=search, category=category,
                                                         attrib_values=attributes)
