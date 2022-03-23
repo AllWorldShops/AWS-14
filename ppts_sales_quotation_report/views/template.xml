@@ -43,7 +43,7 @@
 				border-collapse: collapse;
                 text-align:left">
                 <tr style="border-left: None;">
-                    <td style="width: 50%;border-right: 1px solid black;padding-top: 10px;padding-bottom:10px;">
+                    <td style="width: 50%;border-right: 1px solid black;padding-top: 10px;">
                         <table>
                             <tbody>
                                 <tr>
@@ -60,13 +60,12 @@
                                         <br/>
                                     </t>
                                     <span t-field="doc.partner_invoice_id.state_id.name"/>
-                                    <span></span>
                                     <span t-field="doc.partner_invoice_id.zip"/>
-
                                     <br/>
                                     <span t-field="doc.partner_invoice_id.country_id"/>
                                     <br/>
                                     <span t-field="doc.partner_invoice_id.mobile"/>
+                                    <br/>
 
                                 </tr>
                             </tbody>
@@ -89,12 +88,12 @@
                                         <br/>
                                     </t>
                                     <span t-field="doc.partner_shipping_id.state_id.name"/>
-                                    <span></span>
                                     <span t-field="doc.partner_shipping_id.zip"/>
                                     <br/>
                                     <span t-field="doc.partner_shipping_id.country_id"/>
                                     <br/>
                                     <span t-field="doc.partner_shipping_id.mobile"/>
+                                    <br/>
                                 </tr>
                             </tbody>
                         </table>
@@ -153,7 +152,7 @@
 
             <!-- Is there a discount on at least one line? -->
             <t t-set="display_discount" t-value="any(l.discount for l in doc.order_line)"/>
-            <br/><br/>
+            <br/>
             <table class="table table-sm o_main_table">
                 <!-- In case we want to repeat the header, remove "display: table-row-group" -->
                 <thead style="display: table-row-group">
