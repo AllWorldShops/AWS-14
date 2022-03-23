@@ -20,7 +20,7 @@ odoo.define('emipro_theme_base.category_wise_search', function(require) {
                 'cat_id' : this.$('.ept-parent-category:visible option:selected').val()
             }*/
             return this._rpc({
-                route: '/shop/products/autocomplete',
+                route: '/shop/products/autocomplete/custom',
                 params: {
                     'term': this.$input.val(),
                     'options': {
