@@ -26,24 +26,24 @@ from odoo.addons.website_sale_wishlist.controllers.main import WebsiteSaleWishli
 _logger = logging.getLogger(__name__)
 
 
-class WebsiteSale(WebsiteSale):
+# class WebsiteSale(WebsiteSale):
 
-    @http.route('/shop/products/autocomplete', type='json', auth='public', website=True)
-    def products_autocomplete(self, term, options={}, **kwargs):
-        """
-        After getting the product collection based on the search apply the category filter.
-        @Author : Angel Patel (24/09/2020)
-        :return: res
-        """
-        res = super(WebsiteSale, self).products_autocomplete(term, options={}, **kwargs)
-        if options.get('cat_id'):
-            product = []
-            for list in res.get('products'):
-                product_obj = request.env['product.template'].sudo().search([('id','=',list.get('product_template_id')),('public_categ_ids','child_of',int(options.get('cat_id')))])
-                if product_obj:
-                    product.append(list)
-            res = {'products': product}
-        return res
+#     @http.route('/shop/products/autocomplete', type='json', auth='public', website=True)
+#     def products_autocomplete(self, term, options={}, **kwargs):
+#         """
+#         After getting the product collection based on the search apply the category filter.
+#         @Author : Angel Patel (24/09/2020)
+#         :return: res
+#         """
+#         res = super(WebsiteSale, self).products_autocomplete(term, options={}, **kwargs)
+#         if options.get('cat_id'):
+#             product = []
+#             for list in res.get('products'):
+#                 product_obj = request.env['product.template'].sudo().search([('id','=',list.get('product_template_id')),('public_categ_ids','child_of',int(options.get('cat_id')))])
+#                 if product_obj:
+#                     product.append(list)
+#             res = {'products': product}
+#         return res
 
 class EmiproThemeBase(http.Controller):
 
