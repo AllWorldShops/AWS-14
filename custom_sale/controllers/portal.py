@@ -50,7 +50,7 @@ class WebsiteSaleSSCUstom(WebsiteSale):
         if options.get('cat_id'):
             domain += [('public_categ_ids','child_of',int(options.get('cat_id')))]
         if request.website.website_show_price:
-            domain += [('company_id','!=',request.env.company.id)]
+            domain += [('company_id','!=',5)]
         else:
             domain +=[('company_id','=',request.env.company.id)]
 
