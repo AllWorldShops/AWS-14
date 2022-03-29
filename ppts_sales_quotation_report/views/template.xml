@@ -2,6 +2,7 @@
 <odoo>
 
 
+
     <template id="external_layout_standard_custom" inherit_id="web.external_layout_standard">
         <xpath expr="//ul[hasclass('list-inline')]" position="before">
             <b>**This is a Computer Generated Document.Signature Is Not Required.**</b>
