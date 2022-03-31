@@ -53,6 +53,7 @@ class WebsiteSaleSSCUstom(WebsiteSale):
             domain += [('company_id','!=',5)]
         else:
             domain +=[('company_id','=',request.env.company.id)]
+            display_price = False
 
         products = ProductTemplate.search(
             domain,
