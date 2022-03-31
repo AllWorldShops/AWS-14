@@ -170,7 +170,7 @@
                                         <span t-field="line.product_uom"/>
                                     </td>
                                      <td name="td_name">
-                                        <span t-field="line.prodcut_id.desc_text"/>
+                                        <span t-field="line.product_id.desc_text"/>
                                     </td>
                                       <td name="td_name">
                                         <span t-field="line.product_id.manufacturers"/>
