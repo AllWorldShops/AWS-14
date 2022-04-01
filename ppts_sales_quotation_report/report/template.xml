@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <template id="external_layout_standard_custom" inherit_id="web.external_layout_standard">
+        <xpath expr="//ul[hasclass('list-inline')]" position="before">
+            <b>**This is a Computer Generated Document.Signature Is Not Required.**</b>
+        </xpath>
+    </template>
+
+
+    <template id="report_sale_quotation_report_template">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <table style="width:100%;">
+                    <tbody>
+                        <tr>
+                            <td style="width:40%">
+                                <img t-if="doc.company_id.logo"
+                                     t-att-src="'data:image/png;base64,%s' % to_text(doc.company_id.logo)"
+                                     style="width:100px;height:100px;"/>
+                            </td>
+
+                            <td style="width:60%;" align="right">
+
+                                <span t-field="doc.company_id.name"/>
+                                <br/>
+                                <span t-field="doc.company_id.street"/>
+                                <br/>
+                                <span t-field="doc.company_id.street2"/>
+                                <br/>
+                                <span t-field="doc.company_id.country_id.name"/>
+                                <span t-field="doc.company_id.zip"/>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <table style="width:100%;
+				border: 3px solid black;
+				border-left: None;
+				border-right: None;
+				border-collapse: collapse;
+                text-align:left">
+                    <tr style="border-left: None;">
+                        <td style="width: 50%;border-right: 3px solid black;padding-top: 10px;">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <strong>Invoicing Address:</strong>
+                                        <br></br>
+                                        <span t-field="doc.partner_invoice_id.name"/>
+                                        <br/>
+                                        <t t-if="doc.partner_invoice_id.street">
+                                            <span t-field="doc.partner_invoice_id.street"/>
+                                            <br/>
+                                        </t>
+                                        <t t-if="doc.partner_invoice_id.street2">
+                                            <span t-field="doc.partner_invoice_id.street2"/>
+                                            <br/>
+                                        </t>
+                                        <span t-field="doc.partner_invoice_id.state_id.name"/>
+                                        <span t-field="doc.partner_invoice_id.zip"/>
+                                        <br/>
+                                        <span t-field="doc.partner_invoice_id.country_id"/>
+                                        <br/>
+                                        <span t-field="doc.partner_invoice_id.mobile"/>
+                                        <br/>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td style="width: 50%; text-align:right;">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <strong>Shipping Address:</strong>
+                                        <br></br>
+                                        <span t-field="doc.partner_shipping_id.name"/>
+                                        <br/>
+                                        <t t-if="doc.partner_shipping_id.street">
+                                            <span t-field="doc.partner_shipping_id.street"/>
+                                            <br/>
+                                        </t>
+                                        <t t-if="doc.partner_shipping_id.street2">
+                                            <span t-field="doc.partner_shipping_id.street2"/>
+                                            <br/>
+                                        </t>
+                                        <span t-field="doc.partner_shipping_id.state_id.name"/>
+                                        <span t-field="doc.partner_shipping_id.zip"/>
+                                        <br/>
+                                        <span t-field="doc.partner_shipping_id.country_id"/>
+                                        <br/>
+                                        <span t-field="doc.partner_shipping_id.mobile"/>
+                                        <br/>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="width:100%">
+                    <tr>
+                        <td style="width:70%">
+                            <strong class="mt16">
+                                <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
+                                    <span t-if="doc.state not in ['draft','sent']">Order #</span>
+                                    <span t-if="doc.state in ['draft','sent']">Quotation #</span>
+                                </t>
+
+
+                                <t t-if="env.context.get('proforma', False) or is_pro_forma">
+                                    <span>Pro-Forma Invoice #</span>
+                                </t>
+
+                                <span t-field="doc.name"/>
+                            </strong>
+                        </td>
+                        <td style="width:30%;text-align:right">
+                            <span>
+                                <strong>Quotation Date:</strong>
+                                <span t-field="doc.date_order" t-options='{"widget": "date"}'/>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+
+
+                <!-- Is there a discount on at least one line? -->
+                <t t-set="display_discount" t-value="any(l.discount for l in doc.order_line)"/>
+                <br/>
+                <table class="table table-sm o_main_table">
+                    <!-- In case we want to repeat the header, remove "display: table-row-group" -->
+                    <thead style="display: table-row-group">
+                        <tr>
+                            <th name="th_description" class="text-left">Description</th>
+                            <th name="th_quantity" class="text-right">Quantity</th>
+                            <th name="th_description" class="text-left">Direction</th>
+                            <th name="th_quantity" class="text-right">Manufacturer</th>
+
+                        </tr>
+                    </thead>
+                    <tbody class="sale_tbody">
+                        <t t-foreach="doc.order_line" t-as="line">
+                            <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
+                                <t t-if="not line.display_type">
+                                    <td name="td_name">
+                                        <span t-field="product_template_id.name"/>
+                                    </td>
+                                    <td name="td_quantity" class="text-right">
+                                        <span t-field="line.product_uom_qty"/>
+                                        <span t-field="line.product_uom"/>
+                                    </td>
+                                    <td name="td_name">
+                                        <span t-field="line.product_id.desc_text"/>
+                                    </td>
+                                    <td name="td_name">
+                                        <span t-field="line.product_id.manufacturers"/>
+                                    </td>
+                                </t>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+
+
+                <!-- <t t-if="doc.payment_term_id">
+                     <table style="width:100%;">
+                         <tr>
+                             <td style="width:50%;font-size:16px;">
+                                 <span>Payment Terms:</span>
+                                 <span t-field="doc.payment_term_id"/>
+                             </td>
+                         </tr>
+                     </table>
+                 </t>-->
+            </div>
+        </t>
+    </template>
+
+    <template id="report_sale_quotation_action">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="ppts_sales_quotation_report.report_sale_quotation_report_template"/>
+            </t>
+        </t>
+    </template>
+</odoo>
