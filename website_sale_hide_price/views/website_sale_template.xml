@@ -7,7 +7,7 @@
             </attribute>
         </xpath>
     </template>
-    <template id="products_item" inherit_id="website_sale.products_item">
+  <!--   <template id="products_item" inherit_id="website_sale.products_item">
         <xpath expr="//div[@itemprop='offers']" position="attributes">
             <attribute name="t-if">
                     product.product_variant_ids and website.website_show_price
@@ -15,7 +15,95 @@
         </xpath>
     </template>
     
-    
+     -->
+
+     <template id="products_item" inherit_id="website_sale.products_item">
+        <xpath expr="//div[@itemprop='offers']" position="attributes">
+            <attribute name="t-if">
+                product.product_variant_ids and website.website_show_price
+            </attribute>
+        </xpath>
+
+
+        <xpath expr="//form[1]/div[hasclass('oe_product_image')]" position="attributes">
+            <attribute name="t-if">
+                website.website_show_price
+            </attribute>
+        </xpath>
+
+        <xpath expr="//form[1]/div[2]/div[1]/h6" position="replace">
+
+            <h6 t-if="website.website_show_price" class="o_wsale_products_item_title">
+                <a itemprop="name" t-att-href="product_href" t-att-content="product.name" t-field="product.name"/>
+                <a role="button" t-if="not product.website_published" t-att-href="product_href"
+                   class="btn btn-sm btn-danger" title="This product is unpublished.">Unpublished
+                </a>
+            </h6>
+
+            <h1 t-if="not website.website_show_price" class="o_wsale_products_item_title">
+                <a itemprop="name" t-att-href="product_href"><span t-field="product.name"/>
+                    <span t-field="product.desc_text"/>
+                </a>
+                <h4>
+                    <span t-field="product.manufacturers"/>
+                </h4>
+<!--                <h5>-->
+<!--                    <span t-field="product.default_code"/>-->
+<!--                </h5>-->
+                <a role="button" t-if="not product.website_published" t-att-href="product_href"
+                   class="btn btn-sm btn-danger" title="This product is unpublished.">Unpublished
+                </a>
+            </h1>
+        </xpath>
+    </template>
+
+    <template id="awc_website_sale_product" inherit_id="website_sale.product" priority="17">
+        <xpath expr="//div[@id='product_details']/h1" position="replace">
+
+            <h1 t-if="website.website_show_price" itemprop="name" t-field="product.name">Product Name</h1>
+            <div t-if="not website.website_show_price" class="o_wsale_products_item_title">
+                <h1 itemprop="name" t-field="product.name">Product Name</h1>
+
+                    <span style=";width:1.2rem;" t-field="product.manufacturers"/>
+
+<!--                <h5>-->
+<!--                    <span t-field="product.default_code"/>-->
+<!--                </h5>-->
+            </div>
+        </xpath>
+    </template>
+
+     <template id="awc_website_add_quotation" inherit_id="website_sale.product" priority="17">
+            <xpath expr="//div[@id='product_details']/h1" position="replace">
+                 btn btn-primary btn-lg mt16 js_check_product a-submit d-block d-sm-inline-block te_theme_button
+            </xpath>
+        </template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
     
     <!-- <template id="products_item_discount_message" inherit_id="theme_clarico_vega.products_item_discount_message" priority="21">
         <xpath expr="//div[hasclass('product_price')]" position="replace">
