@@ -182,7 +182,7 @@
             <t t-set="additional_title">Shop - Confirmed</t>
             <div id="wrap">
                 <div class="container oe_website_sale py-2">
-                    <h1><span>Order</span> <span>#</span> <em t-field="order.name" /><t t-if="order.state != 'sale'"><span>  Created Successfully</span></t> <t t-if="order.state == 'sale'"><span>Confirmed</span></t></h1>
+                    <h1><span>Quotation</span> <span>#</span> <em t-field="order.name" /><t t-if="order.state != 'sale'"><span>  Created Successfully</span></t> <t t-if="order.state == 'sale'"><span>Confirmed</span></t></h1>
 
                     <div class="row">
                         <div class="col-12">
