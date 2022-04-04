@@ -11,8 +11,8 @@
     'category': 'Sale',
     'depends': ['base', 'sale'],
 
-    'data': ['views/template.xml',
-             'views/quotation_report.xml'
+    'data': ['report/template.xml',
+             'report/quotation_report.xml'
              ],
 
     'installable': True,

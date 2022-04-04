@@ -9,7 +9,7 @@
     </template>
 
 
-    <template id="report_sale_quotation_report_template">
+   <template id="report_sale_quotation_report_template">
         <t t-call="web.external_layout">
             <div class="page">
                 <table style="width:100%;">
@@ -137,18 +137,17 @@
                         <tr>
                             <th name="th_description" class="text-left">Description</th>
                             <th name="th_quantity" class="text-right">Quantity</th>
-                            <th name="th_description" class="text-left">Directions</th>
-                            <th name="th_description" class="text-left">Manufacturer</th>
+                            <th name="th_description" class="text-left">Direction</th>
+                            <th name="th_quantity" class="text-left">Manufacturer</th>
 
                         </tr>
                     </thead>
                     <tbody class="sale_tbody">
                         <t t-foreach="doc.order_line" t-as="line">
-
                             <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
                                 <t t-if="not line.display_type">
                                     <td name="td_name">
-                                        <span t-field="line.name"/>
+                                        <span t-field="line.product_id.name"/>
                                     </td>
                                     <td name="td_quantity" class="text-right">
                                         <span t-field="line.product_uom_qty"/>
@@ -157,30 +156,26 @@
                                     <td name="td_name">
                                         <span t-field="line.product_id.desc_text"/>
                                     </td>
-                                      <td name="td_name">
+                                    <td name="td_name">
                                         <span t-field="line.product_id.manufacturers"/>
                                     </td>
                                 </t>
-                               
-
                             </tr>
                         </t>
                     </tbody>
                 </table>
 
 
-
-
-               <!-- <t t-if="doc.payment_term_id">
-                    <table style="width:100%;">
-                        <tr>
-                            <td style="width:50%;font-size:16px;">
-                                <span>Payment Terms:</span>
-                                <span t-field="doc.payment_term_id"/>
-                            </td>
-                        </tr>
-                    </table>
-                </t>-->
+                <!-- <t t-if="doc.payment_term_id">
+                     <table style="width:100%;">
+                         <tr>
+                             <td style="width:50%;font-size:16px;">
+                                 <span>Payment Terms:</span>
+                                 <span t-field="doc.payment_term_id"/>
+                             </td>
+                         </tr>
+                     </table>
+                 </t>-->
             </div>
         </t>
     </template>
