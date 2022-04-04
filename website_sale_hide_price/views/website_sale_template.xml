@@ -68,16 +68,19 @@
 
 <!--                <h5>-->
 <!--                    <span t-field="product.default_code"/>-->
-<!--                </h5>-->
+               </h5>-->
             </div>
         </xpath>
     </template>
 
+<!-- 
      <template id="awc_website_add_quotation" inherit_id="website_sale.product" priority="17">
             <xpath expr="//div[@id='product_details']/h1" position="replace">
                  btn btn-primary btn-lg mt16 js_check_product a-submit d-block d-sm-inline-block te_theme_button
             </xpath>
         </template>
+
+-->
 
 
 
