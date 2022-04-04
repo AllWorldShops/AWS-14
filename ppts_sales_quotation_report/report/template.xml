@@ -138,7 +138,7 @@
                             <th name="th_description" class="text-left">Description</th>
                             <th name="th_quantity" class="text-right">Quantity</th>
                             <th name="th_description" class="text-left">Direction</th>
-                            <th name="th_quantity" class="text-right">Manufacturer</th>
+                            <th name="th_quantity" class="text-left">Manufacturer</th>
 
                         </tr>
                     </thead>
@@ -147,7 +147,7 @@
                             <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
                                 <t t-if="not line.display_type">
                                     <td name="td_name">
-                                        <span t-field="product_template_id.name"/>
+                                        <span t-field="line.product_id.name"/>
                                     </td>
                                     <td name="td_quantity" class="text-right">
                                         <span t-field="line.product_uom_qty"/>
