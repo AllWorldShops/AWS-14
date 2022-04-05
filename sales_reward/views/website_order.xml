@@ -303,7 +303,7 @@
 				<nav t-attf-class="d-flex navbar-expand-lg py-2 o_portal_navbar">
 					 <ol class="o_portal_submenu breadcrumb mb-0 py-2 flex-grow-1">
 			            <li class="breadcrumb-item"><a href="/my/home" aria-label="Home" title="Home"><i class="fa fa-home"/></a></li>
-			            <li class="breadcrumb-item">WebitPoints</li>
+			            <li class="breadcrumb-item" t-if="website.website_show_price">WebitPoints</li>
 			        </ol>
 				
 		            <!--  Navbar breadcrumb or title  -->

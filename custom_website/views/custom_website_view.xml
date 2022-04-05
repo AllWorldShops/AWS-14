@@ -161,7 +161,7 @@
 			<a href="/my/orders" class="button12">My<![CDATA[&nbsp;]]>orders
 			</a>
 			<a href="/shop/wishlist" class="button12">Wishlist</a>
-			<a href="/my/reward" class="button12">WebitPoints</a>
+			<a href="/my/reward" class="button12" t-if="website.website_show_price">WebitPoints</a>
 		</div>
 	</template>
 

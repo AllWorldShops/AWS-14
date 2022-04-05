@@ -55,7 +55,7 @@
             <div t-if="not website.website_show_price" class="o_wsale_products_item_title">
                 <h1 itemprop="name" t-field="product.name">Product Name</h1>
                 <h4>
-                    <span t-field="product.manufacturers"/>
+                     <span style="width:1.2rem !important;" >Manufacturer: </span> <span t-field="product.manufacturers"/>
                 </h4>
                 <!-- <h5>
                     <span t-field="product.default_code"/>
