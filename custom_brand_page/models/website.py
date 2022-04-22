@@ -35,7 +35,7 @@ class Website(models.Model):
             domain = [('id','=',cat_id)]
             
         category_obj = self.env['product.public.category'].sudo().search(domain+[('country_website_fitler', '=', False),('website_id','in',[request.env['website'].sudo().get_current_website().id])])
-        brands = [{'name': "All",'id':""}]
+        brands = [{'name': "All Brands",'id':""}]
         
         brand_ids = category_obj.mapped('brand_ids')
         
