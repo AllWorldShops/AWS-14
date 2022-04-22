@@ -8,6 +8,7 @@
         <field name="arch" type="xml">
              <field name="parent_id" position="after">
              	<field name="country_website_fitler" />
+             	<field name="brand_ids" widget="many2many_tags"/>
              </field>	
         </field>
     </record>

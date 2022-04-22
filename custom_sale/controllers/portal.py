@@ -7,8 +7,7 @@ from odoo.exceptions import AccessError, MissingError
 from odoo.http import request
 from odoo.addons.sale.controllers.portal import CustomerPortal
 from odoo.addons.website_sale.controllers.main import WebsiteSale
-from odoo.osv import expression
-
+import json
     
 class WebsiteSaleSSCUstom(WebsiteSale):
 
@@ -54,6 +53,9 @@ class WebsiteSaleSSCUstom(WebsiteSale):
         else:
             domain +=[('company_id','=',request.env.company.id)]
             display_price = False
+            
+            if options.get('brand_id', False):
+                domain +=[('product_brand_ept_id','=',int(options.get('brand_id', False)))]
 
         products = ProductTemplate.search(
             domain,
@@ -90,6 +92,16 @@ class WebsiteSaleSSCUstom(WebsiteSale):
 
 
         return res
+    
+    
+    @http.route('/shop/category/brands/custom', type='http', auth='public', website=True, csrf=False, cros="*")
+    def category_brands_custom(self, **kwargs):
+        if kwargs.get('cat_id', False):
+            return json.dumps(request.env['website'].sudo().get_category_brands(kwargs.get('cat_id', False)))
+        else:
+            return json.dumps(request.env['website'].sudo().get_category_brands())
+        
+        
 
 class CustomerPortalCustom(CustomerPortal):
     @http.route(['/my/orders/<int:order_id>'], type='http', auth="public", website=True)

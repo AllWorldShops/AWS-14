@@ -11,6 +11,7 @@ class ProductPublicCategory(models.Model):
     _inherit = "product.public.category"
     
     country_website_fitler = fields.Boolean("Country on Website?")
+    brand_ids = fields.Many2many("product.brand.ept", string="Brands")
 
     @api.model
     def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):

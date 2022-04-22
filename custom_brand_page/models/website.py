@@ -23,6 +23,27 @@ class Website(models.Model):
                 cat_array.append({'name': cat.name, 'id': cat.id})
         return cat_array
     
+    
+    def get_category_brands(self, cat_id=False):
+        """
+        Collect all the parent category. and return with category name and category ID
+        @Author : Angel Patel (24/09/2020)
+        :return: cat_array
+        """
+        domain = []
+        if cat_id:
+            domain = [('id','=',cat_id)]
+            
+        category_obj = self.env['product.public.category'].sudo().search(domain+[('country_website_fitler', '=', False),('website_id','in',[request.env['website'].sudo().get_current_website().id])])
+        brands = [{'name': "All",'id':""}]
+        
+        brand_ids = category_obj.mapped('brand_ids')
+        
+        if brand_ids:
+            for brand_id in brand_ids:
+                brands.append({'name': brand_id.name, 'id': brand_id.id})
+        return brands
+    
     def _force_website(self, website_id):
         res = super(Website, self)._force_website(website_id)
         if request:

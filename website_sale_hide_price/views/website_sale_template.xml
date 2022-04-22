@@ -483,5 +483,13 @@
     </template>-->
     
     
+    <!--  <t t-set="brands" t-value="request.env['website'].sudo().get_category_brands()"/>
+     <select class="ept-brand-category form-control" id="ept-brand-category" name="category">
+       <t t-foreach="brands" t-as="brand">
+         <option t-att-value="brand.get('id')" t-esc="brand.get('name')" class="o_default_snippet_text"/>
+       </t>
+     </select> -->
+    
+    
     
 </odoo>
