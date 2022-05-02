@@ -466,7 +466,9 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
         product_count = len(products or [])
         pager = request.website.pager(url=url, total=product_count, page=page, step=ppg, scope=7, url_args=post)
         products = request.env['product.template'].search([('id','in',products.ids if products else [])], limit=ppg, offset=pager['offset'] or 0, order=self._get_search_order(post))
-
+        
+        
+        categs = set(categs+category)
         values = {
             'search': search,
             'category': category,
