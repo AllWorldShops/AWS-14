@@ -489,6 +489,51 @@
          <option t-att-value="brand.get('id')" t-esc="brand.get('name')" class="o_default_snippet_text"/>
        </t>
      </select> -->
+     
+     <!-- Belove brand filter is added to AWC website on frontend. -->
+     
+    <!--  
+     <?xml version="1.0"?>
+<data inherit_id="website_sale.products" active="False" customize_show="True" name="eCommerce Categories">
+        <xpath expr="//div[@id='products_grid_before']" position="before">
+            <t t-set="enable_left_column" t-value="True"/>
+        </xpath>
+        <xpath expr="//div[@id='products_grid_before']" position="inside">
+            <button type="button" class="btn btn-link d-lg-none" data-target="#wsale_products_categories_collapse" data-toggle="collapse">
+                Show categories
+            </button>
+            <div class="collapse d-lg-block" id="wsale_products_categories_collapse">
+                <ul class="nav nav-pills flex-column mb-2">
+                    <li class="nav-item">
+                        <a t-att-href="keep('/shop', category=0)" t-attf-class="nav-link #{'' if category else 'active'} o_not_editable">All Products</a>
+                    </li>
+                    <t t-foreach="categories" t-as="c">
+                        <t t-call="website_sale.categories_recursive"/>
+                    </t>
+                </ul>
+            </div>
+            
+            
+            
+             <div class="collapse d-lg-block pt-3" id="wsale_products_brands_collapse" t-if="not website.website_show_price">
+              
+                <div class="te_brand_h4 d-none d-lg-block">
+                Brands
+              </div>
+                <ul class="nav nav-pills flex-column mb-2 mt16 te_shop_brand_list open_ul" id="">
+                  <t t-foreach="category.mapped('brand_ids')" t-as="brand">
+                    <li class="nav-item">
+                        <a t-att-href="keep('/shop', brand_id=brand.id)" t-attf-class="nav-link #{'active' if int(brand_id)==brand.id else ''} o_not_editable"><span t-field="brand.name"></span></a>
+                    </li>
+                  </t>
+                    
+                </ul>
+            </div>
+            
+            
+        </xpath>
+    </data>
+      -->
     
     
     
