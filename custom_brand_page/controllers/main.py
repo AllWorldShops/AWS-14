@@ -306,11 +306,15 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
         '''/shop/category/<model("product.public.category"):category>''',
         '''/shop/category/<model("product.public.category"):category>/page/<int:page>'''
     ], type='http', auth="public", website=True, sitemap=WebsiteSale.sitemap_shop)
-    def shop(self, page=0, category=None, search='', ppg=False, **post):
-        
+    def shop(self, page=0, category=None, brand_id=0, search='', ppg=False, **post):
         
         country_filter_id = 951
         category_domain = []
+        brand_domain = []
+        
+        
+        if brand_id:
+            brand_domain = [('product_brand_ept_id','in',[int(brand_id)])]
         
         if 'country_filter_id' in post:
             if post.get('country_filter_id') != '':
@@ -392,9 +396,9 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
         
         if category_domain:
             domain = EmiproThemeBaseExtended._get_search_domain(EmiproThemeBaseExtended(), '', '', attrib_values)
-            search_product = Product.search(category_domain+domain+awc_domain, order=self._get_search_order(post))
+            search_product = Product.search(category_domain+domain+awc_domain+brand_domain, order=self._get_search_order(post))
         else:
-            search_product = Product.search(category_domain+domain+awc_domain, order=self._get_search_order(post))
+            search_product = Product.search(category_domain+domain+awc_domain+brand_domain, order=self._get_search_order(post))
             
         website_domain = request.website.website_domain()
         if category:
@@ -466,6 +470,7 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
         values = {
             'search': search,
             'category': category,
+            'brand_id':brand_id,
             'attrib_values': attrib_values,
             'attrib_set': attrib_set,
             'pager': pager,

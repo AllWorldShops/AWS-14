@@ -268,6 +268,7 @@ odoo.define('theme_clarico_vega.theme_script', function(require) {
             'click .te_show_category':'_onShowCategBtnResp',
             'click .te_show_option':'_onShowOptionBtnResp',
             'click .te_ctg_h4': '_onCategorySection',
+            'click .te_brand_h4': '_onBrandSection',
         },
         start: function() {
             $("img.lazyload").lazyload();
@@ -402,6 +403,7 @@ odoo.define('theme_clarico_vega.theme_script', function(require) {
             });
             ajaxorformload(ev);
         },
+        
         _onCategorySection: function(){
             var ctg_ul = $('.te_ctg_h4').siblings('.te_shop_ctg_list');
              if (ctg_ul.hasClass("open_ul")) {
@@ -415,6 +417,21 @@ odoo.define('theme_clarico_vega.theme_script', function(require) {
                 ctg_ul.toggle('slow');
             }
         },
+       	//Brand
+        _onBrandSection: function(){
+            var ctg_ul = $('.te_brand_h4').siblings('.te_shop_brand_list');
+             if (ctg_ul.hasClass("open_ul")) {
+                ctg_ul.removeClass("open_ul");
+                ctg_ul.siblings(".te_brand_h4").addClass('te_fa-plus');
+                ctg_ul.toggle('slow');
+            }
+            else{
+                ctg_ul.addClass("open_ul");
+                ctg_ul.siblings(".te_brand_h4").removeClass('te_fa-plus');
+                ctg_ul.toggle('slow');
+            }
+        },
+        
         _onAttribSection: function(ev) {
             var self = ev.currentTarget;
             var main_li = $(self).parents("li.nav-item");

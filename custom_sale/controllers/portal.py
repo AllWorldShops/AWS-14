@@ -96,10 +96,9 @@ class WebsiteSaleSSCUstom(WebsiteSale):
     
     @http.route('/shop/category/brands/custom', type='http', auth='public', website=True, csrf=False, cros="*")
     def category_brands_custom(self, **kwargs):
+        print(kwargs)
         if kwargs.get('cat_id', False):
             return json.dumps(request.env['website'].sudo().get_category_brands(kwargs.get('cat_id', False)))
-        else:
-            return json.dumps(request.env['website'].sudo().get_category_brands())
         
         
 
