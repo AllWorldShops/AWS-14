@@ -94,7 +94,7 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
     @http.route(['/shop/cart/update_custom'], type='json', auth="public", methods=['GET', 'POST'], website=True,
                 csrf=False)
     def cart_update_custom(self, product_id, add_qty=1, set_qty=0, product_custom_attribute_values=None, **kw):
-       res = super(EmiproThemeBase, self).cart_update(product_id=product_id, add_qty=1, set_qty=0, product_custom_attribute_values=product_custom_attribute_values, **kw)
+       res = super(EmiproThemeBase, self).cart_update(product_id=product_id, add_qty=add_qty, set_qty=set_qty, product_custom_attribute_values=product_custom_attribute_values, **kw)
        return res
    
    
