@@ -314,7 +314,8 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
         
         
         if brand_id:
-            brand_domain = [('product_brand_ept_id','in',[int(brand_id)])]
+            if int(brand_id):
+                brand_domain = [('product_brand_ept_id','in',[int(brand_id)])]
         
         if 'country_filter_id' in post:
             if post.get('country_filter_id') != '':

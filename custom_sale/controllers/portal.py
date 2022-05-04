@@ -55,7 +55,8 @@ class WebsiteSaleSSCUstom(WebsiteSale):
             display_price = False
             
             if options.get('brand_id', False):
-                domain +=[('product_brand_ept_id','=',int(options.get('brand_id', False)))]
+                if int(options.get('brand_id', False)):
+                    domain +=[('product_brand_ept_id','=',int(options.get('brand_id', False)))]
 
         products = ProductTemplate.search(
             domain,
