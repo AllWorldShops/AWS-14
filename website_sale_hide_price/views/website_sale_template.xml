@@ -534,6 +534,16 @@
         </xpath>
     </data>
       -->
+      
+      
+    <!--======================= Sort by =============================-->
+    <template id="sort_ept" inherit_id="website_sale.sort">
+        <xpath expr="//a[hasclass('dropdown-item')]" position="attributes">
+            <attribute name="t-att-href">keep('/shop', order=sortby[1],
+                min_price=request.params.get('min_price'),max_price=request.params.get('max_price'), brand_id=request.params.get('brand_id',0))
+            </attribute>
+        </xpath>
+    </template>
     
     
     
