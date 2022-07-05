@@ -141,10 +141,11 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
             if sale_order_id:
                 request.session['awc_sale_order_id'] = sale_order_id
                 order = request.env['sale.order'].sudo().browse(sale_order_id)
-                
+                order.partner_id.last_website_so_id = False
                 request.session['sale_order_id'] = None
                 request.session['sale_transaction_id'] = None
                 request.session['sale_last_order_id'] = None
+                sale_order = request.website.sale_get_order(force_create=True)
                 
                 order._send_order_confirmation_mail()
                 
