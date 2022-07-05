@@ -167,8 +167,6 @@
         
     </template>
     
-    
-    
     <!-- <template id="checkout_awc" inherit_id="website_sale.checkout">
     
         <xpath expr="//t[@t-call='website_sale.cart_summary']" position="after">

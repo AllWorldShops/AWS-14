@@ -137,7 +137,6 @@ class EmiproThemeBase(EmiproThemeBase, WebsiteSale):
         if not request.website.website_show_price:
             
             sale_order_id = request.session.get('sale_order_id')
-            
             if sale_order_id:
                 request.session['awc_sale_order_id'] = sale_order_id
                 order = request.env['sale.order'].sudo().browse(sale_order_id)
